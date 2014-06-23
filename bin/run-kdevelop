@@ -1,0 +1,7 @@
+#!/bin/bash
+
+KDE_PATH=${HOME}/ide/kdevelop4
+export KDEDIRS=${KDE_PATH}:/usr
+
+kbuildsycoca4
+${KDE_PATH}/bin/kdevelop $@ &

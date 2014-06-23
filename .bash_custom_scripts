@@ -1,0 +1,57 @@
+# LTE project specific scripts
+function default_make_target_to_UEC()
+{
+    if [ $# -eq 0 ]; then
+        echo "UEC" 
+    else
+        echo "$1"
+    fi
+}
+
+function mgmake()
+{
+    make -f Makefile $@
+}
+
+function mu()
+{
+    TARGET=$(default_make_target_to_UEC $@)
+    shift
+    mgmake pt${TARGET}_UT $@
+}
+
+function mur()
+{
+    mgmake ut-run$@
+}
+
+function me()
+{
+    TARGET=$(default_make_target_to_UEC $@)
+    shift
+    mgmake pt${TARGET}exe SECONDARY=1 $@
+}
+
+function msc()
+{
+    TARGET=$(default_make_target_to_UEC $@)
+    shift
+    mgmake SECONDARY=1 SC=${TARGET} sct-clean-logs sct-coal $@
+}
+
+function msr()
+{
+    TARGET=$1
+    shift
+    mgmake SECONDARY=1 SC=${TARGET} sct-clean-logs sct-run $@
+}
+
+function med()
+{
+    me && msc
+}
+
+function mud()
+{
+    mu && mur
+}

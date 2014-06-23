@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TEMPFILE=`mktemp`
+
+svn up | tee $TEMPFILE
+ADDED=(`cat $TEMPFILE | grep '^A ' | tr -s ' ' | cut -d ' ' -f 2`); echo "git add ${ADDED[*]}"
+DELETED=(`cat $TEMPFILE | grep '^D ' | tr -s ' ' | cut -d ' ' -f 2`); echo "git rm ${DELETED[*]}"
+
+rm $TEMPFILE

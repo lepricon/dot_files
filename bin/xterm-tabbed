@@ -1,0 +1,5 @@
+#!/bin/bash
+if [[ -z "$(pidof tabbed)" ]]; then
+    tabbed -d | xargs printf "%d\n" > ~/.tabbed.xid
+fi
+xterm -into $( < ~/.tabbed.xid )

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#first argument is file name of substitute
+function substitute_gitconfig()
+{
+    pushd $HOME
+    rm .gitconfig
+    ln -s $1 .gitconfig
+    popd
+}
+
+substitute_gitconfig .gitconfig-kdiff3
+git difftool $@
+substitute_gitconfig .gitconfig-consolediff

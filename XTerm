@@ -1,0 +1,12 @@
+XTerm*Background: #1c1c1c
+XTerm*Foreground: gray
+XTerm*FaceName: Ubuntu Mono:pixelsize=14
+XTerm*saveLines: 5000
+XTerm*scrollBar: false
+XTerm*HiForeColor: white
+XTerm*HiBackColor: #c06077
+xterm*VT100.geometry: 210x60
+XTerm*VT100.cutNewLine: false
+XTerm*VT100.cutToBeginningOfLine: false
+XTerm*VT100.charClass: 33:48,35:48,37:48,42:48,45-47:48,64:48,95:48,126:48
+XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)

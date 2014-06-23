@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# ctags
+FILES_LIST=`mktemp`
+find_srcs . | xargs -I@ readlink -e @ > $FILES_LIST
+ctags -L $FILES_LIST
+rm $FILES_LIST
+echo "ctags done..."
+
+# cscope
+rm ./cscope.*
+find_srcs . | xargs -I@ readlink -e @ > cscope.files
+cscope -b -q
+echo "cscope done."
