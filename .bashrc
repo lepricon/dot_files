@@ -184,8 +184,8 @@ function settitle()
 {
     if [ $# -lt 1 ]; then
         PROMPT_COMMAND='\
-            echo -ne "\033]0;`basename $PWD`@`hostname`\007";\
-            echo -ne "\033]1;`basename $PWD`@`hostname`\007"'
+            echo -ne "\033]0;`basename "$PWD"`@`hostname`\007";\
+            echo -ne "\033]1;`basename "$PWD"`@`hostname`\007"'
     else
         PROMPT_COMMAND="$1"
     fi
