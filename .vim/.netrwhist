@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/vvolkov/cplane/git/trunk/logs/SCTs/sct_uec.sh_20140521-113746/UEC_BTC_LTE908Le_ReestablishmentInServingCellWithRscActive/vvolkov_002903'
-let g:netrw_dirhist_2='/home/vvolkov/cplane/git/trunk/logs/SCTs/sct_uec.sh_20140521-113746/UEC_BTC_LTE908Le_ReestablishmentInServingCellWithRscActive'
-let g:netrw_dirhist_3='/home/vvolkov/cplane/git/trunk/logs/SCTs/sct_uec.sh_20140528-135709/UEC_BTC_LTE908Hk_ANR_UTRA_HandlingOfRSC_DrxRequired_MeasGapRequired_InitialMeasurementsConfigurationRel10'
-let g:netrw_dirhist_4='/home/vvolkov/cplane/git/trunk/logs/SCTs/sct_uec.sh_20140528-151443/UEC_BTC_LTE908Hk_ANR_UTRA_HandlingOfRSC_DrxRequired_MeasGapRequired_InitialMeasurementsConfigurationRel10'
-let g:netrw_dirhist_5='/home/vvolkov/cplane/git/trunk/C_Test/cplane_k3/src/TestTargets/UEC/testcases/LTE908_ANR_UTRA'
-let g:netrw_dirhist_6='/home/vvolkov/cplane/git/trunk/C_Test/cplane_k3/src/TestTargets/UEC/testcases'

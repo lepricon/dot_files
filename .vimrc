@@ -74,12 +74,6 @@ noremap - :res -10<cr>
 noremap _ :vertical res -10<cr>
 noremap + :vertical res +10<cr>
 
-" load the types.vim highlighting file, if it exists
-"autocmd BufRead,BufNewFile *.[ch] let fname = expand('<afile>:p:h') . '/types.vim'
-"autocmd BufRead,BufNewFile *.[ch] if filereadable(fname)
-"autocmd BufRead,BufNewFile *.[ch]   exe 'so ' . fname
-"autocmd BufRead,BufNewFile *.[ch] endif
-
 au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
 au BufRead,BufNewFile *.out set filetype=out
 au BufRead,BufNewFile *.puml set filetype=plantuml
