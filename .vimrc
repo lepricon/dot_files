@@ -36,6 +36,9 @@ syntax enable
 syntax on
 "highlight Pmenu ctermfg=black
 
+filetype plugin indent on
+call pathogen#infect()
+
 "syn keyword myTodo contained todo
 "syn match myComment "//.*$" contains=myTodo
 "hi def link myTodo Todo
