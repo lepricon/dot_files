@@ -46,7 +46,7 @@ call pathogen#infect()
 let mapleader = ","
 let g:load_doxygen_syntax=1
 let g:solarized_termcolors=256
-colorscheme solarized "bandit colorful256   gardener  desert256  default_modified    Change to your preferred colour scheme
+colorscheme solarized "solarized bandit  colorful256   gardener  desert256  default_modified    Change to your preferred colour scheme
 
 if &term =~ "xterm"
     :silent !echo -ne "\033]12;RoyalBlue1\007"
@@ -61,15 +61,13 @@ imap <C-K> <ESC>:pyf clang-format.py<CR>i
 noremap <ScrollWheelUp>     7<C-Y>
 noremap <ScrollWheelDown>   7<C-E>
 
-noremap <silent> <F1> :TlistHighlightTag<CR>
 noremap <F2> :call ToggleHeaderSource()<CR>
 noremap <F3> :NERDTreeToggle<cr> " requires vim >= 7.0
 noremap <F4> :TlistToggle<cr>
 noremap <F5> :Rgrep<CR>
 noremap <F6> :TagbarToggle<CR>
 noremap <F7> :vsplit<CR><C-]> " Open the definition in a vertical split
-noremap <F11> :sp tags<CR>:%s/^\([^ :]*:\)\=\([^    ]*\).*/syntax keyword Tag \2/<CR>:wq! tags<CR>/^<CR><F12>
-noremap <F12> :so tags<CR>
+noremap <F12> <ESC><C-w>g<C-]>
 
 noremap <space> <C-W>_  " fullscreen current buffer
 noremap = :res +10<cr>

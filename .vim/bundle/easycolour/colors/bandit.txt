@@ -3,9 +3,8 @@ Basis:None
 Colours:
 	Violet:#EE82EE
 	CoralRed:#FF4040
-	DavysGrey:#555555
 Dark:
-	Normal:White,#1c1c1c
+	Normal:White,Black
 	Comment:Green
 	DoxygenComment:#008800
 	DoxygenKeyword:#88ffdd
@@ -16,7 +15,7 @@ Dark:
 	Constant:#ffff66
 	String:LightYellow
 	Character:DarkYellow
-	PreProc:LightBlue,Style=Bold
+	PreProc:#3030FF,Style=Bold
 	Include:@PreProc
 	Define,Macro:#5555FF,Style=Bold
 	PreCondit:#8888FF,Style=Bold
@@ -29,13 +28,13 @@ Dark:
 	Identifier:Cyan
 	Function:#007777
 	Method:#009966
-	Class:Purple
+	Class:#DD9070
 	DefinedName:Violet
 	EnumerationValue:#C000C0
 	EnumerationName:#FF22FF
 	Member:DarkGrey
 	Union:Grey
-	GlobalVariable:#666600
+	GlobalVariable:#888800
 	LocalVariable:#AAA14C
 	GlobalConstant:#BBBB00
 	Type:#FF8000
@@ -43,8 +42,8 @@ Dark:
 	Structure:#FF8080
 	Special:Red
 	SpecialChar:#AA0000
-	SpecialKey:DavysGrey
-	NonText:DavysGrey
+	SpecialKey:#777777
+	NonText:#777777
 	MatchParen:Yellow,Style=Underline
 	Error:White,Red
 	NonIndentTabError:SP=#FFAA00,Style=Undercurl
@@ -57,8 +56,8 @@ Dark:
 	VertSplit:Black,White
 	SpellBad:Style=Undercurl,SP=Red
 	SignColumn:BG=#222222
-	Title:LightBlue,Style=Bold
-	htmlH1:LightBlue
+	Title:#3030FF,Style=Bold
+	htmlH1:#3030FF
 	htmlH2:#8888FF
 	htmlH3:#9999DD
 	htmlH4:#5555AA

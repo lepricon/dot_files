@@ -60,11 +60,11 @@ if version >= 508 || !exists("g:did_ttcn_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink logWarning  Special
-  HiLink logMessage   Keyword
-  HiLink logInfo   Statement
-  HiLink logDebug String
-  HiLink logError    Number
+  HiLink logWarning Type
+  HiLink logMessage Keyword
+  HiLink logInfo    Statement
+  HiLink logDebug   String
+  HiLink logError   Special
   HiLink logApplicationMessage MoreMsg
 
   delcommand HiLink
