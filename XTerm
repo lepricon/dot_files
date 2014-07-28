@@ -1,6 +1,6 @@
 XTerm*Background: #1c1c1c
 XTerm*Foreground: gray
-XTerm*FaceName: Ubuntu Mono:pixelsize=14
+XTerm*FaceName: Monaco:pixelsize=13
 XTerm*saveLines: 5000
 XTerm*scrollBar: false
 XTerm*HiForeColor: white

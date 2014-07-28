@@ -59,3 +59,14 @@ function mud()
 {
     mu && mur
 }
+
+function mie()
+{
+    mgmake interfaces-all externals
+}
+
+function mt()
+{
+    mgmake ctags
+}
+
