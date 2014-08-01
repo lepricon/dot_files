@@ -83,6 +83,12 @@ au BufRead,BufNewFile *.ttcn* set filetype=ttcn
 au BufWinLeave *.[chs]* mkview
 au BufWinEnter *.[chs]* silent loadview
 
+fun! LoadLog( arg ) "{{{
+    cfile /tmp/mgmake-build-log
+    copen
+endfunction "}}}
+command! -nargs=* LoadLog call LoadLog( '<args>' )
+
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
 let Tlist_File_Fold_Auto_Close=1

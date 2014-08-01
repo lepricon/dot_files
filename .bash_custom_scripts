@@ -21,33 +21,33 @@ function mu()
 {
     TARGET=$(default_make_target_to_UEC $@)
     shift
-    mgmake pt${TARGET}_UT $@ 2>&1 | tee $BUILD_LOG_FILE
+    mgmake SECONDARY=1 pt${TARGET}_UT $@ 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mur()
 {
-    mgmake ut-run$@
+    mgmake SECONDARY=1 ut-run$@
 }
 
 function me()
 {
     TARGET=$(default_make_target_to_UEC $@)
     shift
-    mgmake pt${TARGET}exe SECONDARY=1 $@ 2>&1 | tee $BUILD_LOG_FILE
+    mgmake pt${TARGET}exe $@ 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function msc()
 {
     TARGET=$(default_make_target_to_UEC $@)
     shift
-    mgmake SECONDARY=1 SC=${TARGET} sct-clean-logs sct-coal $@
+    mgmake SC=${TARGET} sct-clean-logs sct-coal $@
 }
 
 function msr()
 {
-    TARGET=$1
+    TARGET=$(default_make_target_to_UEC $@)
     shift
-    mgmake SECONDARY=1 SC=${TARGET} sct-clean-logs sct-run $@
+    mgmake SC=${TARGET} sct-clean-logs sct-run $@
 }
 
 function med()
