@@ -1,16 +1,6 @@
 # LTE project specific scripts
 
-
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
-
-function default_make_target_to_UEC()
-{
-    if [ $# -eq 0 ]; then
-        echo "UEC" 
-    else
-        echo "$1"
-    fi
-}
 
 function mgmake()
 {
@@ -19,9 +9,7 @@ function mgmake()
 
 function mu()
 {
-    TARGET=$(default_make_target_to_UEC $@)
-    shift
-    mgmake SECONDARY=1 pt${TARGET}_UT $@ 2>&1 | tee $BUILD_LOG_FILE
+    mgmake SECONDARY=1 $@ 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mur()
@@ -31,33 +19,35 @@ function mur()
 
 function me()
 {
-    TARGET=$(default_make_target_to_UEC $@)
-    shift
-    mgmake pt${TARGET}exe $@ 2>&1 | tee $BUILD_LOG_FILE
+    mgmake $@ 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function msc()
 {
-    TARGET=$(default_make_target_to_UEC $@)
+    TARGET=$1
     shift
     mgmake SC=${TARGET} sct-clean-logs sct-coal $@
 }
 
 function msr()
 {
-    TARGET=$(default_make_target_to_UEC $@)
+    TARGET=$1
     shift
     mgmake SC=${TARGET} sct-clean-logs sct-run $@
 }
 
 function med()
 {
-    me && msc
+    TARGET=$1
+    shift
+    me $(TARGET) && msc $(TARGET)
 }
 
 function mud()
 {
-    mu && mur
+    TARGET=$1
+    shift
+    mu $(TARGET) && mur $(TARGET)
 }
 
 function mie()
