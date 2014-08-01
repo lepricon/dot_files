@@ -1,5 +1,8 @@
 #!/bin/bash
-if [[ -z "$(pidof tabbed)" ]]; then
+
+OPEN_NEW_TABBED=$1
+
+if [ "$OPEN_NEW_TABBED" == "new" -o -z "$(pidof tabbed)" ]; then
     tabbed -d | xargs printf "%d\n" > ~/.tabbed.xid
 fi
 xterm -into $( < ~/.tabbed.xid )

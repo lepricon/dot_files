@@ -137,59 +137,6 @@ export EDITOR=vim
 export INPUTRC=$HOME/.inputrc
 export PATH=$PATH:$HOME/bin
 
-function git_branch_name () { git br | grep "*" | cut -d" " -f2; }
-function svndiff () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
-function svndiffless () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl | less -R; }
-function svndiffvim () { svn diff --diff-cmd=$HOME/bin/svndiffvimdiff.sh $@; }
-function svndiffvimhelper () { svn diff --diff-cmd=$HOME/bin/svndiff_vim_helper $@; }
-function colordiff () { diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
-
-function xte()
-{
-    xterm -into $( cat ~/.tabbed.xid ) &
-}
-
-function v()
-{
-    FILE_NAME=`echo "$1" | cut -d":" -f1`
-    LINE_NUMBER=`echo "$1" | cut -d":" -f2`
-    echo "$1" | grep ":" > /dev/null
-    if [ $? -eq 0 ]; then
-        PARAMS="$FILE_NAME +$LINE_NUMBER"
-    else
-        PARAMS="$FILE_NAME"
-    fi
-    vim $PARAMS
-}
-
-function vf()
-{
-    FILE_NAME_SHORT=`echo "$1" | cut -d":" -f1`
-    LINE_NUMBER=`echo "$1" | cut -d":" -f2`
-    FILE_NAME_LONG=`find ./Source/ -name $FILE_NAME_SHORT`
-    vim $FILE_NAME_LONG +$LINE_NUMBER
-}
-
-function vt()
-{
-    vim -c \"tag $1\"
-}
-
-function ve()
-{
-    vim -c \"Cscope e $1\"
-}
-
-function settitle()
-{
-    if [ $# -lt 1 ]; then
-        PROMPT_COMMAND='\
-            echo -ne "\033]0;`basename "$PWD"`@`hostname`\007";\
-            echo -ne "\033]1;`basename "$PWD"`@`hostname`\007"'
-    else
-        PROMPT_COMMAND="$1"
-    fi
-}
 
 function export_proxy()
 {
