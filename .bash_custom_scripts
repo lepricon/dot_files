@@ -2,6 +2,29 @@
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
 
+function get_ut_target_name()
+{
+    TRGAET_SHORT=$1
+    echo "pt${TARGET_SHORT^^}_UT"
+}
+
+function get_exe_target_name()
+{
+    TRGAET_SHORT=$1
+    case ${TRGAET_SHORT} in
+        rrom )
+            echo ptRROMexe ;;
+        enbc )
+            echo ptENBC ;;
+        tupc )
+            echo ptTUPCexe ;;
+        cellc )
+            echo ptCELLC ;;
+        uec )
+            echo ptUECexe ;;
+    esac
+}
+
 function mgmake()
 {
     make -f Makefile $@ 2>&1 | tee $BUILD_LOG_FILE
@@ -9,7 +32,9 @@ function mgmake()
 
 function mu()
 {
-    mgmake SECONDARY=1 $@ 2>&1 | tee $BUILD_LOG_FILE
+    TARGET_NAME=`get_ut_target_name $1`
+    shift
+    mgmake SECONDARY=1 ${TARGET_NAME} 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mur()
@@ -19,45 +44,49 @@ function mur()
 
 function me()
 {
-    mgmake $@ 2>&1 | tee $BUILD_LOG_FILE
+    TARGET_NAME=`get_exe_target_name $1`
+    shift
+    mgmake ${TARGET_NAME} 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function msc()
 {
-    TARGET=$1
+    TARGET_SHORT=$1
+    TARGET_NAME=`get_exe_target_name $1`
     shift
-    mgmake SC=${TARGET} sct-clean-logs sct-coal $@
+    mgmake SC=${TARGET_SHORT} sct-clean-logs sct-coal ${TARGET_NAME} $@
 }
 
 function msr()
 {
-    TARGET=$1
+    TARGET_SHORT=$1
     shift
-    mgmake SC=${TARGET} sct-clean-logs sct-run $@
+    mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run $@
 }
 
 function med()
 {
-    TARGET=$1
-    shift
-    me $(TARGET) && msc $(TARGET)
+    TARGET_SHORT=$1
+    TARGET_NAME=`get_exe_target_name $1`
+    me ${TARGET_NAME} && msc ${TARGET_SHORT}
 }
 
 function mud()
 {
-    TARGET=$1
+    TARGET_SHORT=$1
     shift
-    mu $(TARGET) && mur $(TARGET)
-}
-
-function mie()
-{
-    mgmake interfaces-all externals
+    mu ${TARGET_SHORT} && mur
 }
 
 function mt()
 {
     mgmake ctags
+}
+
+function gitup-externals()
+{
+    git svn rebase
+    mgmake externals
 }
 
 function git_branch_name () { git br | grep "*" | cut -d" " -f2; }
@@ -83,14 +112,6 @@ function v()
         PARAMS="$FILE_NAME"
     fi
     vim $PARAMS
-}
-
-function vf()
-{
-    FILE_NAME_SHORT=`echo "$1" | cut -d":" -f1`
-    LINE_NUMBER=`echo "$1" | cut -d":" -f2`
-    FILE_NAME_LONG=`find ./Source/ -name $FILE_NAME_SHORT`
-    vim $FILE_NAME_LONG +$LINE_NUMBER
 }
 
 function vv()

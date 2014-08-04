@@ -93,6 +93,8 @@ let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
 let Tlist_File_Fold_Auto_Close=1
 
+let Grep_Default_Filelist = '*.[ch]*'
+
 function! ToggleHeaderSource()
   if match(expand("%"),'\.cpp') > 0
     let s:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
