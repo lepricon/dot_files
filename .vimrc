@@ -62,11 +62,13 @@ noremap <ScrollWheelUp>     7<C-Y>
 noremap <ScrollWheelDown>   7<C-E>
 
 noremap <F2> :call ToggleHeaderSource()<CR>
-noremap <F3> :NERDTreeToggle<cr> " requires vim >= 7.0
-noremap <F4> :TlistToggle<cr>
+noremap <F3> :NERDTreeToggle<CR> " requires vim >= 7.0
+noremap <F4> :NERDTreeFind<CR>
 noremap <F5> :Rgrep<CR>
-noremap <F6> :TagbarToggle<CR>
+noremap <F6> :TlistToggle<CR>
+noremap <F7> :TagbarToggle<CR>
 noremap <F7> :vsplit<CR><C-]> " Open the definition in a vertical split
+noremap <F10> <ESC>g<C-]>
 noremap <F12> <ESC><C-w>g<C-]>
 
 noremap <space> <C-W>_  " fullscreen current buffer
