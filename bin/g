@@ -5,8 +5,9 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-PATTERN=`echo $1 | sed -e 's/ /\\\\ /g'`
-PATH_TO_SEARCH=$2
+PATH_TO_SEARCH=$1
+PATTERN=`echo $2 | sed -e 's/ /\\\\ /g'`
+shift 2
 EXTRA_GREP_ARGS=$3
 
 find ${PATH_TO_SEARCH} | grep -v "\.svn" | xargs -I@ grep --binary-files=without-match --color -Hn "${PATTERN}" @ ${EXTRA_GREP_ARGS}
