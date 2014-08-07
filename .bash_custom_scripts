@@ -2,12 +2,6 @@
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
 
-function get_ut_target_name()
-{
-    TRGAET_SHORT=$1
-    echo "pt${TARGET_SHORT^^}_UT"
-}
-
 function get_exe_target_name()
 {
     TRGAET_SHORT=$1
@@ -32,9 +26,9 @@ function mgmake()
 
 function mu()
 {
-    TARGET_NAME=`get_ut_target_name $1`
+    TARGET=$1
     shift
-    mgmake SECONDARY=1 ${TARGET_NAME} 2>&1 | tee $BUILD_LOG_FILE
+    mgmake SECONDARY=1 ${TARGET} 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mur()

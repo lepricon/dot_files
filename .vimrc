@@ -85,11 +85,22 @@ au BufRead,BufNewFile *.ttcn* set filetype=ttcn
 au BufWinLeave *.[chs]* mkview
 au BufWinEnter *.[chs]* silent loadview
 
+
+" highlight and remove trailind whitespaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" function and a command to load build log from file
 fun! LoadLog( arg ) "{{{
     cfile /tmp/mgmake-build-log
     copen
 endfunction "}}}
 command! -nargs=* LoadLog call LoadLog( '<args>' )
+
 
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
