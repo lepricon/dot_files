@@ -1,5 +1,7 @@
 # LTE project specific scripts
 
+set -o pipefail
+
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
 
 function get_exe_target_name()
