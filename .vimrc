@@ -82,17 +82,17 @@ au BufRead,BufNewFile *.out set filetype=out
 au BufRead,BufNewFile *.puml set filetype=plantuml
 au BufRead,BufNewFile *.ttcn* set filetype=ttcn
 
-au BufWinLeave *.[chs]* mkview
-au BufWinEnter *.[chs]* silent loadview
+au BufWinLeave *.[chs]*,*.ttcn* mkview
+au BufWinEnter *.[chs]*,*.ttcn* silent loadview
 
 
 " highlight and remove trailind whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+autocmd BufWinEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
+autocmd InsertEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave *.[chs]*,*.ttcn* call clearmatches()
 
 " function and a command to load build log from file
 fun! LoadLog( arg ) "{{{
