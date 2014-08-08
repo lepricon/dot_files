@@ -88,7 +88,6 @@ au BufWinEnter *.[chs]*,*.ttcn* silent loadview
 
 " highlight and remove trailind whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
 autocmd InsertEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
@@ -101,6 +100,8 @@ fun! LoadLog( arg ) "{{{
 endfunction "}}}
 command! -nargs=* LoadLog call LoadLog( '<args>' )
 
+" Mark Default ..
+let g:mwDefaultHighlightingPalette='extended'
 
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
