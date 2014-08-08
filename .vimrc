@@ -91,7 +91,6 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
 autocmd InsertEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave *.[chs]*,*.ttcn* call clearmatches()
 
 " function and a command to load build log from file
 fun! LoadLog( arg ) "{{{
