@@ -6,8 +6,8 @@ BUILD_LOG_FILE="/tmp/mgmake-build-log"
 
 function get_exe_target_name()
 {
-    TRGAET_SHORT=$1
-    case ${TRGAET_SHORT} in
+    TARGET_SHORT=$1
+    case ${TARGET_SHORT} in
         rrom )
             echo ptRROMexe ;;
         enbc )
@@ -28,6 +28,10 @@ function mgmake()
 
 function mu()
 {
+    if [ $# -lt 1 ]; then
+        echo "ERROR: parameter expected. Exiting"
+        return
+    fi
     TARGET=$1
     shift
     mgmake SECONDARY=1 ${TARGET} 2>&1 | tee $BUILD_LOG_FILE
@@ -40,6 +44,10 @@ function mur()
 
 function me()
 {
+    if [ $# -lt 1 ]; then
+        echo "ERROR: parameter expected. Exiting"
+        return
+    fi
     TARGET_NAME=`get_exe_target_name $1`
     shift
     mgmake ${TARGET_NAME} 2>&1 | tee $BUILD_LOG_FILE
