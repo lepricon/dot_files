@@ -76,6 +76,7 @@ noremap = :res +10<cr>
 noremap - :res -10<cr>
 noremap _ :vertical res -10<cr>
 noremap + :vertical res +10<cr>
+xnoremap p pgvy " yank once and paste multiple times then
 
 au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
 au BufRead,BufNewFile *.out set filetype=out
@@ -96,8 +97,14 @@ autocmd InsertLeave *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
 fun! LoadLog( arg ) "{{{
     cfile /tmp/mgmake-build-log
     copen
-endfunction "}}}
+endf "}}}
 command! -nargs=* LoadLog call LoadLog( '<args>' )
+
+" to clean application log *.out from timestamps
+fun! CleanTimestampsInLog( arg ) "{{{
+    %s/.*\d\d\.\d\d \d\d:\d\d:\d\d.\d\d\d\d\d\d> [0-9a-zA-Z]\+//g
+endf "}}}
+command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog( '<args>' )
 
 " Mark Default ..
 let g:mwDefaultHighlightingPalette='extended'

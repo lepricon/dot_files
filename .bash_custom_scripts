@@ -28,10 +28,6 @@ function mgmake()
 
 function mu()
 {
-    if [ $# -lt 1 ]; then
-        echo "ERROR: parameter expected. Exiting"
-        return
-    fi
     TARGET=$1
     shift
     mgmake SECONDARY=1 ${TARGET} 2>&1 | tee $BUILD_LOG_FILE
@@ -44,10 +40,6 @@ function mur()
 
 function me()
 {
-    if [ $# -lt 1 ]; then
-        echo "ERROR: parameter expected. Exiting"
-        return
-    fi
     TARGET_NAME=`get_exe_target_name $1`
     shift
     mgmake ${TARGET_NAME} 2>&1 | tee $BUILD_LOG_FILE
