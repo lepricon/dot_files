@@ -86,6 +86,8 @@ au BufRead,BufNewFile *.ttcn* set filetype=ttcn
 au BufWinLeave *.[chs]*,*.ttcn* mkview
 au BufWinEnter *.[chs]*,*.ttcn* silent loadview
 
+" trim trailing whitespaces on save
+autocmd BufWritePre *.[chs]*,*.ttcn* :%s/\s\+$//e
 
 " highlight and remove trailind whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -102,7 +104,7 @@ command! -nargs=* LoadLog call LoadLog( '<args>' )
 
 " to clean application log *.out from timestamps
 fun! CleanTimestampsInLog( arg ) "{{{
-    %s/.*\d\d\.\d\d \d\d:\d\d:\d\d.\d\d\d\d\d\d> [0-9a-zA-Z]\+//g
+    %s/.*<\d\d\d\d-\d\d-\d\d.\d\d:\d\d:\d\d\.\d\+.*> [a-zA-Z0-9]\+ //g
 endf "}}}
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog( '<args>' )
 
