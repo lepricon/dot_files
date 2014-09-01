@@ -23,6 +23,7 @@ set colorcolumn=120
 
 set tabstop=4               "number of spaces a <Tab> in the text stands for
 set shiftwidth=4            "number of spaces used for each step of (auto)indent
+set softtabstop=4           " Sets the number of columns for a TAB
 set expandtab               "expand <Tab> to spaces in Insert mode
 set autoindent              "automatically set the indent of a new line
 set smartindent             "do clever autoindenting
@@ -87,13 +88,13 @@ au BufWinLeave *.[chs]*,*.ttcn* mkview
 au BufWinEnter *.[chs]*,*.ttcn* silent loadview
 
 " trim trailing whitespaces on save
-autocmd BufWritePre *.[chs]*,*.ttcn* :%s/\s\+$//e
+autocmd BufWritePre *.[chs]*,*.ttcn*,*.py :%s/\s\+$//e
 
 " highlight and remove trailind whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd BufWinEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
-autocmd InsertEnter *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave *.[chs]*,*.ttcn* match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
+autocmd InsertEnter *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
 
 " function and a command to load build log from file
 fun! LoadLog( arg ) "{{{
