@@ -128,8 +128,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # project specific scripts
-if [ -f ~/.bash_custom_scripts ]; then
-    . ~/.bash_custom_scripts
+if [ -f ~/.custom_scripts.bashrc ]; then
+    . ~/.custom_scripts.bashrc
 fi
 
 # user defined things

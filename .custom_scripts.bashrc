@@ -79,6 +79,19 @@ function gitup-externals()
     git svn rebase && mgmake externals
 }
 
+function freshen-project()
+{
+    if [ $# -ne 2 ]; then
+        echo "Usage: $0 <component name> <ut target>"
+    else
+        ( me $1 2 &> 1 > /dev/null ) &
+        ( mu $2 2 &> 1 > /dev/null ) &
+        ( mt 2 &> 1 > /dev/null && vim +UpdateTypesFileOnly +q ) &
+        wait
+        echo "All jobs are done."
+    fi
+}
+
 function git_branch_name () { git br | grep "*" | cut -d" " -f2; }
 function svndiff () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
 function svndiffless () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl | less -R; }
