@@ -84,9 +84,10 @@ function freshen-project()
     if [ $# -ne 2 ]; then
         echo "Usage: $0 <component name> <ut target>"
     else
-        ( me $1 2 &> 1 > /dev/null ) &
-        ( mu $2 2 &> 1 > /dev/null ) &
-        ( mt 2 &> 1 > /dev/null && vim +UpdateTypesFileOnly +q ) &
+        echo "Starting 'me $1', 'mu $2', 'mt && vim' simultaneously..."
+        ( me $1 < /dev/null 2 &> 1 > /dev/null ) &
+        ( mu $2 < /dev/null 2 &> 1 > /dev/null ) &
+        ( mt < /dev/null 2 &> 1 > /dev/null && nohup vim +UpdateTypesFileOnly +q < /dev/null 2 &> 1 > /dev/null ) &
         wait
         echo "All jobs are done."
     fi
