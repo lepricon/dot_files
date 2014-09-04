@@ -68,7 +68,7 @@ noremap <F4> :NERDTreeFind<CR>
 noremap <F5> :Rgrep<CR>
 noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
-noremap <F7> :vsplit<CR><C-]> " Open the definition in a vertical split
+noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 noremap <F10> <ESC>g<C-]>
 noremap <F12> <ESC><C-w>g<C-]>
 
