@@ -81,7 +81,7 @@ noremap + :vertical res +10<cr>
 xnoremap p pgvy " yank once and paste multiple times then
 
 au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
-au BufRead,BufNewFile *.out set filetype=out
+au BufRead,BufNewFile *.LOG,*.out set filetype=out
 au BufRead,BufNewFile *.puml set filetype=plantuml
 au BufRead,BufNewFile *.ttcn* set filetype=ttcn
 
@@ -101,12 +101,13 @@ autocmd InsertLeave *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
 fun! LoadLog( arg ) "{{{
     cfile /tmp/mgmake-build-log
     copen
+    set wrap
 endf "}}}
 command! -nargs=* LoadLog call LoadLog( '<args>' )
 
 " to clean application log *.out from timestamps
 fun! CleanTimestampsInLog( arg ) "{{{
-    %s/.*<\d\d\d\d-\d\d-\d\d.\d\d:\d\d:\d\d\.\d\+.*> [a-zA-Z0-9]\+ //g
+    %s/\(.*\)\(<.*\d\d:\d\d:\d\d.*> \)\([a-zA-Z0-9]\+\)/\2/g
 endf "}}}
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog( '<args>' )
 
