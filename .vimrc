@@ -38,7 +38,6 @@ syntax on
 "highlight Pmenu ctermfg=black
 
 filetype plugin indent on
-call pathogen#infect()
 
 "syn keyword myTodo contained todo
 "syn match myComment "//.*$" contains=myTodo
@@ -69,7 +68,7 @@ noremap <F5> :Rgrep<CR>
 noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
-noremap <F9> blve<C-]>
+noremap <F9> blveg<C-]>
 noremap <F10> <ESC>g<C-]>
 noremap <F12> <ESC><C-w>g<C-]>
 
@@ -97,6 +96,13 @@ autocmd BufWinEnter *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
 autocmd InsertEnter *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
 
+
+
+"==========================================
+"   functions
+"==========================================
+
+
 " function and a command to load build log from file
 fun! LoadLog( arg ) "{{{
     cfile /tmp/mgmake-build-log
@@ -111,15 +117,6 @@ fun! CleanTimestampsInLog( arg ) "{{{
 endf "}}}
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog( '<args>' )
 
-" Mark Default ..
-let g:mwDefaultHighlightingPalette='extended'
-
-let Tlist_Use_Right_Window=1
-let Tlist_WinWidth=50
-let Tlist_File_Fold_Auto_Close=1
-
-let Grep_Default_Filelist = '*.[ch]*'
-
 function! ToggleHeaderSource()
   if match(expand("%"),'\.cpp') > 0
     let s:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
@@ -131,6 +128,32 @@ function! ToggleHeaderSource()
     exe ":e " . s:flipname
   endif
 endfun
+
+"==========================================
+"    plugins
+"==========================================
+
+"pathogen enable
+execute pathogen#infect()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+" Mark Default ..
+let g:mwDefaultHighlightingPalette='extended'
+
+"grep
+let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
+let Grep_Skip_Dirs = '.svn lteDo'
+let Grep_Default_Filelist = '*.[ch]*'
+
+
+
+let Tlist_Use_Right_Window=1
+let Tlist_WinWidth=50
+let Tlist_File_Fold_Auto_Close=1
+
+
+
 
 
 " Nice statusbar
