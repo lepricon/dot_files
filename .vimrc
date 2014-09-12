@@ -32,6 +32,7 @@ set nowritebackup   "write a backup file before overwriting a file
 set tags=tags
 set matchpairs+=<:>
 set makeprg=make\ -f\ Makefile
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
 
 syntax enable
 syntax on
@@ -71,6 +72,8 @@ noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 noremap <F9> blveg<C-]>
 noremap <F10> <ESC>g<C-]>
 noremap <F12> <ESC><C-w>g<C-]>
+
+noremap <Leader>s :Sscratch<CR>
 
 noremap <space> <C-W>_  " fullscreen current buffer
 noremap = :res +10<cr>
@@ -146,14 +149,13 @@ let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
 let Grep_Default_Filelist = '*.[ch]*'
 
-
-
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
 let Tlist_File_Fold_Auto_Close=1
 
-
-
+" CtrlP
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 
 " Nice statusbar

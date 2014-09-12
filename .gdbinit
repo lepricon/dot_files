@@ -10,14 +10,14 @@ python
 import sys
 
 #  pretty printers for STL
-#sys.path.insert(0, '/home/m918989/ide/gdb-pretty-printers')
-#from libstdcxx.v6.printers import register_libstdcxx_printers
-#register_libstdcxx_printers(None)
+sys.path.insert(0, '/home/vvolkov/ide/STLPrettyPrinters')
+from libstdcxx.v6.printers import register_libstdcxx_printers
+register_libstdcxx_printers(None)
 
 # pretty printers for Boost
-sys.path.insert(1, '/home/m918989/ide/Boost-Pretty-Printer-master')
-from boost.v1_40.printers import register_boost_printers
-register_boost_printers(None)
+sys.path.insert(1, '/home/vvolkov/ide/Boost-Pretty-Printer')
+from boost.printers import register_printer_gen
+register_printer_gen(None)
 
 end
 
