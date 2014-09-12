@@ -1,3 +1,17 @@
+" turn filetype detection off and, even if it's not strictly
+" necessary, disable loading of indent scripts and filetype plugins
+filetype off
+filetype plugin indent off
+
+" pathogen runntime injection and help indexing
+call pathogen#infect()
+call pathogen#helptags()
+
+" turn filetype detection, indent scripts and filetype plugins on
+" and syntax highlighting too
+filetype plugin indent on
+
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
  set mouse=a
@@ -38,7 +52,6 @@ syntax enable
 syntax on
 "highlight Pmenu ctermfg=black
 
-filetype plugin indent on
 
 "syn keyword myTodo contained todo
 "syn match myComment "//.*$" contains=myTodo
@@ -47,7 +60,7 @@ filetype plugin indent on
 let mapleader = ","
 let g:load_doxygen_syntax=1
 let g:solarized_termcolors=256
-colorscheme solarized "solarized bandit  colorful256   gardener  desert256  default_modified    Change to your preferred colour scheme
+colorscheme bandit "solarized bandit  colorful256   gardener  desert256  default_modified
 
 if &term =~ "xterm"
     :silent !echo -ne "\033]12;RoyalBlue1\007"
@@ -135,11 +148,6 @@ endfun
 "==========================================
 "    plugins
 "==========================================
-
-"pathogen enable
-execute pathogen#infect()
-"call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
 " Mark Default ..
 let g:mwDefaultHighlightingPalette='extended'
