@@ -149,6 +149,15 @@ endfun
 "    plugins
 "==========================================
 
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
+nnoremap <leader>o :<C-u>Unite -start-insert outline<cr>
+nnoremap <leader>y :Unite history/yank<cr>
+nnoremap <leader>s :Unite -quick-match buffer<cr>
+
 " Mark Default ..
 let g:mwDefaultHighlightingPalette='extended'
 
@@ -160,11 +169,6 @@ let Grep_Default_Filelist = '*.[ch]*'
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
 let Tlist_File_Fold_Auto_Close=1
-
-" CtrlP
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-
 
 " Nice statusbar
 set laststatus=2
