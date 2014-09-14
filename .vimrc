@@ -156,7 +156,7 @@ nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
 nnoremap <leader>/ :Unite grep:.<cr>
 nnoremap <leader>o :<C-u>Unite -start-insert outline<cr>
 nnoremap <leader>y :Unite history/yank<cr>
-nnoremap <leader>s :Unite -quick-match buffer<cr>
+nnoremap <leader>b :Unite -quick-match buffer<cr>
 
 " Mark Default ..
 let g:mwDefaultHighlightingPalette='extended'
