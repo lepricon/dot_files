@@ -58,6 +58,7 @@ Dark:
 	SignColumn:BG=#222222
 	Directory:#FFFF66
 	ColorColumn:BG=#333333
+	Search:Black,SpringGreen4
 	Title:#3030FF,Style=Bold
 	htmlH1:#3030FF
 	htmlH2:#8888FF
@@ -78,6 +79,8 @@ Dark:
 	hlLevel9:#698b22
 LightAuto:True
 LightOverride:
+
+
 	Comment:DarkGreen
 	String:#663300
 	Union:DarkGrey
