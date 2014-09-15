@@ -58,7 +58,7 @@ Dark:
 	SignColumn:BG=#222222
 	Directory:#FFFF66
 	ColorColumn:BG=#333333
-	Search:Black,SpringGreen4
+	Search:Black,DarkOrange
 	Title:#3030FF,Style=Bold
 	htmlH1:#3030FF
 	htmlH2:#8888FF

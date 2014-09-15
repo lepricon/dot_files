@@ -154,7 +154,8 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
 nnoremap <leader>/ :Unite grep:.<cr>
-nnoremap <leader>o :<C-u>Unite -start-insert outline<cr>
+nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
+nnoremap <leader>t :Unite -auto-preview -start-insert  tag<cr>
 nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
 
