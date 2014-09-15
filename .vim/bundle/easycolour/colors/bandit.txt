@@ -22,7 +22,7 @@ Dark:
 	Statement:@PreProc
 	Conditional:#5555FF
 	Repeat:#8888FF
-	Label:#2222FF
+	Label:#3333FF
 	Exception:#5555AA
 	Operator:#CCCCFF
 	Identifier:Cyan

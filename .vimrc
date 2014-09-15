@@ -152,9 +152,19 @@ endfun
 " Unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" ignore certain files and directories while searching
+call unite#custom_source('file,file_rec,file_rec/async,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'build/',
+      \ 'logs/',
+      \ 'lteTools/',
+      \ 'T_Tools/',
+      \ ], '\|'))
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
 nnoremap <leader>/ :Unite grep:.<cr>
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
+nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
 nnoremap <leader>t :Unite -auto-preview -start-insert  tag<cr>
 nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
