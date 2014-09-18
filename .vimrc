@@ -60,14 +60,7 @@ syntax on
 let mapleader = ","
 let g:load_doxygen_syntax=1
 let g:solarized_termcolors=256
-colorscheme bandit "solarized bandit  colorful256   gardener  desert256  default_modified
-
-if &term =~ "xterm"
-    :silent !echo -ne "\033]12;RoyalBlue1\007"
-    let &t_SI = "\033]12;SpringGreen4\007"
-    let &t_EI = "\033]12;RoyalBlue1\007"
-    "autocmd VimLeave * :!echo -ne "\033]12;green\007"
-endif
+colorscheme bandit "solarized  bandit  colorful256   gardener  desert256  default_modified
 
 map <C-K> :pyf clang-format.py<CR>
 imap <C-K> <ESC>:pyf clang-format.py<CR>i
@@ -112,7 +105,16 @@ autocmd BufWinEnter *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
 autocmd InsertEnter *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave *.[chs]*,*.ttcn*,*.py match ExtraWhitespace /\s\+$/
 
-
+" set different cursor color in different modes
+if &term =~ "xterm\\|rxvt"
+    " use green cursor in insert mode
+    let &t_SI = "\033]12;SpringGreen4\007"
+    " use blue cursor in normal mode
+    let &t_EI =      "\033]12;RoyalBlue1\007"
+    silent !echo -ne "\033]12;RoyalBlue1\007"
+    " reset cursor when vim exits
+    autocmd VimLeave * silent !echo -ne "\003]12;Gray\007"
+endif
 
 "==========================================
 "   functions
@@ -151,6 +153,7 @@ endfun
 
 " Unite
 let g:unite_source_history_yank_enable = 1
+let g:unite_source_grep_default_opts = '-RHn'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " ignore certain files and directories while searching
 call unite#custom_source('file,file_rec,file_rec/async,grep',
@@ -162,10 +165,10 @@ call unite#custom_source('file,file_rec,file_rec/async,grep',
       \ 'T_Tools/',
       \ ], '\|'))
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
-nnoremap <leader>/ :Unite grep:.<cr>
+nnoremap <leader>/ :Unite grep:C_Application<cr>
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
-nnoremap <leader>t :Unite -auto-preview -start-insert  tag<cr>
+nnoremap <leader>t :Unite -start-insert  tag<cr>
 nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
 

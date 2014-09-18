@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SVN_REPO_SERVER="wrlcplane20.emea.nsn-net.net"
-SVN_REPO_PATH="/var/fpwork/vvolkov/remote/svn/trunk"
+SVN_REPO_PATH="/var/fpwork/vvolkov/trunk"
 SCRIPT_PATH="/home/vvolkov/tools/taxReport/TaxReport_v2.rb"
 REVISION=$1
 

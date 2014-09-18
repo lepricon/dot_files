@@ -4,7 +4,7 @@ Colours:
 	Violet:#EE82EE
 	CoralRed:#FF4040
 Dark:
-	Normal:White,#1c1c1c
+	Normal:White,Black
 	Comment:Green
 	DoxygenComment:#008800
 	DoxygenKeyword:#88ffdd
@@ -50,15 +50,15 @@ Dark:
 	Todo:Blue,Yellow
 	FoldColumn:DarkBlue,Grey
 	Pmenu:#442206,#FFFF77
-	LineNr:Yellow,#333333
+	LineNr:Yellow,#222222
 	StatusLine:Black,LightGray
 	StatusLineNC:Black,DarkGrey
 	VertSplit:Black,White
 	SpellBad:Style=Undercurl,SP=Red
 	SignColumn:BG=#222222
 	Directory:#FFFF66
-	ColorColumn:BG=#333333
-	Search:Black,DarkOrange
+	ColorColumn:BG=#222222
+	Search:Black,SpringGreen
 	Title:#3030FF,Style=Bold
 	htmlH1:#3030FF
 	htmlH2:#8888FF
