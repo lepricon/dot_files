@@ -19,7 +19,7 @@ if has('mouse')
 endif
 
 set t_Co=256
-set background=dark " Change to light if you want the light variant
+"set background=dark
 set backspace=2
 set number                  " show the line number for each line
 set showcmd                 " display incomplete commands
@@ -57,10 +57,16 @@ syntax on
 "syn match myComment "//.*$" contains=myTodo
 "hi def link myTodo Todo
 
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
 let mapleader = ","
 let g:load_doxygen_syntax=1
-let g:solarized_termcolors=256
-colorscheme bandit "solarized  bandit  colorful256   gardener  desert256  default_modified
+"let g:solarized_termcolors=256
+colorscheme bandit "solarized bandit  colorful256   gardener  desert256  default_modified
 
 map <C-K> :pyf clang-format.py<CR>
 imap <C-K> <ESC>:pyf clang-format.py<CR>i

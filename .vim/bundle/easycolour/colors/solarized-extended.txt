@@ -1,11 +1,11 @@
 # Saving this file will update the current colour scheme.
-Basis:None
+Basis:Solarized
 Colours:
 	Violet:#EE82EE
 	CoralRed:#FF4040
 Dark:
 	Normal:White,Black
-	Comment:#00AA00
+	Comment:#005500
 	DoxygenComment:#008800
 	DoxygenKeyword:#88ffdd
 	DoxygenLink:#8888ff
@@ -50,14 +50,14 @@ Dark:
 	Todo:Blue,Yellow
 	FoldColumn:DarkBlue,Grey
 	Pmenu:#442206,#FFFF77
-	LineNr:#444400,#073642
+	LineNr:Yellow,#222222
 	StatusLine:Black,LightGray
 	StatusLineNC:Black,DarkGrey
 	VertSplit:Black,White
 	SpellBad:Style=Undercurl,SP=Red
-	SignColumn:BG=#073642
+	SignColumn:BG=#222222
 	Directory:#FFFF66
-	ColorColumn:BG=#073642
+	ColorColumn:BG=#222222
 	Search:Black,SpringGreen
 	Title:#3030FF,Style=Bold
 	htmlH1:#3030FF

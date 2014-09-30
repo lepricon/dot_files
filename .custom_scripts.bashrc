@@ -93,6 +93,11 @@ function freshen-project()
     fi
 }
 
+function mgcc9()
+{
+    $@ MAKE_PARAMS="CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++"
+}
+
 function git_branch_name () { git br | grep "*" | cut -d" " -f2; }
 function svndiff () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
 function svndiffless () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl | less -R; }
