@@ -6,6 +6,8 @@ set print demangle on
 set demangle-style gnu-v3
 set print sevenbit-strings off 
 
+source ~/ide/stl-views-1.0.3.gdb
+
 python
 import sys
 

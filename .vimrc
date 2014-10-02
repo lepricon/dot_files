@@ -96,7 +96,7 @@ xnoremap p pgvy " yank once and paste multiple times then
 
 au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
 au BufRead,BufNewFile *.LOG,*.out set filetype=out
-au BufRead,BufNewFile *.puml set filetype=plantuml
+au BufRead,BufNewFile *.pu* set filetype=plantuml
 au BufRead,BufNewFile *.ttcn* set filetype=ttcn
 
 au BufWinLeave *.[chs]*,*.ttcn* mkview
@@ -128,17 +128,17 @@ endif
 
 
 " function and a command to load build log from file
-fun! LoadLog( arg ) "{{{
+fun! LoadLog( arg )
     cfile /tmp/mgmake-build-log
     copen
     set wrap
-endf "}}}
+endf
 command! -nargs=* LoadLog call LoadLog( '<args>' )
 
 " to clean application log *.out from timestamps
-fun! CleanTimestampsInLog( arg ) "{{{
+fun! CleanTimestampsInLog( arg )
     %s/\(.*\)\(<.*\d\d:\d\d:\d\d.*> \)\([a-zA-Z0-9]\+\)/\2/g
-endf "}}}
+endf
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog( '<args>' )
 
 function! ToggleHeaderSource()
@@ -152,6 +152,14 @@ function! ToggleHeaderSource()
     exe ":e " . s:flipname
   endif
 endfun
+
+function! PlantUML()
+    let s:imageName = substitute(expand("%"),'\.pu.*','\.png',"")
+    exe "silent !plantuml %"
+    exe "silent !eog " . s:imageName . " &"
+    redraw!
+endfun
+command! -nargs=* PlantUML call PlantUML()
 
 "==========================================
 "    plugins
