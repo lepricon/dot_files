@@ -198,16 +198,7 @@ let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
 let Tlist_File_Fold_Auto_Close=1
 
-" Nice statusbar
+" Airline statusbar
 set laststatus=2
-set statusline=
-set statusline+=%2*%-3.3n%0*\ " buffer number
-set statusline+=%f\ " file name
-set statusline+=%h%1*%m%r%w%0* " flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-set statusline+=%{&encoding}, " encoding
-set statusline+=%{&fileformat}] " file format
-set statusline+=%= " right align
-set statusline+=%2*0x%-8B\ " current char
-set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
+let g:airline_powerline_fonts=1
 
