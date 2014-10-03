@@ -50,6 +50,7 @@ Dark:
 	Todo:Blue,Yellow
 	FoldColumn:DarkBlue,Grey
 	Pmenu:#442206,#FFFF77
+	PmenuSel:#442206,Cyan
 	LineNr:#444400,#073642
 	StatusLine:Black,LightGray
 	StatusLineNC:Black,DarkGrey

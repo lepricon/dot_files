@@ -186,10 +186,13 @@ nnoremap <leader>t :Unite -start-insert  tag<cr>
 nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
 
+" Neocomplete
+let g:neocomplete#enable_at_startup = 1
+
 " Mark Default ..
 let g:mwDefaultHighlightingPalette='extended'
 
-"grep
+" grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
 let Grep_Default_Filelist = '*.[ch]*'
