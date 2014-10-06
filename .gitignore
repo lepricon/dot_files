@@ -3,3 +3,4 @@ tags
 *.pyc
 .vim/view/
 .vim/.netrwhist
+easycolour_cache*
