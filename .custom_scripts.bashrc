@@ -30,7 +30,7 @@ function mu()
 {
     TARGET=$1
     shift
-    mgmake SECONDARY=1 ${TARGET} 2>&1 | tee $BUILD_LOG_FILE
+    mgmake SECONDARY=1 ${TARGET} $@ 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mur()
@@ -42,7 +42,7 @@ function me()
 {
     TARGET_NAME=`get_exe_target_name $1`
     shift
-    mgmake ${TARGET_NAME} 2>&1 | tee $BUILD_LOG_FILE
+    mgmake ${TARGET_NAME} $@ 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function msc()
@@ -95,7 +95,7 @@ function freshen-project()
 
 function mgcc9()
 {
-    $@ MAKE_PARAMS="CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++"
+    $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
 }
 
 function git_branch_name () { git br | grep "*" | cut -d" " -f2; }

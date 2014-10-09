@@ -81,11 +81,18 @@ noremap <F5> :Rgrep<CR>
 noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
-noremap <F9> blveg<C-]>
+"noremap <F9> blveg<C-]>
+noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<End>$<CR>
 noremap <F10> <ESC>g<C-]>
 noremap <F12> <ESC><C-w>g<C-]>
 
 noremap <Leader>s :Sscratch<CR>
+
+" faster cursor movements between splits
+noremap <A-Up> <C-W><Up>
+noremap <A-Down> <C-W><Down>
+noremap <A-Left> <C-W><Left>
+noremap <A-Right> <C-W><Right>
 
 noremap <space> <C-W>_  " fullscreen current buffer
 noremap = :res +10<cr>
@@ -126,20 +133,19 @@ endif
 "   functions
 "==========================================
 
-
 " function and a command to load build log from file
-fun! LoadLog( arg )
+fun! LoadLog()
     cfile /tmp/mgmake-build-log
     copen
     set wrap
 endf
-command! -nargs=* LoadLog call LoadLog( '<args>' )
+command! -nargs=* LoadLog call LoadLog()
 
 " to clean application log *.out from timestamps
 fun! CleanTimestampsInLog( arg )
     %s/\(.*\)\(<.*\d\d:\d\d:\d\d.*> \)\([a-zA-Z0-9]\+\)/\2/g
 endf
-command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog( '<args>' )
+command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
 
 function! ToggleHeaderSource()
   if match(expand("%"),'\.cpp') > 0
@@ -178,7 +184,7 @@ call unite#custom_source('file,file_rec,file_rec/async,grep',
       \ 'lteTools/',
       \ 'T_Tools/',
       \ ], '\|'))
-nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
+nnoremap <C-p> :<C-u>UniteWithInputDirectory -start-insert file_rec/async:!<CR>/home/vvolkov/cplane/git/trunk/C_Application<CR>
 nnoremap <leader>/ :Unite grep:C_Application<cr>
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
