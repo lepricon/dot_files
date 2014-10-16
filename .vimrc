@@ -101,6 +101,8 @@ noremap _ :vertical res -10<cr>
 noremap + :vertical res +10<cr>
 xnoremap p pgvy " yank once and paste multiple times then
 
+au FocusGained,BufEnter * :silent! checktime
+
 au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
 au BufRead,BufNewFile *.LOG,*.out set filetype=out
 au BufRead,BufNewFile *.pu* set filetype=plantuml
@@ -142,7 +144,7 @@ endf
 command! -nargs=* LoadLog call LoadLog()
 
 " to clean application log *.out from timestamps
-fun! CleanTimestampsInLog( arg )
+fun! CleanTimestampsInLog()
     %s/\(.*\)\(<.*\d\d:\d\d:\d\d.*> \)\([a-zA-Z0-9]\+\)/\2/g
 endf
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
@@ -166,6 +168,16 @@ function! PlantUML()
     redraw!
 endfun
 command! -nargs=* PlantUML call PlantUML()
+
+function! Gcpptu( ... )
+    exe "cexpr system( ' gcpptu " . a:1 . " " . a:2 . " ' ) | copen"
+endfunction
+command! -nargs=* Gcpptu call Gcpptu( <f-args> )
+
+function! Gcpp( ... )
+    exe "cexpr system( ' gcpp " . a:1 . " " . a:2 . " ' ) | copen"
+endfunction
+command! -nargs=* Gcpp call Gcpp( <f-args> )
 
 "==========================================
 "    plugins

@@ -23,45 +23,45 @@ function get_exe_target_name()
 
 function mgmake()
 {
-    make -f Makefile $@ 2>&1 | tee $BUILD_LOG_FILE
+    make -f Makefile "$@" 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mu()
 {
     TARGET=$1
     shift
-    mgmake SECONDARY=1 ${TARGET} $@ 2>&1 | tee $BUILD_LOG_FILE
+    mgmake SECONDARY=1 ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function mur()
 {
-    mgmake SECONDARY=1 ut-run$@
+    mgmake SECONDARY=1 ut-run"$@"
 }
 
 function me()
 {
     TARGET_NAME=`get_exe_target_name $1`
     shift
-    mgmake ${TARGET_NAME} $@ 2>&1 | tee $BUILD_LOG_FILE
+    mgmake ${TARGET_NAME} "$@" 2>&1 | tee $BUILD_LOG_FILE
 }
 
 function msc()
 {
     TARGET_SHORT=$1
     shift
-    mgmake sct-clean-logs sct-coal SC=${TARGET_SHORT} $@
+    mgmake sct-clean-logs sct-coal SC=${TARGET_SHORT} "$@"
 }
 
 function msr()
 {
     TARGET_SHORT=$1
     shift
-    mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run $@
+    mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@"
 }
 
 function med()
 {
-    me $1 && msc $@
+    me $1 && msc "$@"
 }
 
 function mud()
@@ -127,11 +127,6 @@ function vv()
 {
     LOG_FILE_PATH=$1
     vim -c "/Final Verdict:" `find $LOG_FILE_PATH -name *.k3.txt`
-}
-
-function ve()
-{
-    vim -c \"Cscope e $1\"
 }
 
 function settitle()

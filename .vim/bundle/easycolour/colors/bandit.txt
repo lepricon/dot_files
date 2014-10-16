@@ -58,7 +58,7 @@ Dark:
 	SpellBad:Style=Undercurl,SP=Red
 	SignColumn:BG=#073642
 	Directory:#FFFF66
-	ColorColumn:BG=#073642
+	ColorColumn:BG=#204B56
 	Search:Black,SpringGreen
 	Title:#3030FF,Style=Bold
 	htmlH1:#3030FF
