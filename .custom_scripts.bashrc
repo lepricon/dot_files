@@ -85,9 +85,9 @@ function freshen-project()
         echo "Usage: $0 <component name> <ut target>"
     else
         echo "Starting 'me $1', 'mu $2', 'mt && vim' simultaneously..."
-        ( me $1 2>&1 </dev/null >/dev/null ) &
-        ( mu $2 2>&1 </dev/null >/dev/null ) &
-        ( mt 2>&1 </dev/null >/dev/null && nohup vim +UpdateTypesFileOnly +q 2>&1 </dev/null >/dev/null) &
+        ( time ( me $1 2>&1 </dev/null >/dev/null ) ) &
+        ( time ( mu $2 2>&1 </dev/null >/dev/null ) ) &
+        ( time ( mt 2>&1 </dev/null >/dev/null && nohup vim +UpdateTypesFileOnly +q 2>&1 </dev/null >/dev/null ) ) &
         wait
         echo "All jobs are done."
     fi

@@ -169,15 +169,20 @@ function! PlantUML()
 endfun
 command! -nargs=* PlantUML call PlantUML()
 
-function! Gcpptu( ... )
-    exe "cexpr system( ' gcpptu " . a:1 . " " . a:2 . " ' ) | copen"
-endfunction
-command! -nargs=* Gcpptu call Gcpptu( <f-args> )
-
 function! Gcpp( ... )
     exe "cexpr system( ' gcpp " . a:1 . " " . a:2 . " ' ) | copen"
 endfunction
-command! -nargs=* Gcpp call Gcpp( <f-args> )
+command! -nargs=* -complete=file Gcpp call Gcpp( <f-args> )
+
+function! Gcppc( ... )
+    exe "cexpr system( ' gcppc " . a:1 . " " . a:2 . " ' ) | copen"
+endfunction
+command! -nargs=* -complete=file Gcppc call Gcppc( <f-args> )
+
+function! Gcpptu( ... )
+    exe "cexpr system( ' gcpptu " . a:1 . " " . a:2 . " ' ) | copen"
+endfunction
+command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
 
 "==========================================
 "    plugins
