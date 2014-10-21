@@ -79,15 +79,25 @@ function gitup-externals()
     git svn rebase && mgmake externals
 }
 
+function run_silent_and_log()
+{
+    LOG=$1
+    shift
+    CMD_WITH_ARGS=$@
+    eval "time $CMD_WITH_ARGS 2>&1 </dev/null >/dev/null"
+    echo "$LOG"
+}
+
 function freshen-project()
 {
     if [ $# -ne 2 ]; then
         echo "Usage: $0 <component name> <ut target>"
     else
         echo "Starting 'me $1', 'mu $2', 'mt && vim' simultaneously..."
-        ( time ( me $1 2>&1 </dev/null >/dev/null ) ) &
-        ( time ( mu $2 2>&1 </dev/null >/dev/null ) ) &
-        ( time ( mt 2>&1 </dev/null >/dev/null && nohup vim +UpdateTypesFileOnly +q 2>&1 </dev/null >/dev/null ) ) &
+        ( run_silent_and_log "me done" me $1 ) &
+        ( run_silent_and_log "mu done" mu $2 ) &
+        ( run_silent_and_log "mt done" mt  &&
+            run_silent_and_log "vim done" nohup vim +UpdateTypesFileOnly +q ) &
         wait
         echo "All jobs are done."
     fi
