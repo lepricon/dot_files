@@ -4,7 +4,7 @@ Colours:
 	Violet:#EE82EE
 	CoralRed:#FF4040
 Dark:
-	Normal:White,Black
+	Normal:Gray,Black
 	Comment:#00AA00
 	DoxygenComment:#008800
 	DoxygenKeyword:#88ffdd
@@ -28,11 +28,11 @@ Dark:
 	Identifier:Cyan
 	Function:#007777
 	Method:#009966
-	Class:#DD9070
+	Class:#DD9070,Style=Bold
 	DefinedName:Violet
 	EnumerationValue:#C000C0
 	EnumerationName:#FF22FF
-	Member:DarkGrey
+	Member:DarkGrey,Style=Bold
 	Union:Grey
 	GlobalVariable:#888800
 	LocalVariable:#AAA14C

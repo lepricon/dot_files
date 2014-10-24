@@ -50,15 +50,13 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
 
 syntax enable
 syntax on
-"highlight Pmenu ctermfg=black
-
-
-"syn keyword myTodo contained todo
-"syn match myComment "//.*$" contains=myTodo
-"hi def link myTodo Todo
 
 if has('gui_running')
     set background=light
+    cnoremap <S-Insert> <C-R>+
+    inoremap <S-Insert> <C-R>+
+    nnoremap <S-Insert> "+p
+    set guifont=Meslo\ LG\ S\ for\ Powerline\ 10
 else
     set background=dark
 endif
@@ -66,7 +64,7 @@ endif
 let mapleader = ","
 let g:load_doxygen_syntax=1
 "let g:solarized_termcolors=256
-colorscheme bandit "solarized bandit  colorful256   gardener  desert256  default_modified
+colorscheme solarized "bandit  colorful256   gardener  desert256  default_modified
 
 map <C-K> :pyf clang-format.py<CR>
 imap <C-K> <ESC>:pyf clang-format.py<CR>i
@@ -82,7 +80,7 @@ noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 "noremap <F9> blveg<C-]>
-noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<End>$<CR>
+noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<CR>
 noremap <F10> <ESC>g<C-]>
 noremap <F12> <ESC><C-w>g<C-]>
 
@@ -170,17 +168,17 @@ endfun
 command! -nargs=* PlantUML call PlantUML()
 
 function! Gcpp( ... )
-    exe "cexpr system( ' gcpp " . a:1 . " " . a:2 . " ' ) | copen"
+    exe "cgetexpr system( ' gcpp " . a:1 . " " . a:2 . " ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcpp call Gcpp( <f-args> )
 
 function! Gcppc( ... )
-    exe "cexpr system( ' gcppc " . a:1 . " " . a:2 . " ' ) | copen"
+    exe "cgetexpr system( ' gcppc " . a:1 . " " . a:2 . " ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcppc call Gcppc( <f-args> )
 
 function! Gcpptu( ... )
-    exe "cexpr system( ' gcpptu " . a:1 . " " . a:2 . " ' ) | copen"
+    exe "cgetexpr system( ' gcpptu " . a:1 . " " . a:2 . " ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
 
@@ -218,7 +216,7 @@ let g:mwDefaultHighlightingPalette='extended'
 " grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
-let Grep_Default_Filelist = '*.[ch]*'
+let Grep_Default_Filelist = '*.h *.hpp *.c *.cpp *.hxx *.cxx'
 
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
