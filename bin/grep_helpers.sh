@@ -22,7 +22,7 @@ function gcpp()
 
 function gcppc()
 {
-    find_srcs ${PATH_TO_SEARCH} | xargs -I filename grep --color -Hn "[^I]${PATTERN}[>(]" filename ${EXTRA_GREP_ARGS}
+    find_srcs ${PATH_TO_SEARCH} | xargs -I filename grep --color -Hn "[^I~]${PATTERN}[>(]" filename ${EXTRA_GREP_ARGS}
 }
 
 function gcppt()

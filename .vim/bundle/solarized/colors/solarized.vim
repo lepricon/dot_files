@@ -536,7 +536,7 @@ endif
 " note that link syntax to avoid duplicate configuration doesn't work with the
 " exe compiled formats
 
-exe "hi! Normal"         .s:fmt_none   .s:fg_base00 .s:bg_back
+exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
 
 exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
 "       *Comment         any comment
@@ -550,7 +550,7 @@ exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
 "        Float           a floating point constant: 2.3e10
 
 exe "hi! Class"          .s:fmt_none   .s:fg_yellow .s:bg_none
-exe "hi! Member"         .s:fmt_none   .s:fg_base1  .s:bg_none
+exe "hi! Member"         .s:fmt_bold   .s:fg_base0  .s:bg_none
 exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)

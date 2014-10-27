@@ -53,10 +53,10 @@ syntax on
 
 if has('gui_running')
     set background=light
-    cnoremap <S-Insert> <C-R>+
-    inoremap <S-Insert> <C-R>+
-    nnoremap <S-Insert> "+p
-    set guifont=Meslo\ LG\ S\ for\ Powerline\ 10
+    cnoremap <S-Insert> <C-R>*
+    inoremap <S-Insert> <C-R>*
+    nnoremap <S-Insert> "*p
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 else
     set background=dark
 endif
@@ -79,12 +79,15 @@ noremap <F5> :Rgrep<CR>
 noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
-"noremap <F9> blveg<C-]>
 noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<CR>
 noremap <F10> <ESC>g<C-]>
+noremap <F11> :q<CR>
 noremap <F12> <ESC><C-w>g<C-]>
 
 noremap <Leader>s :Sscratch<CR>
+noremap <Leader>con :Gcppc <C-R>=expand('<cword>')<CR>
+noremap <Leader>tu :Gcpptu <C-R>=expand('<cword>')<CR>
+noremap <Leader>use :Gcpp <C-R>=expand('<cword>')<CR>
 
 " faster cursor movements between splits
 noremap <A-Up> <C-W><Up>
@@ -133,6 +136,11 @@ endif
 "   functions
 "==========================================
 
+fun! GetTwoFistCatalogsOfCurrentPath()
+    let list = split(expand('%'),"/")
+    return join(list[0:1], "/")
+endfun
+
 " function and a command to load build log from file
 fun! LoadLog()
     cfile /tmp/mgmake-build-log
@@ -149,36 +157,39 @@ command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
 
 function! ToggleHeaderSource()
   if match(expand("%"),'\.cpp') > 0
-    let s:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
-    let s:flipname = substitute(s:flipname,'Source','Include',"")
-    exe ":e " . s:flipname
+    let l:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
+    let l:flipname = substitute(l:flipname,'Source','Include',"")
+    exe ":e " . l:flipname
   elseif match(expand("%"),'\.hpp') > 0
-    let s:flipname = substitute(expand("%"),'\.hpp\(.*\)','\.cpp\1',"")
-    let s:flipname = substitute(s:flipname,'Include','Source',"")
-    exe ":e " . s:flipname
+    let l:flipname = substitute(expand("%"),'\.hpp\(.*\)','\.cpp\1',"")
+    let l:flipname = substitute(l:flipname,'Include','Source',"")
+    exe ":e " . l:flipname
   endif
 endfun
 
 function! PlantUML()
-    let s:imageName = substitute(expand("%"),'\.pu.*','\.png',"")
+    let l:imageName = substitute(expand("%"),'\.pu.*','\.png',"")
     exe "silent !plantuml %"
-    exe "silent !eog " . s:imageName . " &"
+    exe "silent !eog " . l:imageName . " &"
     redraw!
 endfun
 command! -nargs=* PlantUML call PlantUML()
 
 function! Gcpp( ... )
-    exe "cgetexpr system( ' gcpp " . a:1 . " " . a:2 . " ' ) | copen"
+    let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
+    exe "cgetexpr system( ' gcpp " . l:searchPath . " " . a:1 . " ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcpp call Gcpp( <f-args> )
 
 function! Gcppc( ... )
-    exe "cgetexpr system( ' gcppc " . a:1 . " " . a:2 . " ' ) | copen"
+    let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
+    exe "cgetexpr system( ' gcppc " . l:searchPath . " " . a:1 . " ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcppc call Gcppc( <f-args> )
 
 function! Gcpptu( ... )
-    exe "cgetexpr system( ' gcpptu " . a:1 . " " . a:2 . " ' ) | copen"
+    let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
+    exe "cgetexpr system( ' gcpptu " . l:searchPath . " " . a:1 . " ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
 
