@@ -57,6 +57,13 @@ if has('gui_running')
     inoremap <S-Insert> <C-R>*
     nnoremap <S-Insert> "*p
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+    "set linespace=1
+    "set lines=999 columns=999
 else
     set background=dark
 endif
@@ -95,12 +102,14 @@ noremap <A-Down> <C-W><Down>
 noremap <A-Left> <C-W><Left>
 noremap <A-Right> <C-W><Right>
 
-noremap <space> <C-W>_  " fullscreen current buffer
-noremap = :res +10<cr>
-noremap - :res -10<cr>
-noremap _ :vertical res -10<cr>
-noremap + :vertical res +10<cr>
-xnoremap p pgvy " yank once and paste multiple times then
+nnoremap = :res +10<cr>
+nnoremap - :res -10<cr>
+nnoremap _ :vertical res -10<cr>
+nnoremap + :vertical res +10<cr>
+
+xnoremap p pgvy
+nnoremap <space> viw
+nnoremap <Leader>/ mp0i//<Esc>`p
 
 au FocusGained,BufEnter * :silent! checktime
 
@@ -211,7 +220,6 @@ call unite#custom_source('file,file_rec,file_rec/async,grep',
       \ 'T_Tools/',
       \ ], '\|'))
 nnoremap <C-p> :<C-u>UniteWithInputDirectory -start-insert file_rec/async:!<CR>/home/vvolkov/cplane/git/trunk/C_Application<CR>
-nnoremap <leader>/ :Unite grep:C_Application<cr>
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
 nnoremap <leader>t :Unite -start-insert  tag<cr>
