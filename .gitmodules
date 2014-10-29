@@ -12,7 +12,9 @@
 	url = https://github.com/Shougo/unite-outline.git
 [submodule ".vim/bundle/unite-tag"]
 	path = .vim/bundle/unite-tag
-	url = https://github.com/tsukkee/unite-tag.git
+    url = https://github.com/tsukkee/unite-tag.git
+    ignore = dirty
 [submodule ".vim/bundle/neomru"]
 	path = .vim/bundle/neomru
-	url = https://github.com/Shougo/neomru.vim.git
+    url = https://github.com/Shougo/neomru.vim.git
+    ignore = dirty
