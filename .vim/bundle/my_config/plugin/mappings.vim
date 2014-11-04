@@ -27,6 +27,10 @@ noremap <A-Down> <C-W><Down>
 noremap <A-Left> <C-W><Left>
 noremap <A-Right> <C-W><Right>
 
+" cursor movements between tabs
+noremap <C-Right> gt
+noremap <C-Left> gT
+
 nnoremap = :res +10<cr>
 nnoremap - :res -10<cr>
 nnoremap _ :vertical res -10<cr>
