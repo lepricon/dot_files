@@ -38,5 +38,9 @@ nnoremap + :vertical res +10<cr>
 
 xnoremap p pgvy
 nnoremap <space> viw
-nnoremap <Leader>/ mp0i//<Esc>`p
+nnoremap <Leader>ff :let @+ = expand("%")<CR>
+nnoremap <Leader>fp :let @+ = expand("%:p")<CR>
+
+" get derived class by searching tag by I-face name w/o leading "I"
+noremap <Leader>d blveg<C-]>
 
