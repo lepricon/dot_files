@@ -38,8 +38,13 @@ nnoremap + :vertical res +10<cr>
 
 xnoremap p pgvy
 nnoremap <space> viw
+
+" relative path
 nnoremap <Leader>ff :let @+ = expand("%")<CR>
+" full path
 nnoremap <Leader>fp :let @+ = expand("%:p")<CR>
+" just filename
+nnoremap <Leader>ft :let @+ = expand("%:t")<CR>
 
 " get derived class by searching tag by I-face name w/o leading "I"
 noremap <Leader>d blveg<C-]>

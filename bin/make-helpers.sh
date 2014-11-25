@@ -90,17 +90,20 @@ function run_silent_and_log()
 
 function freshen-project()
 {
-    if [ $# -ne 2 ]; then
-        echo "Usage: $0 <component name> <ut target>"
-    else
-        echo "Starting 'me $1', 'mu $2', 'mt && vim' simultaneously..."
+    echo -n "Started 'mt && vim'"
+    ( run_silent_and_log "mt done" mt  &&
+        run_silent_and_log "vim done" nohup vim +UpdateTypesFileOnly +q ) &
+    if [ $# -ge 1 ]; then
+        echo -n " + 'me $1'"
         ( run_silent_and_log "me done" me $1 ) &
-        ( run_silent_and_log "mu done" mu $2 ) &
-        ( run_silent_and_log "mt done" mt  &&
-            run_silent_and_log "vim done" nohup vim +UpdateTypesFileOnly +q ) &
-        wait
-        echo "All jobs are done."
     fi
+    if [ $# -ge 2 ]; then
+        echo -n " + 'mu $2'"
+        ( run_silent_and_log "mu done" mu $2 ) &
+    fi
+    echo ". Waiting..."
+    wait
+    echo "All jobs are done."
 }
 
 function mgcc9()
