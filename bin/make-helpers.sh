@@ -4,6 +4,16 @@ set -o pipefail
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
 
+function notifyBuildFinished()
+{
+    if [ $? -eq 0 ]; then
+        RESULT="succeeded"
+    else
+        RESULT="failed"
+    fi
+    notify.py "Build $RESULT" "$@"
+}
+
 function get_exe_target_name()
 {
     TARGET_SHORT=$1
@@ -31,6 +41,7 @@ function mu()
     TARGET=$1
     shift
     mgmake SECONDARY=1 ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
+    notifyBuildFinished ${TARGET} $@
 }
 
 function mur()
@@ -43,6 +54,7 @@ function me()
     TARGET_NAME=`get_exe_target_name $1`
     shift
     mgmake ${TARGET_NAME} "$@" 2>&1 | tee $BUILD_LOG_FILE
+    notifyBuildFinished ${TARGET_NAME} $@
 }
 
 function msc()
@@ -72,6 +84,7 @@ function mud()
 function mt()
 {
     mgmake ctags
+    notify.py "Tags generated" " "
 }
 
 function gitup-externals()
@@ -104,11 +117,13 @@ function freshen-project()
     echo ". Waiting..."
     wait
     echo "All jobs are done."
+    notify.py "Project re-freshed" "$@ "
 }
 
 function mgcc9()
 {
     $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
+    notifyBuildFinished "mgcc9 $@"
 }
 
 func_run=`basename $0`
