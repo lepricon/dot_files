@@ -92,6 +92,13 @@ function gitup-externals()
     git svn rebase && mgmake externals
 }
 
+function git-eif()
+{
+    mgmake externals
+    mgmake interfaces
+    freshen-project $1 $2
+}
+
 function run_silent_and_log()
 {
     LOG=$1
