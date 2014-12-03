@@ -24,6 +24,7 @@ nnoremap <leader>b :Unite -quick-match buffer<cr>
 
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Mark Default ..
 let g:mwDefaultHighlightingPalette='extended'
