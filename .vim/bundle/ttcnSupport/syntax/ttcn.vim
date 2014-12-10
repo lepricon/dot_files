@@ -77,17 +77,9 @@ syn keyword ttcnKeyw    ifpresent language override
 syn match   ttcnError   "\_^0\d\+"he=s+1
 syn match   ttcnError   "\(\s\|\t\)0\d\+"hs=s+1,he=s+2
 syn match   ttcnNumber  "\<\(0\|\([1-9]\d*\)\)\>"
-"syn match   ttcnNumber  "\<\(0\|\([1-9]\d*\)\)\.\d\+\>"
-"syn match   ttcnNumber  "\<\(0\|\([1-9]\d*\)\)\(\.\d\+\)\?E-\?[1-9]\d*\>"
-"syn match   ttcnNumber  "[^a-zA-Z0-9_]\@<=[+-]\d"hs=e-1,he=e-1,me=e-1
-"syn match   ttcnNumber  "\<infinity\>"
-"syn match   ttcnNumber  "-infinity\>"
 syn keyword ttcnBool    true false
 syn keyword ttcnConst   omit null pass fail inconc none error
 syn region  ttcnString  start=/"/ end=/"/ skip=/""/ oneline
-"syn match   ttcnString  /'[01]\+'B/
-"syn match   ttcnString  /'\x\+'H/
-"syn match   ttcnString  /'\(\x\x\)\+'O/
 
 " Comments 
 if version < 700 

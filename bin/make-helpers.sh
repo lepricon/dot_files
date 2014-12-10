@@ -87,14 +87,8 @@ function mt()
     notify.py "Tags generated" " "
 }
 
-function gitup-externals()
+function git-if()
 {
-    git svn rebase && mgmake externals
-}
-
-function git-eif()
-{
-    mgmake externals
     mgmake interfaces
     freshen-project $1 $2
 }
