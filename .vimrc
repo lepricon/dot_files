@@ -18,7 +18,6 @@ if has('mouse')
 endif
 
 set t_Co=256
-"set background=dark
 set backspace=2
 set number                  " show the line number for each line
 set showcmd                 " display incomplete commands

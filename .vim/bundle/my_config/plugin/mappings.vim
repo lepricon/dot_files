@@ -12,11 +12,11 @@ noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<CR>
-noremap <F10> <ESC>g<C-]>
+noremap <F10> <ESC>g<C-]>zz
 noremap <F11> :q<CR>
-noremap <F12> <ESC><C-w>g<C-]>
+noremap <F12> <ESC><C-w>g<C-]>zz
 
-noremap <Leader>s :SsCRatch<CR>
+noremap <Leader>s :Sscratch<CR>
 noremap <Leader>con :Gcppc <C-R>=expand('<cword>')<CR>
 noremap <Leader>tu :Gcpptu <C-R>=expand('<cword>')<CR>
 noremap <Leader>use :Gcpp <C-R>=expand('<cword>')<CR>

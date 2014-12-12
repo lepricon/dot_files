@@ -4,7 +4,7 @@ au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
 au BufRead,BufNewFile *.LOG,*.out set filetype=out
 au BufRead,BufNewFile *.pu* set filetype=plantuml
 au BufRead,BufNewFile *.ttcn* set filetype=ttcn
-au BufRead,BufNewFile *ssionList.txt set regr
+au BufRead,BufNewFile *ssionList.txt set filetype=regr
 
 au BufWinLeave *.[chs]*,*.ttcn* mkview
 au BufWinEnter *.[chs]*,*.ttcn* silent loadview
