@@ -1,10 +1,22 @@
 au FocusGained,BufEnter * :silent! checktime
 
-au BufRead,BufNewFile *.log,*.k3.txt set filetype=log
-au BufRead,BufNewFile *.LOG,*.out set filetype=out
-au BufRead,BufNewFile *.pu* set filetype=plantuml
-au BufRead,BufNewFile *.ttcn* set filetype=ttcn
-au BufRead,BufNewFile *ssionList.txt set filetype=regr
+fun! s:DetectK3rFile()
+    if getline(1) =~ '^\d\{8}T\d\{6}\.\d\{6}\|'
+        setf k3r
+    endif
+endfun
+
+augroup filetypedetect
+    au BufNewFile,BufRead *.ttcn3 setf ttcn
+    au BufNewFile,BufRead *.k3.log setf k3p
+    au BufNewFile,BufRead *.log call s:DetectK3rFile()
+    au BufRead,BufNewFile *.k3.txt set filetype=sct_k3_txt_log
+    au BufRead,BufNewFile *.LOG,*.out set filetype=out
+    au BufRead,BufNewFile *.pu* set filetype=plantuml
+    au BufRead,BufNewFile *.ttcn* set filetype=ttcn
+    au BufRead,BufNewFile *ssionList.txt set filetype=regr
+augroup END
+
 
 au BufWinLeave *.[chs]*,*.ttcn* mkview
 au BufWinEnter *.[chs]*,*.ttcn* silent loadview

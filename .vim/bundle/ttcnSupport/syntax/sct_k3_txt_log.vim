@@ -1,4 +1,4 @@
-" Language:     log
+" Language:     sct_k3_txt_log
 "
 
 if exists("b:current_syntax")
@@ -48,5 +48,5 @@ HiLink logNotify   Type
 delcommand HiLink
 
 
-let b:current_syntax = "log"
+let b:current_syntax = "sct_k3_txt_log"
 
