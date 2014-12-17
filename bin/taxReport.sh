@@ -1,23 +1,13 @@
 #!/bin/bash
 
-SVN_REPO_SERVER="wrlcplane20.emea.nsn-net.net"
-SVN_REPO_PATH="/var/fpwork/vvolkov/trunk"
-SCRIPT_PATH="/home/vvolkov/tools/taxReport/TaxReport_v2.rb"
-REVISION=$1
+SVN_REPO_PATH="/home/vvolkov/cplane/code/svn"
+SVN_BRANCH_NAME="FB1407"
+SCRIPT="/home/vvolkov/workspace/taxReport/TaxReport_v2.rb"
+REVISIONS=$@
+BACKUP_DIR="/home/vvolkov/Dropbox/Docs/TaxBreak/tax-report"
 
-function fetch_zipped_revisions()
-{
-    ssh $SVN_REPO_SERVER "''cd $SVN_REPO_PATH && $SCRIPT_PATH -r=${REVISION}''"
-    scp -r $SVN_REPO_SERVER:$SVN_REPO_PATH/tax-report .
-    ssh $SVN_REPO_SERVER ''rm -rf $SVN_REPO_PATH/tax-report''
-}
-
-
-if [[ $# -eq 0 ]]; then
-    ssh $SVN_REPO_SERVER "''cd $SVN_REPO_PATH && $SCRIPT_PATH''"
-elif [[ "$1" == "up"  ]]; then
-    ssh $SVN_REPO_SERVER "''cd $SVN_REPO_PATH && svn up''"
-else
-    fetch_zipped_revisions
-fi
+cd $SVN_REPO_PATH/$SVN_BRANCH_NAME
+$SCRIPT --mail-from=volodymyr.volkov@nsn.com --mail-to=volodymyr.volkov@nsn.com --wrling=wrling46.emea.nsn-net.net ${REVISIONS}
+mv $SVN_REPO_PATH/$SVN_BRANCH_NAME/tax-report/* $BACKUP_DIR
+rm -rf $SVN_REPO_PATH/$SVN_BRANCH_NAME/tax-report
 
