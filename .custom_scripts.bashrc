@@ -1,7 +1,6 @@
 # LTE project specific scripts
 
-function git_branch_name (){ git br 2>/dev/null | grep "*" | cut -d" " -f2; }
-
+function git_branch_name(){ git br 2>/dev/null | grep '*' | cut -d' ' -f2 }
 function svndiff () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
 function svndiffless () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl | less -R; }
 function svndiffvim () { svn diff --diff-cmd=$HOME/bin/svndiffvimdiff.sh $@; }
