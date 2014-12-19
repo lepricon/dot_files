@@ -7,7 +7,7 @@ import pynotify
 def argumentsInString():
     body = ""
     for arg in sys.argv[2:]:
-        body = body + " " + arg
+        body = body + arg + " "
     return body
 
 def notificate():
