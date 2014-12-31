@@ -6,12 +6,16 @@ BUILD_LOG_FILE="/tmp/mgmake-build-log"
 
 function notifyBuildFinished()
 {
-    if [ $? -eq 0 ]; then
+    EXIT_CODE=$?
+    ACTION=$1
+    shift
+    if [ $EXIT_CODE -eq 0 ]; then
         RESULT="succeeded"
     else
         RESULT="failed"
     fi
-    notify.py "Build $RESULT" "$@"
+    notify.py "$ACTION $RESULT" "$@"
+    exit $EXIT_CODE
 }
 
 function get_exe_target_name()
@@ -41,7 +45,7 @@ function mu()
     TARGET=$1
     shift
     mgmake SECONDARY=1 ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
-    notifyBuildFinished ${TARGET} $@
+    notifyBuildFinished "Build" ${TARGET} $@
 }
 
 function mur()
@@ -54,7 +58,7 @@ function me()
     TARGET_NAME=`get_exe_target_name $1`
     shift
     mgmake ${TARGET_NAME} "$@" 2>&1 | tee $BUILD_LOG_FILE
-    notifyBuildFinished ${TARGET_NAME} $@
+    notifyBuildFinished "Build" ${TARGET_NAME} $@
 }
 
 function msc()
@@ -62,13 +66,15 @@ function msc()
     TARGET_SHORT=$1
     shift
     mgmake sct-clean-logs sct-coal SC=${TARGET_SHORT} "$@"
+    notifyBuildFinished "Coalescense run" ${TARGET_SHORT} $@
 }
 
 function msr()
 {
     TARGET_SHORT=$1
     shift
-    mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@"
+    mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@" | tee $BUILD_LOG_FILE
+    notifyBuildFinished "SCT run" ${TARGET_SHORT} $@
 }
 
 function med()
@@ -124,7 +130,7 @@ function freshen-project()
 function mgcc9()
 {
     $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
-    notifyBuildFinished "mgcc9 $@"
+    notifyBuildFinished "Build" "mgcc9 $@"
 }
 
 func_run=`basename $0`
