@@ -15,7 +15,7 @@ function notifyBuildFinished()
         RESULT="failed"
     fi
     notify.py "$ACTION $RESULT" "$@"
-    exit $EXIT_CODE
+    return $EXIT_CODE
 }
 
 function get_exe_target_name()
@@ -45,7 +45,7 @@ function mu()
     TARGET=$1
     shift
     mgmake SECONDARY=1 ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
-    notifyBuildFinished "Build" ${TARGET} $@
+    notifyBuildFinished "Build" ${TARGET} "$@"
 }
 
 function mur()
@@ -55,10 +55,10 @@ function mur()
 
 function me()
 {
-    TARGET_NAME=`get_exe_target_name $1`
+    TARGET=`get_exe_target_name $1`
     shift
-    mgmake ${TARGET_NAME} "$@" 2>&1 | tee $BUILD_LOG_FILE
-    notifyBuildFinished "Build" ${TARGET_NAME} $@
+    mgmake ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
+    notifyBuildFinished "Build" ${TARGET} "$@"
 }
 
 function msc()
@@ -66,7 +66,7 @@ function msc()
     TARGET_SHORT=$1
     shift
     mgmake sct-clean-logs sct-coal SC=${TARGET_SHORT} "$@"
-    notifyBuildFinished "Coalescense run" ${TARGET_SHORT} $@
+    notifyBuildFinished "Coalescense run" ${TARGET_SHORT} "$@"
 }
 
 function msr()
@@ -74,7 +74,7 @@ function msr()
     TARGET_SHORT=$1
     shift
     mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@" | tee $BUILD_LOG_FILE
-    notifyBuildFinished "SCT run" ${TARGET_SHORT} $@
+    notifyBuildFinished "SCT run" ${TARGET_SHORT} "$@"
 }
 
 function med()
