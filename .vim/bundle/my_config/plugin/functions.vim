@@ -68,3 +68,10 @@ function! TabGmock()
 endfunction
 command! -nargs=* -complete=command TabGmock call TabGmock()
 
+function! OpenInSplitAndJumpToLine( ... )
+    let l:name_line = split(a:1, ":")
+    execute "split " . name_line[0]
+    execute name_line[1]
+endfunction
+command! -nargs=* -complete=command Sp call OpenInSplitAndJumpToLine( <f-args> )
+

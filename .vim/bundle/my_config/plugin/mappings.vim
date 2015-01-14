@@ -1,5 +1,5 @@
-map <C-K> :pyf clang-format.py<CR>
-imap <C-K> <ESC>:pyf clang-format.py<CR>i
+map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+imap <C-K> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
 
 noremap <SCRollWheelUp>     7<C-Y>
 noremap <SCRollWheelDown>   7<C-E>
@@ -35,10 +35,8 @@ noremap <C-Left> gT
 noremap <C-Up> :cp<CR>
 noremap <C-Down> :cn<CR>
 
-nnoremap = :res +10<CR>
-nnoremap - :res -10<CR>
-nnoremap _ :vertical res -10<CR>
-nnoremap + :vertical res +10<CR>
+nnoremap _ :res -10<CR>
+nnoremap + :res +10<CR>
 
 xnoremap p pgvy
 nnoremap <space> viw
