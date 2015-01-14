@@ -9,9 +9,10 @@ endfun
 
 " function and a command to load build log from file
 fun! LoadLog()
-    cfile /tmp/mgmake-build-log
+    cgetfile /tmp/mgmake-build-log
     copen
     set wrap
+    exe "/error:"
 endf
 command! -nargs=* LoadLog call LoadLog()
 
