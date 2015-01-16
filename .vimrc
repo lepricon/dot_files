@@ -29,7 +29,6 @@ Plugin 'Shougo/unite.vim'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'bling/vim-airline'
 Plugin 'markcornick/vim-bats'
-"vim-colors-solarized/
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/vimproc.vim'
