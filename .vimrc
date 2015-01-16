@@ -11,19 +11,28 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
+Plugin 'jlanzarotta/bufexplorer'
+"easycolour/
+Plugin 'vim-scripts/Mark--Karkat'
+"my_config/
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neosnippet.vim'
+"neosnippet-snippets/
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'markcornick/vim-bats'
-Plugin 'vim-scripts/vcscommand.vim'
+Plugin 'vim-scripts/QFGrep.vim'
+"solarized/
 Plugin 'vim-scripts/Tagbar'
 Plugin 'vim-scripts/taglist.vim'
+"ttcnSupport/
+Plugin 'Shougo/unite.vim'
+Plugin 'vim-scripts/vcscommand.vim'
+Plugin 'bling/vim-airline'
+Plugin 'markcornick/vim-bats'
+"vim-colors-solarized/
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'skroll/vim-taghighlight'
 
 
