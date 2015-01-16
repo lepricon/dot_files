@@ -39,6 +39,7 @@ set softtabstop=4           " Sets the number of columns for a TAB
 set expandtab               "expand <Tab> to spaces in Insert mode
 set autoindent              "automatically set the indent of a new line
 set smartindent             "do clever autoindenting
+set hidden                  "remember your changes in hidden buffers -> no need to save on close
 
 set nowritebackup   "write a backup file before overwriting a file
 set tags=tags
