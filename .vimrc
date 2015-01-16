@@ -15,9 +15,16 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neomru'
+Plugin 'Shougo/vimproc'
 Plugin 'Shougo/unite'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'bling/vim-airline'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'markcornick/vim-bats'
+Plugin 'vim-scripts/vcscommand'
+Plugin 'vim-scripts/Tagbar'
+Plugin 'vim-scripts/taglist'
+Plugin 'skroll/vim-taghighlight'
 
 
 " All of your Plugins must be added before the following line
