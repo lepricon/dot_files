@@ -10,7 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-
+Plugin 'skroll/vim-easycolour'
 Plugin 'jlanzarotta/bufexplorer'
 "easycolour/
 Plugin 'vim-scripts/Mark--Karkat'
