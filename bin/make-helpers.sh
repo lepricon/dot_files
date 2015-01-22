@@ -133,6 +133,12 @@ function mgcc9()
     notifyBuildFinished "Build" "mgcc9 $@"
 }
 
+function mclang()
+{
+    $@ MAKE_PARAMS=\"CLANG=\"yes_please\"\"
+    notifyBuildFinished "Build" "clang $@"
+}
+
 func_run=`basename $0`
 
 eval $func_run $@

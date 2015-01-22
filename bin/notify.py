@@ -1,1 +1,0 @@
-/home/vvolkov/workspace/devTools/notify.py
