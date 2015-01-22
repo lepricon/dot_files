@@ -5,8 +5,8 @@
     br = branch
     lg = log --oneline --graph
 [user]
-    name = Volodymyr Volkov
-    email = volodymyr.volkov@gmail.com
+	name = Volodymyr Volkov
+	email = volodymyr.volkov@nsn.com
 [color]
     branch = auto
     diff = auto

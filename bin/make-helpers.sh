@@ -14,7 +14,7 @@ function notifyBuildFinished()
     else
         RESULT="failed"
     fi
-    notify.py "$ACTION $RESULT" "$@"
+    notify-send --urgency=low -i "$([ $EXIT_CODE -eq 0 ] && echo terminal || echo error)" "$ACTION $RESULT $@"
     return $EXIT_CODE
 }
 

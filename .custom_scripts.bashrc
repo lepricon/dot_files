@@ -1,5 +1,3 @@
-# LTE project specific scripts
-
 function git_branch_name()
 {
     LINE=$( git br 2>/dev/null | grep '*' | cut -d' ' -f2 )

@@ -14,6 +14,7 @@ noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<CR>
 noremap <F10> <ESC>g<C-]>zz
 noremap <F11> :q<CR>
+noremap <S-F11> :on<CR>
 noremap <F12> <ESC><C-w>g<C-]>zz
 
 noremap <Leader>s :Sscratch<CR>
