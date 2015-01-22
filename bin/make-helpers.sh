@@ -14,7 +14,11 @@ function notifyBuildFinished()
     else
         RESULT="failed"
     fi
-    notify-send --urgency=low -i "$([ $EXIT_CODE -eq 0 ] && echo terminal || echo error)" "$ACTION $RESULT" "$@"
+
+    MSG_TITLE="$ACTION $RESULT"
+    MSG_BODY="$@"
+    notify-send --urgency=low -i "$([ $EXIT_CODE -eq 0 ] && echo terminal || echo error)" "$MSG_TITLE" "$MSG_BODY"
+
     return $EXIT_CODE
 }
 
@@ -90,7 +94,7 @@ function mud()
 function mt()
 {
     mgmake ctags
-    notify.py "Tags generated" " "
+    notifyBuildFinished "Tags generation" " "
 }
 
 function git-if()
@@ -124,19 +128,19 @@ function freshen-project()
     echo ". Waiting..."
     wait
     echo "All jobs are done."
-    notify.py "Project re-freshed" "$@ "
+    notifyBuildFinished "Project re-freshing" "$@"
 }
 
 function mgcc9()
 {
-    $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
-    notifyBuildFinished "Build" "mgcc9 $@"
+    ( $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\" )
+    notifyBuildFinished Build mgcc9 "$@"
 }
 
 function mclang()
 {
-    $@ MAKE_PARAMS=\"CLANG=\"yes_please\"\"
-    notifyBuildFinished "Build" "clang $@"
+    ( $@ MAKE_PARAMS=\"CLANG=\"yes_please\"\" )
+    notifyBuildFinished Build clang "$@"
 }
 
 func_run=`basename $0`
