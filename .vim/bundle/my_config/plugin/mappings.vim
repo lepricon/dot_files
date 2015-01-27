@@ -52,3 +52,8 @@ nnoremap <Leader>ft :let @+ = expand("%:t")<CR>
 " get derived class by searching tag by I-face name w/o leading "I"
 noremap <Leader>d blveg<C-]>
 
+" For local variable name replace
+nnoremap gr viwy[{V%:s/<C-R>"//gc<left><left><left>
+" For global variable name replace
+nnoremap gR viwy:%s/<C-R>"//gc<left><left><left>
+
