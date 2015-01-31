@@ -11,7 +11,7 @@ alias   #inc2, #include2
 
 snippet     template
 abbr        template <T>
-    template<typename ${1:T}> 
+    template<typename ${1:T}>
 
 snippet     class
 abbr        class {}
@@ -98,8 +98,8 @@ snippet     p
 options     head
   std::cout << ${0:TARGET} << std::endl;
 
-snippet nsnc)
-    *******************************************************************************
+snippet nsnfileskeleton
+    /*******************************************************************************
     * @file                  $HeadURL$
     * @version               $LastChangedRevision$
     * @date                  $LastChangedDate$
@@ -109,7 +109,13 @@ snippet nsnc)
     * @module                UEC
     * @owner                 LTE Control Plane
     *
-    *
-    *
-    * Copyright 2014 Nokia Solutions and Networks. All rights reserved.
+    * Copyright 2014 Nokia. All rights reserved.
     *******************************************************************************/
+
+    #pragma once
+
+    namespace ${1:Uec}
+    {
+
+    } // namespace $1
+

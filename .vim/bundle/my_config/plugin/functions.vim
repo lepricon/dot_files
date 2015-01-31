@@ -12,7 +12,7 @@ fun! LoadLog()
     cgetfile /tmp/mgmake-build-log
     copen
     set wrap
-    exe "/error:"
+    exe "/error:\\|Error \d"
 endf
 command! -nargs=* LoadLog call LoadLog()
 
@@ -62,7 +62,7 @@ command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
 
 function! TabGmock()
     let l:filenameInclude = expand("%")
-    let l:filenameMock1 = substitute(l:filenameInclude, "Include", "Test_modules", "")
+    let l:filenameMock1 = substitute(l:filenameInclude, "Include", "Test_modules/Mocks", "")
     let l:filenameMock2 = substitute(l:filenameMock1, "\.hpp", "Mock\.hpp", "")
     exe "tabnew " . l:filenameMock2
     silent  execute ".! ~/workspace/googlemock-scripts/generator/gmock_gen.py " . l:filenameInclude

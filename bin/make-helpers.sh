@@ -3,6 +3,9 @@
 set -o pipefail
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
+EXE_REMOTE_HOST=wrling108.emea.nsn-net.net
+UT_REMOTE_HOST=wrling121.emea.nsn-net.net
+CLANG_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
 
 function notifyBuildFinished()
 {
@@ -48,20 +51,20 @@ function mu()
 {
     TARGET=$1
     shift
-    mgmake SECONDARY=1 ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
+    mgmake REMOTE_HOST=$UT_REMOTE_HOST ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
     notifyBuildFinished "Build" ${TARGET} "$@"
 }
 
 function mur()
 {
-    mgmake SECONDARY=1 ut-run"$@"
+    mgmake REMOTE_HOST=$UT_REMOTE_HOST  ut-run"$@"
 }
 
 function me()
 {
     TARGET=`get_exe_target_name $1`
     shift
-    mgmake ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
+    mgmake REMOTE_HOST=$EXE_REMOTE_HOST ${TARGET} "$@" 2>&1 | tee $BUILD_LOG_FILE
     notifyBuildFinished "Build" ${TARGET} "$@"
 }
 
@@ -69,7 +72,7 @@ function msc()
 {
     TARGET_SHORT=$1
     shift
-    mgmake sct-clean-logs sct-coal SC=${TARGET_SHORT} "$@"
+    mgmake REMOTE_HOST=$EXE_REMOTE_HOST sct-clean-logs sct-coal SC=${TARGET_SHORT} "$@"
     notifyBuildFinished "Coalescense run" ${TARGET_SHORT} "$@"
 }
 
@@ -77,7 +80,7 @@ function msr()
 {
     TARGET_SHORT=$1
     shift
-    mgmake SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@" | tee $BUILD_LOG_FILE
+    mgmake REMOTE_HOST=$EXE_REMOTE_HOST SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@" | tee $BUILD_LOG_FILE
     notifyBuildFinished "SCT run" ${TARGET_SHORT} "$@"
 }
 
@@ -94,28 +97,31 @@ function mud()
 function mt()
 {
     mgmake ctags
-    notifyBuildFinished "Tags generation" " "
 }
 
 function git-if()
 {
-    mgmake interfaces
+    mgmake REMOTE_HOST=$UT_REMOTE_HOST interfaces
     freshen-project $1 $2
 }
 
 function run_silent_and_log()
 {
-    LOG=$1
+    LOG_PREFIX=$1
     shift
     CMD_WITH_ARGS=$@
-    eval "time $CMD_WITH_ARGS 2>&1 </dev/null >/dev/null"
-    echo "$LOG"
+    if eval "time $CMD_WITH_ARGS 2>&1 </dev/null >/dev/null"; then
+        LOG_MSG="$LOG_PREFIX success"
+    else
+        LOG_MSG="$LOG_PREFIX failure"
+    fi
+    echo "$LOG_MSG"
 }
 
 function freshen-project()
 {
     echo -n "Started 'mt && vim'"
-    ( run_silent_and_log "mt done" mt  &&
+    ( run_silent_and_log "mt done" mt &&
         run_silent_and_log "vim done" nohup vim +UpdateTypesFileOnly +q ) &
     if [ $# -ge 1 ]; then
         echo -n " + 'me $1'"
@@ -124,6 +130,10 @@ function freshen-project()
     if [ $# -ge 2 ]; then
         echo -n " + 'mu $2'"
         ( run_silent_and_log "mu done" mu $2 ) &
+    fi
+    if [ $# -ge 3 ]; then
+        echo -n " + 'mclang mu $3'"
+        ( run_silent_and_log "mclang mu done" mclang mu $3 ) &
     fi
     echo ". Waiting..."
     wait
@@ -139,7 +149,7 @@ function mgcc9()
 
 function mclang()
 {
-    ( $@ MAKE_PARAMS=\"CLANG=\"yes_please\"\" )
+    ( $@ REMOTE_HOST=$CLANG_REMOTE_HOST MAKE_PARAMS=\"CLANG=\"yes_please\"\" )
     notifyBuildFinished Build clang "$@"
 }
 
