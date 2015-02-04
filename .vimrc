@@ -18,7 +18,7 @@ Plugin 'vim-scripts/Mark--Karkat'
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet.vim'
-"neosnippet-snippets/
+Plugin 'Shougo/neosnippet-snippets'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/QFGrep.vim'
 Plugin 'vim-scripts/Tagbar'
