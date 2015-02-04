@@ -1,0 +1,39 @@
+diff --git a/neosnippets/cpp.snip b/neosnippets/cpp.snip
+index 4f72818..346e7c2 100644
+--- a/neosnippets/cpp.snip
++++ b/neosnippets/cpp.snip
+@@ -11,7 +11,7 @@ alias   #inc2, #include2
+ 
+ snippet     template
+ abbr        template <T>
+-    template<typename ${1:T}> 
++    template<typename ${1:T}>
+ 
+ snippet     class
+ abbr        class {}
+@@ -97,3 +97,17 @@ abbr        #include<iostream> int main...
+ snippet     p
+ options     head
+   std::cout << ${0:TARGET} << std::endl;
++
++snippet nsnc
++    /**
++    *******************************************************************************
++    * @file                  $HeadURL$
++    * @version               $LastChangedRevision$
++    * @date                  $LastChangedDate$
++    * @author                $Author$
++    *
++    * @module                LTE C-PLANE UEC
++    *
++    * Copyright (c) 2014 Nokia Networks. All rights reserved.
++    *******************************************************************************/
++
+diff --git a/neosnippets/ttcn.snip b/neosnippets/ttcn.snip
+new file mode 100644
+index 0000000..f75eb8b
+--- /dev/null
++++ b/neosnippets/ttcn.snip
+@@ -0,0 +1,2 @@
++snippet     import
++    import from ${0:ModuleName} all;
