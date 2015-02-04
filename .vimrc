@@ -10,8 +10,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'skroll/vim-easycolour'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'vim-scripts/gtags.vim'
 "easycolour/
 Plugin 'vim-scripts/Mark--Karkat'
 "my_config/
@@ -26,13 +26,18 @@ Plugin 'vim-scripts/Tagbar'
 Plugin 'vim-scripts/taglist.vim'
 "ttcnSupport/
 Plugin 'Shougo/unite.vim'
+Plugin 'hewes/unite-gtags'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'bling/vim-airline'
 Plugin 'markcornick/vim-bats'
 Plugin 'tpope/vim-commentary'
+Plugin 'skroll/vim-easycolour'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'skroll/vim-taghighlight'
+
+"Plugin 'Valloric/YouCompleteMe'
+
 
 
 " All of your Plugins must be added before the following line

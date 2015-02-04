@@ -6,7 +6,8 @@ noremap <SCRollWheelDown>   7<C-E>
 
 noremap <F2> :call ToggleHeaderSource()<CR>
 noremap <F3> :NERDTreeToggle<CR> " requires vim >= 7.0
-noremap <F4> :NERDTreeFind<CR>
+noremap <S-F3> :NERDTreeFind<CR>
+noremap <F4> :tab split<CR>
 noremap <F5> :Rgrep<CR>
 noremap <F6> :TlistToggle<CR>
 noremap <F7> :TagbarToggle<CR>
