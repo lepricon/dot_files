@@ -2,13 +2,6 @@ diff --git a/neosnippets/cpp.snip b/neosnippets/cpp.snip
 index 4f72818..346e7c2 100644
 --- a/neosnippets/cpp.snip
 +++ b/neosnippets/cpp.snip
-@@ -11,7 +11,7 @@ alias   #inc2, #include2
- 
- snippet     template
- abbr        template <T>
--    template<typename ${1:T}> 
-+    template<typename ${1:T}>
- 
  snippet     class
  abbr        class {}
 @@ -97,3 +97,17 @@ abbr        #include<iostream> int main...
