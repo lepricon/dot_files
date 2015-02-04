@@ -23,11 +23,10 @@ nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
 
 " Unite gtags
-nnoremap <leader>gg :execute 'Unite gtags/def:'.expand('<cword>')<CR>
+nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
 nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
 nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
-nnoremap <leader>ge :execute 'Unite gtags/grep'<CR>
-vnoremap <leader>gg <ESC>:execute 'Unite gtags/def:'.GetVisualSelection()<CR>
+nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neocomplete

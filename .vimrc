@@ -21,7 +21,6 @@ Plugin 'Shougo/neosnippet.vim'
 "neosnippet-snippets/
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/QFGrep.vim'
-"solarized/
 Plugin 'vim-scripts/Tagbar'
 Plugin 'vim-scripts/taglist.vim'
 "ttcnSupport/
@@ -30,6 +29,7 @@ Plugin 'hewes/unite-gtags'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'bling/vim-airline'
 Plugin 'markcornick/vim-bats'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'skroll/vim-easycolour'
 Plugin 'tpope/vim-fugitive'
