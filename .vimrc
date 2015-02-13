@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/gtags.vim'
 "easycolour/
-Plugin 'vim-scripts/Mark--Karkat'
+"mark/
 "my_config/
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neomru.vim'
@@ -26,6 +26,7 @@ Plugin 'vim-scripts/taglist.vim'
 "ttcnSupport/
 Plugin 'Shougo/unite.vim'
 Plugin 'hewes/unite-gtags'
+Plugin 'Shougo/unite-outline'
 Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'bling/vim-airline'
 Plugin 'markcornick/vim-bats'
@@ -33,6 +34,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-commentary'
 Plugin 'skroll/vim-easycolour'
 Plugin 'tpope/vim-fugitive'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'skroll/vim-taghighlight'
 
@@ -112,6 +114,7 @@ if has('gui_running')
     inoremap <S-Insert> <C-R>*
     nnoremap <S-Insert> "*p
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+"    set guifont=Monaco\ for\ Powerline\ 10
 
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar

@@ -18,7 +18,6 @@ call unite#custom_source('file,file_rec,file_rec/async,grep',
 nnoremap <C-p> :<C-u>UniteWithInputDirectory -start-insert file_rec/async:!<CR>/home/vvolkov/cplane/git/trunk/C_Application<CR>
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
-nnoremap <leader>t :Unite -start-insert  tag<cr>
 nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>
 
@@ -27,6 +26,7 @@ nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
 nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
 nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
 nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
+nnoremap <Leader>gt :execute 'Unite -start-insert gtags/completion'<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neocomplete
@@ -91,8 +91,12 @@ endif
 
 
 
-" Mark Default ..
-let g:mwDefaultHighlightingPalette='extended'
+" Mark Colors
+if has('gui_running')
+    let g:mwDefaultHighlightingPalette='maximum'
+else
+    let g:mwDefaultHighlightingPalette='extended'
+endif
 
 " grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'

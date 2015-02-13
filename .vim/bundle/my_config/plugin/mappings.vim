@@ -5,7 +5,7 @@ noremap <SCRollWheelUp>     7<C-Y>
 noremap <SCRollWheelDown>   7<C-E>
 
 noremap <F2> :call ToggleHeaderSource()<CR>
-noremap <F3> :NERDTreeToggle<CR> " requires vim >= 7.0
+noremap <F3> :NERDTreeToggle<CR>
 noremap <S-F3> :NERDTreeFind<CR>
 noremap <F4> :tab split<CR>
 noremap <F5> :Rgrep<CR>
@@ -42,6 +42,7 @@ nnoremap + :res +10<CR>
 
 xnoremap p pgvy
 nnoremap <space> viw
+nnoremap <C-]> <C-]>zz
 
 " relative path
 nnoremap <Leader>ff :let @+ = expand("%")<CR>
@@ -54,7 +55,7 @@ nnoremap <Leader>ft :let @+ = expand("%:t")<CR>
 noremap <Leader>d blveg<C-]>
 
 " For local variable name replace
-nnoremap gr viwy[{V%:s/<C-R>"//gc<left><left><left>
+nnoremap gr viwy[{V%:s/<C-R>"/<C-R>"/gc<left><left><left>
 " For global variable name replace
-nnoremap gR viwy:%s/<C-R>"//gc<left><left><left>
+nnoremap gR viwy:%s/<C-R>"/<C-R>"/gc<left><left><left>
 
