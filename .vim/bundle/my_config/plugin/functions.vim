@@ -34,6 +34,18 @@ function! ToggleHeaderSource()
   endif
 endfun
 
+function! ToggleSourceTest()
+  if match(expand("%"),'Test_modules\/') > 0
+    let l:flipname = substitute(expand("%"),'Test_modules','Source',"")
+    let l:flipname = substitute(l:flipname,'TestSuite','',"")
+    exe ":e " . l:flipname
+  elseif match(expand("%"),'Source\/') > 0
+    let l:flipname = substitute(expand("%"),'Source','Test_modules',"")
+    let l:flipname = substitute(l:flipname,'\.cpp','TestSuite\.cpp',"")
+    exe ":e " . l:flipname
+  endif
+endfun
+
 function! PlantUML()
     let l:imageName = substitute(expand("%"),'\.pu.*','\.png',"")
     exe "silent !plantuml %"

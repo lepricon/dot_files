@@ -89,15 +89,6 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-
-
-" Mark Colors
-if has('gui_running')
-    let g:mwDefaultHighlightingPalette='maximum'
-else
-    let g:mwDefaultHighlightingPalette='extended'
-endif
-
 " grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
@@ -110,5 +101,4 @@ let Tlist_File_Fold_Auto_Close=1
 " Airline statusbar
 set laststatus=2
 let g:airline_powerline_fonts=1
-
 

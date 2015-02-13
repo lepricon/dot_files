@@ -5,6 +5,7 @@ noremap <SCRollWheelUp>     7<C-Y>
 noremap <SCRollWheelDown>   7<C-E>
 
 noremap <F2> :call ToggleHeaderSource()<CR>
+noremap <S-F2> :call ToggleSourceTest()<CR>
 noremap <F3> :NERDTreeToggle<CR>
 noremap <S-F3> :NERDTreeFind<CR>
 noremap <F4> :tab split<CR>

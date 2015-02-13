@@ -121,8 +121,10 @@ if has('gui_running')
     set guioptions-=r  "remove right-hand scroll bar
     set guioptions-=L  "remove left-hand scroll bar
     set linespace=1
+    let g:mwDefaultHighlightingPalette='maximum'
 else
     set background=dark
+    let g:mwDefaultHighlightingPalette='extended'
 endif
 
 let mapleader = ","
