@@ -58,6 +58,7 @@ function mu()
 function mur()
 {
     mgmake REMOTE_HOST=${UT_REMOTE_HOST} ut-run"$@"
+    notifyBuildFinished "UT run" "$@"
 }
 
 function me()
@@ -126,17 +127,17 @@ function run_silent_and_log()
 function freshen-project()
 {
     echo -ne "\nStarted"
-    if [ $# -ge 1 -a "$1" = "mt" ]; then
+    if [ $# -ge 1 -a "$1" != "_" ]; then
         ( run_silent_and_log "mt" mt &&
             run_silent_and_log "vim" nohup vim +UpdateTypesFileOnly +q ) &
     fi
-    if [ $# -ge 2 ]; then
+    if [ $# -ge 2 -a "$2" != "_" ]; then
         ( run_silent_and_log "me" me $2 ) &
     fi
-    if [ $# -ge 3 ]; then
+    if [ $# -ge 3 -a "$3" != "_" ]; then
         ( run_silent_and_log "mu" mu $3 ) &
     fi
-    if [ $# -ge 4 ]; then
+    if [ $# -ge 4 -a "$4" != "_" ]; then
         ( run_silent_and_log "mclang mu" mclang mu $4 ) &
     fi
     sleep 0.1
