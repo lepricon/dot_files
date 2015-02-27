@@ -12,13 +12,13 @@ fun! LoadLog()
     cgetfile /tmp/mgmake-build-log
     copen
     set wrap
-    exe "/error:\\|Error \d"
+"    exe "/error:\\|Error \d"
 endf
 command! -nargs=* LoadLog call LoadLog()
 
 " to clean application log *.out from timestamps
 fun! CleanTimestampsInLog()
-    %s/\(.*\)\(<.*\d\d:\d\d:\d\d.*> \)\([a-zA-Z0-9]\+\)/\2/g
+    %s/\(.*\)\(<.*\d\d:\d\d:\d\d\.\d\{6}Z> \)\(\x\{4}\)/\2/g
 endf
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
 

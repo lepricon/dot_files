@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SVN_REPO_PATH="/home/vvolkov/cplane/code/svn"
-SVN_BRANCH_NAME="FB1407"
+SVN_BRANCH_NAME="trunk"
 SCRIPT="/home/vvolkov/workspace/taxReport/TaxReport_v2.rb"
 REVISIONS=$@
 BACKUP_DIR="/home/vvolkov/Dropbox/Docs/TaxBreak/tax-report"

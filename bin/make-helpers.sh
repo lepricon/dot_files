@@ -3,9 +3,9 @@
 set -o pipefail
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
-EXE_REMOTE_HOST=wrling108.emea.nsn-net.net
-UT_REMOTE_HOST=wrlcplane22.emea.nsn-net.net
-CLANG_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
+EXE_REMOTE_HOST=wrlcplane04.emea.nsn-net.net
+UT_REMOTE_HOST=wrlcplane05.emea.nsn-net.net
+CLANG_REMOTE_HOST=wrlcplane06.emea.nsn-net.net
 
 function notifyBuildFinished()
 {
@@ -25,23 +25,6 @@ function notifyBuildFinished()
     return $EXIT_CODE
 }
 
-function get_exe_target_name()
-{
-    TARGET_SHORT=$1
-    case ${TARGET_SHORT} in
-        rrom )
-            echo ptRROMexe ;;
-        enbc )
-            echo ptENBC ;;
-        tupc )
-            echo ptTUPCexe ;;
-        cellc )
-            echo ptCELLC ;;
-        uec )
-            echo ptUECexe ;;
-    esac
-}
-
 function mgmake()
 {
     make -f Makefile "$@" 2>&1 | tee ${BUILD_LOG_FILE}
@@ -49,10 +32,10 @@ function mgmake()
 
 function mu()
 {
-    TARGET=$1
+    UT_TARGET=$1
     shift
-    mgmake REMOTE_HOST=${UT_REMOTE_HOST} ${TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE}
-    notifyBuildFinished "Build" ${TARGET} "$@"
+    mgmake REMOTE_HOST=${UT_REMOTE_HOST} ${UT_TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE}
+    notifyBuildFinished "Build" ${UT_TARGET} "$@"
 }
 
 function mur()
@@ -63,36 +46,40 @@ function mur()
 
 function me()
 {
-    TARGET=`get_exe_target_name $1`
+    EXE_TARGET=$1
     shift
-    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} ${TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE}
-    notifyBuildFinished "Build" ${TARGET} "$@"
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} ${EXE_TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE}
+    notifyBuildFinished "Build" ${EXE_TARGET} "$@"
 }
 
 function msc()
 {
-    TARGET_SHORT=$1
+    COMPONENT_NAME=$1
     shift
-    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} sct-clean-logs sct-coal SC=${TARGET_SHORT} "$@"
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} sct-clean-logs sct-coal SC=${COMPONENT_NAME} "$@"
     notifyBuildFinished "Coalescense run" ${TARGET_SHORT} "$@"
 }
 
 function msr()
 {
-    TARGET_SHORT=$1
+    COMPONENT_NAME=$1
     shift
-    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} SC=${TARGET_SHORT^^} sct-clean-logs sct-run "$@" | tee ${BUILD_LOG_FILE}
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} SC=${COMPONENT_NAME^^} sct-clean-logs sct-run "$@" | tee ${BUILD_LOG_FILE}
     notifyBuildFinished "SCT run" ${TARGET_SHORT} "$@"
 }
 
 function med()
 {
-    me $1 && msc "$@"
+    EXE_TARGET=$1
+    shift
+    me ${EXE_TARGET} && msc "$@"
 }
 
 function mud()
 {
-    mu $1 && mur
+    UT_TARGET=$1
+    shift
+    mu ${UT_TARGET} && mur "$@"
 }
 
 function mt()
@@ -104,10 +91,17 @@ function mt()
     notifyBuildFinished "Tags generated"
 }
 
-function git-if()
+function mclean_all_my_remote()
+{
+    mgmake remove-remote REMOTE_HOST=${EXE_REMOTE_HOST}
+    mgmake remove-remote REMOTE_HOST=${UT_REMOTE_HOST}
+    mgmake remove-remote REMOTE_HOST=${CLANG_REMOTE_HOST}
+}
+
+function mif_fresh()
 {
     mgmake REMOTE_HOST=${UT_REMOTE_HOST} interfaces
-    freshen-project $1 $2
+    freshen_project mt
 }
 
 function run_silent_and_log()
@@ -124,7 +118,7 @@ function run_silent_and_log()
     echo "$LOG_MSG"
 }
 
-function freshen-project()
+function freshen_project()
 {
     echo -ne "\nStarted"
     if [ $# -ge 1 -a "$1" != "_" ]; then
@@ -148,12 +142,12 @@ function freshen-project()
 
 function mgcc9()
 {
-    ( $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\" )
+    $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
 }
 
 function mclang()
 {
-    ( $@ REMOTE_HOST=${CLANG_REMOTE_HOST} MAKE_PARAMS=\'CLANG=\"yes_please\"\' )
+    $@ REMOTE_HOST=${CLANG_REMOTE_HOST} MAKE_PARAMS=\'CLANG=\"yes_please\"\'
 }
 
 func_run=`basename $0`
