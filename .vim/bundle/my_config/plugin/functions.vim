@@ -88,3 +88,10 @@ function! OpenInSplitAndJumpToLine( ... )
 endfunction
 command! -nargs=* -complete=command Sp call OpenInSplitAndJumpToLine( <f-args> )
 
+function! OpenInCurrentAndJumpToLine( ... )
+    let l:name_line = split(a:1, ":")
+    execute "edit " . name_line[0]
+    execute name_line[1]
+endfunction
+command! -nargs=* -complete=command Ed call OpenInCurrentAndJumpToLine( <f-args> )
+

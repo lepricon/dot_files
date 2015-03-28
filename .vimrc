@@ -38,9 +38,6 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'skroll/vim-taghighlight'
 
-"Plugin 'Valloric/YouCompleteMe'
-
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
