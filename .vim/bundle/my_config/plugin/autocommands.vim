@@ -17,9 +17,8 @@ augroup filetypedetect
     au BufRead,BufNewFile *ssionList.txt set filetype=regr
 augroup END
 
-
-au BufWinLeave *.[chs]*,*.ttcn* mkview
-au BufWinEnter *.[chs]*,*.ttcn* silent loadview
+" following line makes Vim jump to the last position when reopening a file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " trim trailing whitespaces on save
 autocmd BufWritePre *.[chs]*,*.ttcn*,*.py :%s/\s\+$//e

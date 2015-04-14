@@ -19,7 +19,7 @@ nnoremap <C-p> :<C-u>UniteWithInputDirectory -start-insert file_rec/async:!<CR>/
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
 nnoremap <leader>y :Unite history/yank<cr>
-nnoremap <leader>b :Unite -quick-match buffer<cr>
+nnoremap <leader>br :Unite buffer<cr>
 
 " Unite gtags
 nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>

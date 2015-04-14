@@ -5,7 +5,7 @@ set -o pipefail
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
 EXE_REMOTE_HOST=wrlcplane04.emea.nsn-net.net
 UT_REMOTE_HOST=wrlcplane05.emea.nsn-net.net
-CLANG_REMOTE_HOST=wrlcplane06.emea.nsn-net.net
+CLANG_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
 
 function notifyBuildFinished()
 {
