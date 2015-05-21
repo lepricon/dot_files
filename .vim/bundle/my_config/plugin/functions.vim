@@ -3,6 +3,7 @@
 "==========================================
 
 fun! GetTwoFistCatalogsOfCurrentPath()
+    exe "cd ."
     let list = split(expand('%'),"/")
     return join(list[0:1], "/")
 endfun

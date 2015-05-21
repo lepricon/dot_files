@@ -3,9 +3,10 @@
 set -o pipefail
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
-EXE_REMOTE_HOST=wrlcplane04.emea.nsn-net.net
-UT_REMOTE_HOST=wrlcplane05.emea.nsn-net.net
-CLANG_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
+EXE_REMOTE_HOST=wrling139.emea.nsn-net.net
+#wrlcplane04.emea.nsn-net.net
+UT_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
+CLANG_REMOTE_HOST=wrlcplane12.emea.nsn-net.net
 
 function notifyBuildFinished()
 {
@@ -98,9 +99,9 @@ function mclean_all_my_remote()
     mgmake remove-remote REMOTE_HOST=${CLANG_REMOTE_HOST}
 }
 
-function mif_fresh()
+function mif()
 {
-    mgmake REMOTE_HOST=${UT_REMOTE_HOST} interfaces
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} interfaces
     freshen_project mt
 }
 
@@ -142,7 +143,10 @@ function freshen_project()
 
 function mgcc9()
 {
-    $@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
+    #$@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
+
+    GCC_EXE=$(ssh $UT_REMOTE_HOST 'echo "/opt/gcc/linux64/ix86/`ls /opt/gcc/linux64/ix86/ | sort | tail -n 1`/bin/c++"')
+    $@ MAKE_PARAMS=\"CXX=$GCC_EXE\"
 }
 
 function mclang()

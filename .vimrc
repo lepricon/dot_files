@@ -97,7 +97,7 @@ set smartindent             "do clever autoindenting
 "set hidden                  "remember your changes in hidden buffers -> no need to save on close
 
 set nowritebackup   "write a backup file before overwriting a file
-set tags=tags
+set tags+=./tags
 set matchpairs+=<:>
 set makeprg=make\ -f\ Makefile
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
