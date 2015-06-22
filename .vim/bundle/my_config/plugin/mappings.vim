@@ -1,5 +1,5 @@
-map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
-imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>i
+map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
+imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>i
 
 noremap <SCRollWheelUp>     7<C-Y>
 noremap <SCRollWheelDown>   7<C-E>

@@ -99,7 +99,7 @@ set smartindent             "do clever autoindenting
 set nowritebackup   "write a backup file before overwriting a file
 set tags+=./tags
 set matchpairs+=<:>
-set makeprg=make\ -f\ Makefile
+set makeprg=clang++\ -std=c++11\ -stdlib=libc++\ %
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
 
 syntax enable
