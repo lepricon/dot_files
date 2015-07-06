@@ -32,6 +32,7 @@ syn match   logError   "ERR[\/,#][^ ]*"
 
 syn match   logApplicationMessage "\([A-Z0-9]\+_\)\{2,\}[A-Z0-9]\+"
 syn match   logMessage  "msgId\s*=\s*0x[a-f0-9]\{0,4}\W"
+syn match   logMessage  "eventId\s*=\s*0x[a-f0-9]\{0,4}\W"
 syn match   logMessage  "messageId\s*=\s*[a-f0-9]\{0,4}\W"
 
 

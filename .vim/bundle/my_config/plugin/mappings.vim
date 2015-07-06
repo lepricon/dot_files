@@ -45,8 +45,8 @@ xnoremap p pgvy
 nnoremap <space> viw
 nnoremap <C-]> <C-]>zz
 
-nnoremap * /\C<C-R><C-W><CR>
-nnoremap # ?\C<C-R><C-W><CR>
+nnoremap * /<C-R><C-W><Home>\C<CR>
+nnoremap # ?<C-R><C-W><Home>\C<CR>
 
 " relative path
 nnoremap <Leader>ff :let @+ = expand("%")<CR>

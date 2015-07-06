@@ -3,8 +3,7 @@
 set -o pipefail
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
-EXE_REMOTE_HOST=wrling139.emea.nsn-net.net
-#wrlcplane04.emea.nsn-net.net
+EXE_REMOTE_HOST=wrling144.emea.nsn-net.net
 UT_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
 CLANG_REMOTE_HOST=wrlcplane12.emea.nsn-net.net
 
