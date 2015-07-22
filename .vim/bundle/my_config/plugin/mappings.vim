@@ -23,6 +23,7 @@ noremap <Leader>s :Sscratch<CR>
 noremap <Leader>con :Gcppc <C-R>=expand('<cword>')<CR>
 noremap <Leader>tu :Gcpptu <C-R>=expand('<cword>')<CR>
 noremap <Leader>use :Gcpp <C-R>=expand('<cword>')<CR>
+noremap <Leader>d :Inherits <C-R>=expand('<cword>')<CR>
 
 " faster cursor movements between splits
 noremap <A-Up> <C-W><Up>
@@ -55,11 +56,9 @@ nnoremap <Leader>fp :let @+ = expand("%:p")<CR>
 " just filename
 nnoremap <Leader>ft :let @+ = expand("%:t")<CR>
 
-" get derived class by searching tag by I-face name w/o leading "I"
-noremap <Leader>d blveg<C-]>
-
 " For local variable name replace
 nnoremap gr viwy[{V%:s/<C-R>"/<C-R>"/gc<left><left><left>
 " For global variable name replace
 nnoremap gR viwy:%s/<C-R>"/<C-R>"/gc<left><left><left>
 
+nnoremap <Leader>wm :w<CR> :make<CR>

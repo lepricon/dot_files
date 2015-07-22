@@ -64,7 +64,7 @@ function msr()
 {
     COMPONENT_NAME=$1
     shift
-    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} SC=${COMPONENT_NAME^^} sct-clean-logs sct-run "$@" | tee ${BUILD_LOG_FILE}
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} SC=${COMPONENT_NAME^^} _sct-clean-logs-remote sct-run "$@" | tee ${BUILD_LOG_FILE}
     notifyBuildFinished "SCT run" ${TARGET_SHORT} "$@"
 }
 
