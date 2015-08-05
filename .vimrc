@@ -10,12 +10,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'gilligan/vim-lldb'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/gtags.vim'
-"easycolour/
-"mark/
-"my_config/
+Plugin 'mark', {'pinned': 1}
+Plugin 'my_config', {'pinned': 1}
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet.vim'
@@ -24,7 +22,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/QFGrep.vim'
 Plugin 'vim-scripts/Tagbar'
 Plugin 'vim-scripts/taglist.vim'
-"ttcnSupport/
+Plugin 'ttcnSupport', {'pinned': 1}
 Plugin 'Shougo/unite.vim'
 Plugin 'hewes/unite-gtags'
 Plugin 'Shougo/unite-outline'
