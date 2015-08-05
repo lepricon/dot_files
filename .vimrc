@@ -10,6 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'gilligan/vim-lldb'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/gtags.vim'
 "easycolour/
@@ -99,7 +100,7 @@ set smartindent             "do clever autoindenting
 set nowritebackup   "write a backup file before overwriting a file
 set tags+=./tags
 set matchpairs+=<:>
-set makeprg=clang++\ -std=c++14\ -stdlib=libc++\ -lpthread\ %
+set makeprg=clang++\ -g\ -std=c++14\ -stdlib=libc++\ -lpthread\ %
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
 
 syntax enable
