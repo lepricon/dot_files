@@ -44,7 +44,6 @@ nnoremap + :res +10<CR>
 
 xnoremap p pgvy
 nnoremap <space> viw
-nnoremap <C-]> <C-]>zz
 
 nnoremap * /<C-R><C-W><Home>\C<CR>
 nnoremap # ?<C-R><C-W><Home>\C<CR>
