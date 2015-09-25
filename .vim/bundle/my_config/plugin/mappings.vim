@@ -56,8 +56,8 @@ nnoremap <Leader>fp :let @+ = expand("%:p")<CR>
 nnoremap <Leader>ft :let @+ = expand("%:t")<CR>
 
 " For local variable name replace
-nnoremap gr viwy[{V%:s/<C-R>"/<C-R>"/gc<left><left><left>
+nnoremap gr viwy[{V%:s/\<<C-R>"\>/<C-R>"/gc<left><left><left>
 " For global variable name replace
-nnoremap gR viwy:%s/<C-R>"/<C-R>"/gc<left><left><left>
+nnoremap gR :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<left><left><left>
 
 nnoremap <Leader>wm :w<CR> :make<CR>

@@ -126,13 +126,13 @@ function freshen_project()
             run_silent_and_log "vim" nohup vim +UpdateTypesFileOnly +q ) &
     fi
     if [ $# -ge 2 -a "$2" != "_" ]; then
-        ( run_silent_and_log "me" me $2 ) &
+        ( run_silent_and_log "me $2" me $2 ) &
     fi
     if [ $# -ge 3 -a "$3" != "_" ]; then
-        ( run_silent_and_log "mu" mu $3 ) &
+        ( run_silent_and_log "mu $3" mu $3 ) &
     fi
     if [ $# -ge 4 -a "$4" != "_" ]; then
-        ( run_silent_and_log "mclang mu" mclang mu $4 ) &
+        ( run_silent_and_log "mclang mu $4" mclang mu $4 ) &
     fi
     sleep 0.1
     echo ". Waiting..."
