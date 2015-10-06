@@ -26,8 +26,12 @@ function gv()
 
 function vv()
 {
-    LOG_FILE_PATH=$1
-    vim +/"Final Verdict:" `find $LOG_FILE_PATH -name *.k3.txt`
+    if [ $# -lt 1 ]; then
+        LOG_FILE_PATH=`find logs/SCTs/sct_*.* -name *.k3.txt`
+    else
+        LOG_FILE_PATH=$1
+    fi
+    vim +/"inal Verdict:" `find $LOG_FILE_PATH -name *.k3.txt`
 }
 
 FUNC_REQUESTED=`basename $0`
