@@ -12,12 +12,12 @@ EXTRA_GREP_ARGS=$@
 
 function g()
 {
-    find ${PATH_TO_SEARCH} -type f | grep -v "\.svn\|\.git" | xargs -I@ grep --binary-files=without-match --color -Hn "\<${PATTERN}\>" @ ${EXTRA_GREP_ARGS}
+    find ${PATH_TO_SEARCH} -type f | grep -v "\.svn\|\.git" | xargs -I@ grep --binary-files=without-match --color -Hn "${PATTERN}" @ ${EXTRA_GREP_ARGS}
 }
 
 function gcpp()
 {
-    find_srcs ${PATH_TO_SEARCH} | xargs -I filename grep --color -Hn "\<${PATTERN}\>" filename ${EXTRA_GREP_ARGS}
+    find_srcs ${PATH_TO_SEARCH} | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
 }
 
 function gcppc()
@@ -27,12 +27,12 @@ function gcppc()
 
 function gcppt()
 {
-    find_srcs ${PATH_TO_SEARCH} | grep -v Test_modules | xargs -I filename grep --color -Hn "\<${PATTERN}\>" filename ${EXTRA_GREP_ARGS}
+    find_srcs ${PATH_TO_SEARCH} | grep -v Test_modules | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
 }
 
 function gcpptu()
 {
-    find_srcs ${PATH_TO_SEARCH} | grep -v Test_modules | grep -iv "${PATTERN}" | xargs -I filename grep --color -Hn "\<${PATTERN}\>" filename ${EXTRA_GREP_ARGS}
+    find_srcs ${PATH_TO_SEARCH} | grep -v Test_modules | grep -iv "${PATTERN}" | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
 }
 
 FUNC_REQUESTED=`basename $0`

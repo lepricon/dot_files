@@ -91,6 +91,22 @@ function mt()
     notifyBuildFinished "Tags generated"
 }
 
+function mtloop()
+{
+    COUNTER=1
+    VIM_UPDATE_FREQ=5
+    PAUSE_TIME=60
+    while true ; do
+        run_silent_and_log "ctags" make -f Makefile ctags 2>&1
+        run_silent_and_log "gtags" gtags -c
+        if [ $COUNTER -eq 0 ]; then
+            run_silent_and_log "vim highlight" nohup vim +UpdateTypesFileOnly +q
+        fi
+        run_silent_and_log "pause for $PAUSE_TIME s" sleep $PAUSE_TIME
+        COUNTER=$(( (COUNTER + 1) % VIM_UPDATE_FREQ ))
+    done
+}
+
 function mclean_all_my_remote()
 {
     mgmake remove-remote REMOTE_HOST=${EXE_REMOTE_HOST}
@@ -110,11 +126,13 @@ function run_silent_and_log()
     shift
     CMD_WITH_ARGS=$@
     echo -n " '$CMD_WITH_ARGS' "
+
     if eval "time $CMD_WITH_ARGS </dev/null 1>/dev/null 2>/dev/null"; then
         LOG_MSG="$LOG_PREFIX done success"
     else
         LOG_MSG="$LOG_PREFIX done failure"
     fi
+
     echo "$LOG_MSG"
 }
 

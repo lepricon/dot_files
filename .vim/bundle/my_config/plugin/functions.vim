@@ -57,19 +57,19 @@ command! -nargs=* PlantUML call PlantUML()
 
 function! Gcpp( ... )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpp " . l:searchPath . " " . a:1 . " ' ) | copen"
+    exe "cgetexpr system( ' gcpp " . l:searchPath . " \"/<" . a:1 . ">/\" ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcpp call Gcpp( <f-args> )
 
 function! Gcppc( ... )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcppc " . l:searchPath . " " . a:1 . " ' ) | copen"
+    exe "cgetexpr system( ' gcppc " . l:searchPath . " \"/<" . a:1 . ">/\" ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcppc call Gcppc( <f-args> )
 
 function! Gcpptu( ... )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpptu " . l:searchPath . " " . a:1 . " ' ) | copen"
+    exe "cgetexpr system( ' gcpptu " . l:searchPath . " \"/<" . a:1 . ">/\" ' ) | copen"
 endfunction
 command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
 
