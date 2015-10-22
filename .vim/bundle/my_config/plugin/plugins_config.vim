@@ -5,17 +5,14 @@
 " Unite
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_grep_default_opts = '-RHn'
+
+" CtrlP search
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" ignore certain files and directories while searching
-call unite#custom_source('file,file_rec,file_rec/async,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'build/',
-      \ 'logs/',
-      \ 'lteTools/',
-      \ 'T_Tools/',
-      \ ], '\|'))
-nnoremap <C-p> :<C-u>UniteWithInputDirectory -start-insert file_rec/async:!<CR>/home/vvolkov/cplane/git/trunk/C_Application<CR>
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file_rec/async','sorters','sorter_rank')
+" replacing unite with ctrl-p
+nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
+
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
 nnoremap <leader>y :Unite history/yank<cr>
