@@ -44,6 +44,12 @@ function mur()
     notifyBuildFinished "UT run" "$@"
 }
 
+function mvur()
+{
+    mgmake REMOTE_HOST=${UT_REMOTE_HOST} ut-valgrind-run"$@"
+    notifyBuildFinished "UT run" "$@"
+}
+
 function me()
 {
     EXE_TARGET=$1

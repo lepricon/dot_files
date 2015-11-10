@@ -112,3 +112,11 @@ function! Multiple_cursors_after()
     echo 'Enabled autocomplete'
 endfunction
 
+function! UniteGrep( ... )
+    set modifiable
+    exe '%!grep ' join(a:000, ' ')
+    set nomodifiable
+endfunction
+command! -nargs=* -complete=command UniteGrep call UniteGrep( <f-args> )
+
+
