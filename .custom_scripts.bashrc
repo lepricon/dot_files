@@ -6,11 +6,10 @@ function git_branch_name()
     fi
 }
 
-function svndiff () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
-function svndiffless () { svn diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl | less -R; }
+function svndiff () { svn diff $@ | colordiff; }
+function svndiffless () { svn diff $@ | colordiff | less -R; }
 function svndiffvim () { svn diff --diff-cmd=$HOME/bin/svndiffvimdiff.sh $@; }
 function svndiffvimhelper () { svn diff --diff-cmd=$HOME/bin/svndiff_vim_helper $@; }
-function colordiff () { diff $@ | $HOME/ide/colordiff-1.0.10/colordiff.pl; }
 
 function xte()
 {
