@@ -99,3 +99,5 @@ let Tlist_File_Fold_Auto_Close=1
 set laststatus=2
 let g:airline_powerline_fonts=1
 
+" Marks
+let g:mwIgnoreCase = 0

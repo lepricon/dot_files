@@ -3,6 +3,8 @@
 set -o pipefail
 
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
+BUILD_LOG_FILE_EXE="/tmp/mgmake-build-log-exe"
+BUILD_LOG_FILE_UT="/tmp/mgmake-build-log-ut"
 EXE_REMOTE_HOST=wrling144.emea.nsn-net.net
 UT_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
 CLANG_REMOTE_HOST=wrlcplane12.emea.nsn-net.net
@@ -34,7 +36,7 @@ function mu()
 {
     UT_TARGET=$1
     shift
-    mgmake REMOTE_HOST=${UT_REMOTE_HOST} ${UT_TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE}
+    mgmake REMOTE_HOST=${UT_REMOTE_HOST} ${UT_TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE_UT}
     notifyBuildFinished "Build" ${UT_TARGET} "$@"
 }
 
@@ -54,7 +56,7 @@ function me()
 {
     EXE_TARGET=$1
     shift
-    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} ${EXE_TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE}
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} ${EXE_TARGET} "$@" 2>&1 | tee ${BUILD_LOG_FILE_EXE}
     notifyBuildFinished "Build" ${EXE_TARGET} "$@"
 }
 
@@ -70,7 +72,7 @@ function msr()
 {
     COMPONENT_NAME=$1
     shift
-    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} SC=${COMPONENT_NAME^^} _sct-clean-logs-remote sct-run "$@" | tee ${BUILD_LOG_FILE}
+    mgmake REMOTE_HOST=${EXE_REMOTE_HOST} SC=${COMPONENT_NAME^^} _sct-clean-logs-remote sct-run "$@"
     notifyBuildFinished "SCT run" ${TARGET_SHORT} "$@"
 }
 

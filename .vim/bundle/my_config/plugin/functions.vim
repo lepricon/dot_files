@@ -17,6 +17,22 @@ fun! LoadLog()
 endf
 command! -nargs=* LoadLog call LoadLog()
 
+fun! LoadLogExe()
+    cgetfile /tmp/mgmake-build-log-exe
+    copen
+    set wrap
+"    exe "/error:\\|Error \d"
+endf
+command! -nargs=* LoadLogExe call LoadLogExe()
+
+fun! LoadLogUt()
+    cgetfile /tmp/mgmake-build-log-ut
+    copen
+    set wrap
+"    exe "/error:\\|Error \d"
+endf
+command! -nargs=* LoadLogUt call LoadLogUt()
+
 " to clean application log *.out from timestamps
 fun! CleanTimestampsInLog()
     %s/\(.*\)\(<.*\d\d:\d\d:\d\d\.\d\{6}Z> \)\(\x\+\)/\2/g
@@ -74,7 +90,7 @@ endfunction
 command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
 
 function! Inherits( ... )
-    let l:command = "grep \"^[_a-zA-Z][_a-zA-Z0-9]\\{0,30\\}::.*inherits:" . a:1 . "$\" tags \\| while read LINE; do FILE=`echo $LINE \\| awk ''{print $2}''`; TAGLINE=`echo $LINE \\| sed ''s\\|.*/^\\(.*\\)$/.*\\|\\1\\|''`; grep -Hn \"$TAGLINE\" \"$FILE\"; done"
+    let l:command = "grep \"^[_a-zA-Z][_a-zA-Z0-9]\\{0,30\\}::.*inherits[:_a-zA-Z]\\\+" . a:1 . "$\" tags \\| while read LINE; do FILE=`echo $LINE \\| awk ''{print $2}''`; TAGLINE=`echo $LINE \\| sed ''s\\|.*/^\\(.*\\)$/.*\\|\\1\\|''`; grep -Hn \"$TAGLINE\" \"$FILE\"; done"
     exe "cgetexpr system( \' " . l:command . " \' ) | copen"
 endfunction
 command! -nargs=* -complete=file Inherits call Inherits( <f-args> )
