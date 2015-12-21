@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -lt 2 ]; then
-    echo "USAGE: $0 <pattern> <path> <grep-args>"
+    echo "USAGE: $0 <path> <pattern> <grep-args>"
     exit 1
 fi
 

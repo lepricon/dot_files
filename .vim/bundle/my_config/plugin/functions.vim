@@ -42,22 +42,22 @@ command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
 function! ToggleHeaderSource()
   if match(expand("%"),'\.cpp') > 0
     let l:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
-    let l:flipname = substitute(l:flipname,'Source','Include',"")
+    let l:flipname = substitute(l:flipname,'\(.*\)Source','\1Include',"")
     exe ":e " . l:flipname
   elseif match(expand("%"),'\.hpp') > 0
     let l:flipname = substitute(expand("%"),'\.hpp\(.*\)','\.cpp\1',"")
-    let l:flipname = substitute(l:flipname,'Include','Source',"")
+    let l:flipname = substitute(l:flipname,'\(.*\)Include','\1Source',"")
     exe ":e " . l:flipname
   endif
 endfun
 
 function! ToggleSourceTest()
   if match(expand("%"),'Test_modules\/') > 0
-    let l:flipname = substitute(expand("%"),'Test_modules','Source',"")
+    let l:flipname = substitute(expand("%"),'\(.*\)Test_modules','\1Source',"")
     let l:flipname = substitute(l:flipname,'TestSuite','',"")
     exe ":e " . l:flipname
   elseif match(expand("%"),'Source\/') > 0
-    let l:flipname = substitute(expand("%"),'Source','Test_modules',"")
+    let l:flipname = substitute(expand("%"),'\(.*\)Source','\1Test_modules',"")
     let l:flipname = substitute(l:flipname,'\.cpp','TestSuite\.cpp',"")
     exe ":e " . l:flipname
   endif
