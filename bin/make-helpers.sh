@@ -6,7 +6,7 @@ BUILD_LOG_FILE="/tmp/mgmake-build-log"
 BUILD_LOG_FILE_EXE="/tmp/mgmake-build-log-exe"
 BUILD_LOG_FILE_UT="/tmp/mgmake-build-log-ut"
 EXE_REMOTE_HOST=wrling144.emea.nsn-net.net
-UT_REMOTE_HOST=wrlcplane11.emea.nsn-net.net
+UT_REMOTE_HOST=wrlcplane18.emea.nsn-net.net
 CLANG_REMOTE_HOST=wrlcplane12.emea.nsn-net.net
 
 function notifyBuildFinished()
@@ -146,20 +146,17 @@ function run_silent_and_log()
 
 function freshen_project()
 {
-    echo -ne "\nStarted"
-    if [ $# -ge 1 -a "$1" != "_" ]; then
-        ( run_silent_and_log "mt" mt &&
-            run_silent_and_log "vim highlighting" nohup vim +UpdateTypesFileOnly +q ) &
-    fi
-    if [ $# -ge 2 -a "$2" != "_" ]; then
-        ( run_silent_and_log "me $2" me $2 ) &
-    fi
-    if [ $# -ge 3 -a "$3" != "_" ]; then
-        ( run_silent_and_log "mu $3" mu $3 ) &
-    fi
-    if [ $# -ge 4 -a "$4" != "_" ]; then
-        ( run_silent_and_log "mclang mu $4" mclang mu $4 ) &
-    fi
+    echo -ne "\nStarted with $# commands "
+    for param in "$@"; do
+        if [ "$param" == "mt" ]; then
+            ( run_silent_and_log "mt" mt &&
+                run_silent_and_log "vim highlighting" nohup vim +UpdateTypesFileOnly +q ) &
+        else
+            ( run_silent_and_log "$param" $param ) &
+        fi
+        shift
+    done
+
     sleep 0.1
     echo ". Waiting..."
     wait
@@ -171,15 +168,15 @@ function mgcc9()
     #$@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
 
     GCC_EXE=$(ssh $UT_REMOTE_HOST 'echo "/opt/gcc/linux64/ix86/`ls /opt/gcc/linux64/ix86/ | sort | tail -n 1`/bin/c++"')
-    $@ MAKE_PARAMS=\"CXX=$GCC_EXE\"
+    $* MAKE_PARAMS=\"CXX=$GCC_EXE\"
 }
 
 function mclang()
 {
-    $@ REMOTE_HOST=${CLANG_REMOTE_HOST} MAKE_PARAMS=\'CLANG=\"yes_please\"\'
+    $* REMOTE_HOST=${CLANG_REMOTE_HOST} MAKE_PARAMS=\'CLANG=\"yes_please\"\'
 }
 
 func_run=`basename $0`
 
-eval $func_run $@
+eval $func_run "$@"
 

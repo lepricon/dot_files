@@ -13,7 +13,7 @@ fun! LoadLog()
     cgetfile /tmp/mgmake-build-log
     copen
     set wrap
-"    exe "/error:\\|Error \d"
+    exe "/error:\\|Error \d"
 endf
 command! -nargs=* LoadLog call LoadLog()
 
@@ -21,7 +21,7 @@ fun! LoadLogExe()
     cgetfile /tmp/mgmake-build-log-exe
     copen
     set wrap
-"    exe "/error:\\|Error \d"
+    exe "/error:"
 endf
 command! -nargs=* LoadLogExe call LoadLogExe()
 
@@ -29,7 +29,7 @@ fun! LoadLogUt()
     cgetfile /tmp/mgmake-build-log-ut
     copen
     set wrap
-"    exe "/error:\\|Error \d"
+    exe "/error:"
 endf
 command! -nargs=* LoadLogUt call LoadLogUt()
 
