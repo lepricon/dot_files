@@ -71,29 +71,29 @@ function! PlantUML()
 endfun
 command! -nargs=* PlantUML call PlantUML()
 
-function! Gcpp( ... )
+function! Gcpp( word )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpp " . l:searchPath . " \"\\<" . a:1 . "\\>\" ' ) | copen"
+    exe "cgetexpr system( ' gcpp " . l:searchPath . " \"" . a:word . "\" ' ) | copen"
 endfunction
-command! -nargs=* -complete=file Gcpp call Gcpp( <f-args> )
+command! -nargs=1 -complete=file Gcpp call Gcpp( <f-args> )
 
-function! Gcppc( ... )
+function! Gcppc( word )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcppc " . l:searchPath . " \"\\<" . a:1 . "\\>\" ' ) | copen"
+    exe "cgetexpr system( ' gcppc " . l:searchPath . " \"" . a:word . "\" ' ) | copen"
 endfunction
-command! -nargs=* -complete=file Gcppc call Gcppc( <f-args> )
+command! -nargs=1 -complete=file Gcppc call Gcppc( <f-args> )
 
-function! Gcpptu( ... )
+function! Gcpptu( word )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpptu " . l:searchPath . " \"\\<" . a:1 . "\\>\" ' ) | copen"
+    exe "cgetexpr system( ' gcpptu " . l:searchPath . " \"" . a:word . "\" ' ) | copen"
 endfunction
-command! -nargs=* -complete=file Gcpptu call Gcpptu( <f-args> )
+command! -nargs=1 -complete=tag Gcpptu call Gcpptu( <f-args> )
 
-function! Inherits( ... )
-    let l:command = "grep \"^[_a-zA-Z][_a-zA-Z0-9]\\{0,30\\}::.*inherits[:_a-zA-Z]\\\+" . a:1 . "$\" tags \\| while read LINE; do FILE=`echo $LINE \\| awk ''{print $2}''`; TAGLINE=`echo $LINE \\| sed ''s\\|.*/^\\(.*\\)$/.*\\|\\1\\|''`; grep -Hn \"$TAGLINE\" \"$FILE\"; done"
+function! Inherits( word )
+    let l:command = "grep \"^[_a-zA-Z][_a-zA-Z0-9]\\{0,30\\}::.*inherits[:_a-zA-Z]\\\+" . a:word . "$\" tags \\| while read LINE; do FILE=`echo $LINE \\| awk ''{print $2}''`; TAGLINE=`echo $LINE \\| sed ''s\\|.*/^\\(.*\\)$/.*\\|\\1\\|''`; grep -Hn \"$TAGLINE\" \"$FILE\"; done"
     exe "cgetexpr system( \' " . l:command . " \' ) | copen"
 endfunction
-command! -nargs=* -complete=file Inherits call Inherits( <f-args> )
+command! -nargs=1 -complete=file Inherits call Inherits( <f-args> )
 
 function! TabGmock()
     let l:filenameInclude = expand("%")

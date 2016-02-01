@@ -20,9 +20,9 @@ noremap <F11> <ESC>g<C-]>zz
 noremap <F12> <ESC><C-w>g<C-]>zz
 
 noremap <Leader>s :Sscratch<CR>
-noremap <Leader>con :Gcppc <C-R>=expand('<cword>')<CR>
-noremap <Leader>tu :Gcpptu <C-R>=expand('<cword>')<CR>
-noremap <Leader>use :Gcpp <C-R>=expand('<cword>')<CR>
+noremap <Leader>con :Gcppc \<<C-R>=expand('<cword>')<CR>\>
+noremap <Leader>tu :Gcpptu \<<C-R>=expand('<cword>')<CR>\>
+noremap <Leader>use :Gcpp \<<C-R>=expand('<cword>')<CR>\>
 noremap <Leader>d :Inherits <C-R>=expand('<cword>')<CR>
 
 " faster cursor movements between splits
