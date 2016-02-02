@@ -4,8 +4,8 @@ function run_vim_with_line_column()
 {
     PROGRAM_TO_RUN=$2
     FILE_NAME=`echo "$1" | cut -s -d":" -f1`
-    LINE_NUMBER=`echo "$1" | cut -s -d":" -f2`
-    COLUMN_NUMBER=`echo "$1" | cut -s -d":" -f3`
+    LINE_NUMBER=`echo "$1" | cut -s -d":" -f2 | grep -o "^[[:digit:]]\+"`
+    COLUMN_NUMBER=`echo "$1" | cut -s -d":" -f3 | grep -o "^[[:digit:]]\+"`
     if [ -n "$COLUMN_NUMBER" ]; then
         PARAMS="\"+call cursor($LINE_NUMBER, $COLUMN_NUMBER)\" $FILE_NAME"
     elif [ -n "$LINE_NUMBER" ]; then
