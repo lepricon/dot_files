@@ -9,7 +9,7 @@ function run_vim_with_line_column()
     if [ -n "$COLUMN_NUMBER" ]; then
         PARAMS="\"+call cursor($LINE_NUMBER, $COLUMN_NUMBER)\" $FILE_NAME"
     elif [ -n "$LINE_NUMBER" ]; then
-        PARAMS="\"+call cursor($LINE_NUMBER)\" $FILE_NAME"
+        PARAMS="\"+call cursor($LINE_NUMBER, 1)\" $FILE_NAME"
     else
         PARAMS="$1"
     fi

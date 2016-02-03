@@ -86,6 +86,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
@@ -95,9 +96,18 @@ let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50
 let Tlist_File_Fold_Auto_Close=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline statusbar
 set laststatus=2
 let g:airline_powerline_fonts=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Marks
 let g:mwIgnoreCase = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DragVisuals
+vmap  <expr>  <S-LEFT>   DVB_Drag('left')
+vmap  <expr>  <S-RIGHT>  DVB_Drag('right')
+vmap  <expr>  <S-DOWN>   DVB_Drag('down')
+vmap  <expr>  <S-UP>     DVB_Drag('up')

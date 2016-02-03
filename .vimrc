@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'jondkinney/dragvisuals.vim'
 Plugin 'vim-scripts/gtags.vim'
 Plugin 'mark', {'pinned': 1}
 Plugin 'my_config', {'pinned': 1}
