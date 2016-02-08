@@ -12,7 +12,7 @@ EXTRA_GREP_ARGS=$@
 
 function g()
 {
-    find ${PATH_TO_SEARCH} -type f | grep -v "\.svn\|\.git" | xargs -I@ grep --binary-files=without-match --color -Hn "${PATTERN}" @ ${EXTRA_GREP_ARGS}
+    find -L ${PATH_TO_SEARCH} -type f | grep -v "\.svn\|\.git" | xargs -I@ grep --binary-files=without-match --color -Hn "${PATTERN}" @ ${EXTRA_GREP_ARGS}
 }
 
 function gcpp()

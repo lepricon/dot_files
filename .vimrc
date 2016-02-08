@@ -126,6 +126,7 @@ else
 endif
 
 let mapleader = ","
+let g:mapleader = ","
 let g:load_doxygen_syntax=1
 "let g:solarized_termcolors=256
 colorscheme solarized "bandit  colorful256   gardener  desert256  default_modified
