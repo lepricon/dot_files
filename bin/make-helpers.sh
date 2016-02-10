@@ -29,14 +29,14 @@ function notifyBuildFinished()
 
 function mgmake()
 {
-    make -f Makefile MAKE_PARAMS=\"DISTCC=1\ CBE_MEASURE_TIME=\" "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE})
+    make -f Makefile "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE})
 }
 
 function mu()
 {
     UT_TARGET=$1
     shift
-    make -f Makefile MAKE_PARAMS=\"DISTCC=1\ CBE_MEASURE_TIME=\" REMOTE_HOST=${UT_REMOTE_HOST} ${UT_TARGET} "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE_UT})
+    make -f Makefile REMOTE_HOST=${UT_REMOTE_HOST} ${UT_TARGET} "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE_UT})
     notifyBuildFinished "Build" ${UT_TARGET} "$@"
 }
 
@@ -56,8 +56,18 @@ function me()
 {
     EXE_TARGET=$1
     shift
-    make -f Makefile MAKE_PARAMS=\"DISTCC=1\ CBE_MEASURE_TIME=\" REMOTE_HOST=${EXE_REMOTE_HOST} ${EXE_TARGET} "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE_EXE})
+    make -f Makefile REMOTE_HOST=${EXE_REMOTE_HOST} ${EXE_TARGET} "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE_EXE})
     notifyBuildFinished "Build" ${EXE_TARGET} "$@"
+}
+
+function mep()
+{
+    me MAKE_PARAMS+=DISTCC=1 MAKE_PARAMS+=CBE_MEASURE_TIME= "$@"
+}
+
+function mup()
+{
+    mu MAKE_PARAMS+=DISTCC=1 MAKE_PARAMS+=CBE_MEASURE_TIME= "$@"
 }
 
 function msc()
