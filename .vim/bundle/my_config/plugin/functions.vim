@@ -73,19 +73,19 @@ command! -nargs=* PlantUML call PlantUML()
 
 function! Gcpp( word )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpp " . l:searchPath . " \"" . a:word . "\" ' ) | copen"
+    exe "cgetexpr system( ' gcpp " . l:searchPath . " " . a:word . " ' ) | copen"
 endfunction
-command! -nargs=1 -complete=file Gcpp call Gcpp( <f-args> )
+command! -nargs=1 -complete=tag Gcpp call Gcpp( <f-args> )
 
 function! Gcppc( word )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcppc " . l:searchPath . " \"" . a:word . "\" ' ) | copen"
+    exe "cgetexpr system( ' gcppc " . l:searchPath . " " . a:word . " ' ) | copen"
 endfunction
-command! -nargs=1 -complete=file Gcppc call Gcppc( <f-args> )
+command! -nargs=1 -complete=tag Gcppc call Gcppc( <f-args> )
 
 function! Gcpptu( word )
     let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpptu " . l:searchPath . " \"" . a:word . "\" ' ) | copen"
+    exe "cgetexpr system( ' gcpptu " . l:searchPath . " " . a:word . " ' ) | copen"
 endfunction
 command! -nargs=1 -complete=tag Gcpptu call Gcpptu( <f-args> )
 
