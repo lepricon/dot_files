@@ -61,3 +61,5 @@ nnoremap gr viwy[{V%:s/\<<C-R>"\>/<C-R>"/gc<left><left><left>
 nnoremap gR :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<left><left><left>
 
 nnoremap <Leader>wm :w<CR> :make<CR>
+
+nnoremap <Leader>* :let @/ = '\<'.expand('<cword>').'\>'<CR>
