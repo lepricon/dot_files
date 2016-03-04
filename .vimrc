@@ -82,7 +82,7 @@ set wildmenu
 set hlsearch
 set incsearch
 set cursorline
-set ignorecase
+"set ignorecase
 set smartcase
 set noequalalways
 set nowrap
