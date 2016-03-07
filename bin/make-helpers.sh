@@ -7,7 +7,7 @@ BUILD_LOG_FILE_EXE="/tmp/mgmake-build-log-exe"
 BUILD_LOG_FILE_UT="/tmp/mgmake-build-log-ut"
 EXE_REMOTE_HOST=wrling47.emea.nsn-net.net
 UT_REMOTE_HOST=wrling121.emea.nsn-net.net
-CLANG_REMOTE_HOST=wrlcplane13.emea.nsn-net.net
+CLANG_REMOTE_HOST=wrling139.emea.nsn-net.net
 
 function notifyBuildFinished()
 {
