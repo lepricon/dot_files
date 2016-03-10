@@ -45,8 +45,9 @@ nnoremap + :res +10<CR>
 xnoremap p pgvy
 nnoremap <space> viw
 
-nnoremap * /<C-R><C-W><Home>\C<CR>
-nnoremap # ?<C-R><C-W><Home>\C<CR>
+" case insensitive search
+"nnoremap * /<C-R><C-W><Home>\C<CR>
+"nnoremap # ?<C-R><C-W><Home>\C<CR>
 
 " relative path
 nnoremap <Leader>ff :let @+ = expand("%")<CR>
