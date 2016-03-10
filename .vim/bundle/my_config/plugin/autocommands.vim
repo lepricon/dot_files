@@ -12,7 +12,6 @@ augroup filetypedetect
     au BufNewFile,BufRead *.log call s:DetectK3rFile()
     au BufRead,BufNewFile *.k3.txt set filetype=sct_k3_txt_log
     au BufRead,BufNewFile *.LOG,*.out set filetype=out
-    au BufRead,BufNewFile *.pu*,*.plantuml set filetype=plantuml
     au BufRead,BufNewFile *.ttcn* set filetype=ttcn
     au BufRead,BufNewFile *ssionList.txt set filetype=regr
 augroup END
