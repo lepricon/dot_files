@@ -45,9 +45,9 @@ nnoremap + :res +10<CR>
 xnoremap p pgvy
 nnoremap <space> viw
 
-" case insensitive search
-"nnoremap * /<C-R><C-W><Home>\C<CR>
-"nnoremap # ?<C-R><C-W><Home>\C<CR>
+" case sensitive search
+nnoremap * /<C-R><C-W><Home>\C<CR>
+nnoremap # ?<C-R><C-W><Home>\C<CR>
 
 " relative path
 nnoremap <Leader>ff :let @+ = expand("%")<CR>
@@ -63,4 +63,5 @@ nnoremap gR :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<left><left><left>
 
 nnoremap <Leader>wm :w<CR> :make<CR>
 
-nnoremap <Leader>* :let @/ = '\<'.expand('<cword>').'\>'<CR>
+" * w/o jump
+"nnoremap <Leader>* :let @/ = '\<'.expand('<cword>').'\>'<CR>
