@@ -90,8 +90,8 @@ endfunction
 command! -nargs=1 -complete=tag Gcpptu call Gcpptu( <f-args> )
 
 function! Inherits( word )
-    let l:command = "grep \"^[_a-zA-Z][_a-zA-Z0-9]\\{0,30\\}::.*inherits[:_a-zA-Z]\\\+" . a:word . "$\" tags \\| while read LINE; do FILE=`echo $LINE \\| awk ''{print $2}''`; TAGLINE=`echo $LINE \\| sed ''s\\|.*/^\\(.*\\)$/.*\\|\\1\\|''`; grep -Hn \"$TAGLINE\" \"$FILE\"; done"
-    exe "cgetexpr system( \' " . l:command . " \' ) | copen"
+    let l:command = "grep -E \\'^\\\\w+::.*inherits:(\\\\w+,)*" . a:word . "\\\\b\\' tags \\| awk \\'{print $2\\\"\\|0\\| \\\"$1}\\' \\| sort"
+    exe "cgetexpr system( \"" . l:command . "\" ) | copen"
 endfunction
 command! -nargs=1 -complete=file Inherits call Inherits( <f-args> )
 
