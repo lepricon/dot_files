@@ -152,6 +152,6 @@ function export_proxy()
     export HTTP_PROXY=http://10.144.1.10:8080/
 }
 
-#export_proxy
+export_proxy
 settitle
 
