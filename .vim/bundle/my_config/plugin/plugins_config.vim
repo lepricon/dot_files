@@ -12,10 +12,8 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_rec/async','sorters','sorter_rank')
 " replacing unite with ctrl-p
 nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
-
 nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
 nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
-nnoremap <leader>y :Unite history/yank<cr>
 nnoremap <leader>br :Unite buffer<cr>
 
 " Unite gtags
