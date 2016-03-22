@@ -9,7 +9,7 @@ EXE_REMOTE_HOST=wrling138.emea.nsn-net.net
 UT_REMOTE_HOST=wrling140.emea.nsn-net.net
 CLANG_REMOTE_HOST=wrling139.emea.nsn-net.net
 
-function notifyBuildFinished()
+notifyBuildFinished()
 {
     EXIT_CODE=$?
     ACTION=$1
@@ -27,12 +27,12 @@ function notifyBuildFinished()
     return $EXIT_CODE
 }
 
-function mgmake()
+mgmake()
 {
     make -f Makefile "$@" 2>&1 | tee >(perl -pe 's/\e\[?.*?[\@-~]//g' > ${BUILD_LOG_FILE})
 }
 
-function mu()
+mu()
 {
     UT_TARGET=$1
     shift
@@ -40,19 +40,19 @@ function mu()
     notifyBuildFinished "Build" ${UT_TARGET} "$@"
 }
 
-function mur()
+mur()
 {
     mgmake REMOTE_HOST=${UT_REMOTE_HOST} ut-run"$@"
     notifyBuildFinished "UT run" "$@"
 }
 
-function mvur()
+mvur()
 {
     mgmake REMOTE_HOST=${UT_REMOTE_HOST} ut-valgrind-run"$@"
     notifyBuildFinished "UT run" "$@"
 }
 
-function me()
+me()
 {
     EXE_TARGET=$1
     shift
@@ -60,17 +60,17 @@ function me()
     notifyBuildFinished "Build" ${EXE_TARGET} "$@"
 }
 
-function mep()
+mep()
 {
     me MAKE_PARAMS+=DISTCC=1 MAKE_PARAMS+=CBE_MEASURE_TIME= "$@"
 }
 
-function mup()
+mup()
 {
     mu MAKE_PARAMS+=DISTCC=1 MAKE_PARAMS+=CBE_MEASURE_TIME= "$@"
 }
 
-function msc()
+msc()
 {
     COMPONENT_NAME=$1
     shift
@@ -78,7 +78,7 @@ function msc()
     notifyBuildFinished "Coalescense run" ${TARGET_SHORT} "$@"
 }
 
-function msr()
+msr()
 {
     COMPONENT_NAME=$1
     shift
@@ -86,21 +86,21 @@ function msr()
     notifyBuildFinished "SCT run" ${TARGET_SHORT} "$@"
 }
 
-function med()
+med()
 {
     EXE_TARGET=$1
     shift
-    me ${EXE_TARGET} && msc "$@"
+    mep ${EXE_TARGET} && msc "$@"
 }
 
-function mud()
+mud()
 {
     UT_TARGET=$1
     shift
-    mu ${UT_TARGET} && mur "$@"
+    mup ${UT_TARGET} && mur "$@"
 }
 
-function mt()
+mt()
 {
     echo -ne "\nStarted"
     ( run_silent_and_log "ctags" mgmake ctags ) &
@@ -109,7 +109,12 @@ function mt()
     notifyBuildFinished "Tags generated"
 }
 
-function mtloop()
+mtv()
+{
+    mt && nohup vim +UpdateTypesFileOnly +q
+}
+
+mtloop()
 {
     COUNTER=0
     VIM_UPDATE_FREQ=5
@@ -125,20 +130,20 @@ function mtloop()
     done
 }
 
-function mclean_all_my_remote()
+mclean_all_my_remote()
 {
     mgmake remove-remote REMOTE_HOST=${EXE_REMOTE_HOST}
     mgmake remove-remote REMOTE_HOST=${UT_REMOTE_HOST}
     mgmake remove-remote REMOTE_HOST=${CLANG_REMOTE_HOST}
 }
 
-function mif()
+mif()
 {
     mgmake REMOTE_HOST=${EXE_REMOTE_HOST} interfaces
     freshen_project mt
 }
 
-function run_silent_and_log()
+run_silent_and_log()
 {
     LOG_PREFIX=$1
     shift
@@ -154,7 +159,7 @@ function run_silent_and_log()
     echo "$LOG_MSG"
 }
 
-function freshen_project()
+freshen_project()
 {
     echo -ne "\nStarted with $# commands "
     for param in "$@"; do
@@ -173,7 +178,7 @@ function freshen_project()
     notifyBuildFinished "Project re-freshing" "$@"
 }
 
-function mgcc9()
+mgcc9()
 {
     #$@ MAKE_PARAMS=\"CXX=/opt/gcc/linux64/ix86/gcc_4.9.0-rhel6/bin/c++\"
 
@@ -181,7 +186,7 @@ function mgcc9()
     $* MAKE_PARAMS+=\"CXX=$GCC_EXE\"
 }
 
-function mclang()
+mclang()
 {
     $* REMOTE_HOST=${CLANG_REMOTE_HOST} MAKE_PARAMS+=CLANG=\"yes_please\"
 }
