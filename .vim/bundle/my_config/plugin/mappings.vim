@@ -1,5 +1,14 @@
-map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>
-imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<CR>i
+"n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
+"i  Insert mode map. Defined using ':imap' or ':inoremap'.
+"v  Visual and select mode map. Defined using ':vmap' or ':vnoremap'.
+"x  Visual mode map. Defined using ':xmap' or ':xnoremap'.
+"s  Select mode map. Defined using ':smap' or ':snoremap'.
+"c  Command-line mode map. Defined using ':cmap' or ':cnoremap'.
+"o  Operator pending mode map. Defined using ':omap' or ':onoremap'
+
+
+map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<CR>
+imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<CR>i
 
 noremap <SCRollWheelUp>     7<C-Y>
 noremap <SCRollWheelDown>   7<C-E>
@@ -35,9 +44,9 @@ noremap <A-Right> <C-W><Right>
 noremap <C-Right> gt
 noremap <C-Left> gT
 
-" faster movements in QuickFix
-noremap <C-Up> :cp<CR>
-noremap <C-Down> :cn<CR>
+" error lookup in QuickFix
+noremap <C-Up> :copen<CR>?[Ee]rror[ :]<CR>
+noremap <C-Down> :copen<CR>j/[Ee]rror[ :]<CR>
 
 nnoremap _ :res -10<CR>
 nnoremap + :res +10<CR>
@@ -65,3 +74,9 @@ nnoremap <Leader>wm :w<CR> :make<CR>
 
 " * w/o jump
 "nnoremap <Leader>* :let @/ = '\<'.expand('<cword>').'\>'<CR>
+
+" move selected line up/down-wards
+nnoremap <C-J> ddp
+nnoremap <C-K> ddkP
+
+
