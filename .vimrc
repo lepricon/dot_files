@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
 Plugin 'vim-scripts/gtags.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'mark', {'pinned': 1}
 Plugin 'my_config', {'pinned': 1}
 Plugin 'Shougo/neocomplete'
