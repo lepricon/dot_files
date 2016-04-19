@@ -14,6 +14,7 @@ fun! LoadLog()
     copen
     set wrap
     exe "/error:\\|Error \d"
+    normal zz
 endf
 command! -nargs=* LoadLog call LoadLog()
 
@@ -22,6 +23,7 @@ fun! LoadLogExe()
     copen
     set wrap
     exe "/error:"
+    normal zz
 endf
 command! -nargs=* LoadLogExe call LoadLogExe()
 
@@ -30,6 +32,7 @@ fun! LoadLogUt()
     copen
     set wrap
     exe "/error:"
+    normal zz
 endf
 command! -nargs=* LoadLogUt call LoadLogUt()
 
