@@ -79,4 +79,6 @@ nnoremap <Leader>wm :w<CR> :make<CR>
 nnoremap <C-J> ddp
 nnoremap <C-K> ddkP
 
+" next selected Mark
+map <Leader>. <Leader>*
 
