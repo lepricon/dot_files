@@ -23,6 +23,8 @@ nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
 nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
 nnoremap <Leader>gt :execute 'Unite -start-insert gtags/completion'<CR>
 
+let g:unite_source_gtags_project_config = { '_': { 'treelize': 1 } }
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neocomplete
 
