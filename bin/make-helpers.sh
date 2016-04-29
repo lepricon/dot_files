@@ -5,7 +5,8 @@ set -o pipefail
 BUILD_LOG_FILE="/tmp/mgmake-build-log"
 BUILD_LOG_FILE_EXE="/tmp/mgmake-build-log-exe"
 BUILD_LOG_FILE_UT="/tmp/mgmake-build-log-ut"
-EXE_REMOTE_HOST=wrling138.emea.nsn-net.net
+#EXE_REMOTE_HOST=wrling138.emea.nsn-net.net
+EXE_REMOTE_HOST=wrling144.emea.nsn-net.net
 UT_REMOTE_HOST=wrling140.emea.nsn-net.net
 CLANG_REMOTE_HOST=wrling139.emea.nsn-net.net
 
@@ -104,7 +105,7 @@ mt()
 {
     echo -ne "\nStarted"
     ( run_silent_and_log "ctags" mgmake ctags ) &
-    ( run_silent_and_log "gtags" gtags -c ) &
+    ( run_silent_and_log "gtags" gtags ) &
     wait
     notifyBuildFinished "Tags generated"
 }
@@ -121,7 +122,7 @@ mtloop()
     PAUSE_TIME=60
     while true ; do
         run_silent_and_log "ctags" make -f Makefile ctags 2>&1
-        run_silent_and_log "gtags" gtags -c
+        run_silent_and_log "gtags" gtags
         if [ $COUNTER -eq 0 ]; then
             run_silent_and_log "vim highlighting" nohup vim +UpdateTypesFileOnly +q
         fi

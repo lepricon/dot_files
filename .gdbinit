@@ -18,8 +18,8 @@ register_libstdcxx_printers(None)
 
 # pretty printers for Boost
 sys.path.insert(1, '/home/vvolkov/ide/Boost-Pretty-Printer')
-from boost.printers import register_printer_gen
-register_printer_gen(None)
+import boost.latest
+boost.register_printers(None)
 
 end
 

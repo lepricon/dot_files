@@ -17,7 +17,7 @@ nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
 nnoremap <leader>br :Unite buffer<cr>
 
 " Unite gtags
-nnoremap <leader>gd :execute 'Unite gtags/def:'.expand('<cword>')<CR>
+nnoremap <leader>gd :execute 'Unite gtags/def'<CR>
 nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
 nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
 nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
