@@ -19,7 +19,7 @@ noremap <F3> :NERDTreeToggle<CR>
 noremap <S-F3> :NERDTreeFind<CR>
 noremap <F4> :tab split<CR>
 noremap <F5> :Rgrep<CR>
-noremap <F6> :TlistToggle<CR>
+"noremap <F6>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<CR>

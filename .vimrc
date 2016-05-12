@@ -22,7 +22,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'aklt/plantuml-syntax'
 Plugin 'vim-scripts/QFGrep.vim'
 Plugin 'vim-scripts/Tagbar'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'ttcnSupport', {'pinned': 1}
 Plugin 'Shougo/unite.vim'
 Plugin 'hewes/unite-gtags'
