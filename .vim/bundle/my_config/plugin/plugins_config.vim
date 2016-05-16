@@ -100,7 +100,7 @@ let Tlist_File_Fold_Auto_Close=1
 " Airline statusbar
 set laststatus=2
 let g:airline_powerline_fonts=1
-let g:airline_extensions=["quickfix","unite","netrw","branch","po","wordcount"]
+let g:airline_extensions=["quickfix","unite","netrw","branch","po"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Marks
