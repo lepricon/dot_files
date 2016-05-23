@@ -44,10 +44,6 @@ noremap <A-Right> <C-W><Right>
 noremap <C-Right> gt
 noremap <C-Left> gT
 
-" error lookup in QuickFix
-noremap <C-Up> :copen<CR>?[Ee]rror[ :]<CR>
-noremap <C-Down> :copen<CR>j/[Ee]rror[ :]<CR>
-
 nnoremap _ :res -10<CR>
 nnoremap + :res +10<CR>
 
