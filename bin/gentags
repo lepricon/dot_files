@@ -1,14 +1,9 @@
 #!/bin/bash
 
 # ctags
-FILES_LIST=`mktemp`
-find_srcs . | xargs -I@ readlink -e @ > $FILES_LIST
-ctags -L $FILES_LIST
-rm $FILES_LIST
+ctags -R --c++-kinds=+p --python-kinds=-i --fields=+iaS --extra=+q .
 echo "ctags done..."
 
 # cscope
-rm ./cscope.*
-find_srcs . | xargs -I@ readlink -e @ > cscope.files
-cscope -b -q
+GTAGSLABEL=pygments GTAGSCONF=/usr/local/share/gtags/gtags.conf gtags
 echo "cscope done."
