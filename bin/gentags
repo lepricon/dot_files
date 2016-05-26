@@ -2,8 +2,8 @@
 
 # ctags
 ctags -R --c++-kinds=+p --python-kinds=-i --fields=+iaS --extra=+q .
-echo "ctags done..."
+echo -n "ctags done,"
 
 # cscope
 GTAGSLABEL=pygments GTAGSCONF=/usr/local/share/gtags/gtags.conf gtags
-echo "cscope done."
+echo " gtags done."
