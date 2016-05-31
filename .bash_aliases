@@ -27,5 +27,5 @@ alias pf='ps xlf'
 alias pa='ps aux'
 
 alias vi=vim
-alias gitlog="git log --decorate --graph"
+alias gitlg="git log --graph --oneline --decorate"
 
