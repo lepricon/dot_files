@@ -1,10 +1,17 @@
-au FocusGained,BufEnter * :silent! checktime
-
 fun! s:DetectK3rFile()
     if getline(1) =~ '^\d\{8}T\d\{6}\.\d\{6}\|'
         setf k3r
     endif
 endfun
+
+
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
 
 augroup filetypedetect
     au BufNewFile,BufRead *.ttcn3 setf ttcn
@@ -16,11 +23,14 @@ augroup filetypedetect
     au BufRead,BufNewFile *ssionList.txt set filetype=regr
 augroup END
 
+
+au FocusGained,BufEnter * :silent! checktime
+
 " following line makes Vim jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " trim trailing whitespaces on save
-autocmd BufWritePre *.[chs]*,*.ttcn*,*.py :%s/\s\+$//e
+autocmd BufWritePre *.[chs]*,*.ttcn*,*.py :call <SID>StripTrailingWhitespaces()
 
 " highlight and remove trailind whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
