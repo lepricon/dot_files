@@ -63,7 +63,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|xterm-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -97,7 +97,7 @@ if [ "$color_prompt" = yes ]; then
 
     RESET_COLOUR="\e[00m"
 
-    PS1="\[${GREEN}\]\u\[${VIOLET}\] @ \h \[${CYAN}\]\w \[${BROWN}\]$(git_branch_name)\[${RED}\]\t\n\[${CYAN}\]$ \[${RESET_COLOUR}\]"
+    PS1="\[${GREEN}\]\u\[${VIOLET}\] @ \h \[${CYAN}\]\w \[${BROWN}\]\$(git_branch_name)\[${RED}\]\t\n\[${CYAN}\]$ \[${RESET_COLOUR}\]"
   #  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
