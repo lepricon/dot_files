@@ -90,7 +90,7 @@ endif
 " grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
-let Grep_Default_Filelist = '*.h *.hpp *.c *.cpp *.hxx *.cxx'
+let Grep_Default_Filelist = '*.h *.hpp *.c *.cpp *.hxx *.cxx *.asn *.py'
 
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=50

@@ -18,7 +18,7 @@ noremap <S-F2> :call ToggleSourceTest()<CR>
 noremap <F3> :NERDTreeToggle<CR>
 noremap <S-F3> :NERDTreeFind<CR>
 noremap <F4> :tab split<CR>
-noremap <F5> :Rgrep<CR>
+noremap <F5> :vimgrep <C-R>=expand('<cword>')<CR> <C-R>=fnamemodify(expand("%"), ":h")<CR>/**
 "noremap <F6>
 noremap <F7> :TagbarToggle<CR>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
@@ -52,6 +52,7 @@ nnoremap <space> viw
 
 " case sensitive search
 nnoremap * /<C-R><C-W>\C<CR>
+noremap <kMultiply> /<C-R><C-W>\C<CR>
 nnoremap # ?<C-R><C-W>\C<CR>
 
 " relative path
