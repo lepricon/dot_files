@@ -1,5 +1,12 @@
 #!/bin/bash
-OUTPUT="$1"
-shift
+INPUT="$1"
 
-gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$OUTPUT" $@
+if [ $# -lt 2 ]; then
+    OUTPUT=$INPUT
+else
+    OUTPUT="$2"
+fi
+TEMP=`mktemp`
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$TEMP" "$INPUT"
+mv $TEMP $OUTPUT
