@@ -141,17 +141,5 @@ export EDITOR=vim
 export INPUTRC=$HOME/.inputrc
 export PATH=$PATH:$HOME/bin
 
-
-function export_proxy()
-{
-    export http_proxy=http://10.144.1.10:8080/
-    export ftp_proxy=http://10.144.1.10:8080/
-    export FTP_PROXY=http://10.144.1.10:8080/
-    export HTTPS_PROXY=http://10.144.1.10:8080/
-    export https_proxy=http://10.144.1.10:8080/
-    export HTTP_PROXY=http://10.144.1.10:8080/
-}
-
-export_proxy
 settitle
 

@@ -4,22 +4,24 @@ set print static-members on
 set print vtbl on
 set print demangle on
 set demangle-style gnu-v3
-set print sevenbit-strings off 
+set print sevenbit-strings off
 
-source ~/ide/stl-views-1.0.3.gdb
+source /home/vvolkov/Workspace/gdb_printers/stl-views-1.0.3.gdb
 
 python
 import sys
 
 #  pretty printers for STL
-sys.path.insert(0, '/home/vvolkov/ide/STLPrettyPrinters')
+sys.path.insert(0, '/home/vvolkov/Workspace/gdb_printers/STLPrettyPrinters/python')
 from libstdcxx.v6.printers import register_libstdcxx_printers
 register_libstdcxx_printers(None)
 
 # pretty printers for Boost
-sys.path.insert(1, '/home/vvolkov/ide/Boost-Pretty-Printer')
-import boost.latest
-boost.register_printers(None)
+sys.path.insert(1, '/home/vvolkov/Workspace/gdb_printers/Boost-Pretty-Printer')
+#from boost.printers import register_printer_gen
+#register_printer_gen(None)
+import boost.all
+boost.register_printers()
 
 end
 
