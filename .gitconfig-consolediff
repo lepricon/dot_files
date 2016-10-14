@@ -12,6 +12,7 @@
 	diff = auto
 	interactive = auto
 	status = auto
+	ui = auto
 [mergetool "kdiff3"]
 	path = /usr/bin/kdiff3
 	trustExitCode = false
@@ -20,3 +21,5 @@
 	tool = kdiff3
 [push]
 	default = simple
+[core]
+	autocrlf = input
