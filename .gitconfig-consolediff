@@ -4,9 +4,6 @@
 	co = checkout
 	br = branch
 	lg = log --oneline --graph
-[user]
-	name = lepricon
-	email = lepricon@lepricon.linuxpl.info
 [color]
 	branch = auto
 	diff = auto
