@@ -104,8 +104,11 @@ mud()
 mt()
 {
     echo -ne "\nStarted"
-    ( run_silent_and_log "ctags" mgmake ctags ) &
-    ( run_silent_and_log "gtags" gtags ) &
+#    ( run_silent_and_log "ctags" mgmake ctags ) &
+
+    ( find . \( -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' \) > srcs.txt && ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -L srcs.txt ) &
+    ( run_silent_and_log "gtags" gtags -c ) &
+
     wait
     notifyBuildFinished "Tags generated"
 }

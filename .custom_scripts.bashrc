@@ -29,7 +29,7 @@ settitle()
 
 todayistartedat()
 {
-    TODAY_FORMATTED_DATE=$(echo $(LC_ALL=en_US.UTF-8 date +"%b %d") | sed -E 's/0([1-9])/ \1/g')
+    TODAY_FORMATTED_DATE=$(echo $(LC_ALL=en_US.UTF-8 date +"%b %d") | sed -E 's/0([1-9])/ \1/g').*unlocked
     grep -IE "$TODAY_FORMATTED_DATE" /var/log/auth.log* | sed -E "s/([^:]*):(.*)`hostname`(.*)/\2/g" | sort | head -n 1
 }
 
