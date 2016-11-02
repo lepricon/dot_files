@@ -46,12 +46,12 @@ command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
 
 function! ToggleHeaderSource()
   if match(expand("%"),'\.cpp') > 0
-    let l:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
-    let l:flipname = substitute(l:flipname,'\(.*\)Source','\1Include',"")
+    let l:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.h\1',"")
+"    let l:flipname = substitute(l:flipname,'\(.*\)Source','\1Include',"")
     exe ":e " . l:flipname
-  elseif match(expand("%"),'\.hpp') > 0
-    let l:flipname = substitute(expand("%"),'\.hpp\(.*\)','\.cpp\1',"")
-    let l:flipname = substitute(l:flipname,'\(.*\)Include','\1Source',"")
+  elseif match(expand("%"),'\.h') > 0
+    let l:flipname = substitute(expand("%"),'\.h\(.*\)','\.cpp\1',"")
+"    let l:flipname = substitute(l:flipname,'\(.*\)Include','\1Source',"")
     exe ":e " . l:flipname
   endif
 endfun

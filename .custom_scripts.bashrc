@@ -1,8 +1,8 @@
 git_branch_name()
 {
-    LINE="$( git br 2>/dev/null | grep '*' | cut -d' ' -f2 )$(svn info 2>/dev/null | grep '^URL:' | sed 's|.*/\([^/]\+\)|\1|')"
+    LINE="$(git br 2>/dev/null | grep '*' | sed 's/* //')$(svn info 2>/dev/null | grep '^URL:' | sed 's|.*/\([^/]\+\)|\1|')"
     if [ -n "$LINE" ]; then
-        echo "$LINE "
+        echo -n "$LINE "
     fi
 }
 

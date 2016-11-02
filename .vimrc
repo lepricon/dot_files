@@ -14,7 +14,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
 Plugin 'mark', {'pinned': 1}
 Plugin 'my_config', {'pinned': 1}
-Plugin 'Shougo/neocomplete'
+" Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
@@ -37,6 +37,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'skroll/vim-taghighlight'
+Plugin 'valloric/youcompleteme'
 
 
 " All of your Plugins must be added before the following line
@@ -118,7 +119,7 @@ if has('gui_running')
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
     set guioptions-=L  "remove left-hand scroll bar
-    set linespace=1
+"    set linespace=1
     let g:mwDefaultHighlightingPalette='maximum'
 else
     set background=dark

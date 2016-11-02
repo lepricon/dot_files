@@ -139,7 +139,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # user defined things
 export EDITOR=vim
 export INPUTRC=$HOME/.inputrc
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 settitle
 
