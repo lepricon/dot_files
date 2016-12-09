@@ -26,6 +26,10 @@ nnoremap <Leader>gt :execute 'Unite -start-insert gtags/completion'<CR>
 let g:unite_source_gtags_project_config = { '_': { 'treelize': 1 } }
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NeoSnippets

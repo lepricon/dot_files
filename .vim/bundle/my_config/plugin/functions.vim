@@ -95,7 +95,7 @@ endfunction
 command! -nargs=1 -complete=tag Gcpptu call Gcpptu( <f-args> )
 
 function! Inherits( word )
-    let l:command = "grep -E \\'^\\\\w+::.*inherits:(\\\\w+,)*" . a:word . "\\\\b\\' tags \\| awk \\'{print $2\\\"\\|0\\| \\\"$1}\\' \\| sort"
+    let l:command = "grep -E \\'^\\\\w+::.*inherits:(\\\\w+::)*" . a:word . "\\\\b\\' tags \\| awk \\'{print $2\\\"\\|0\\| \\\"$1}\\' \\| sort"
     exe "cgetexpr system( \"" . l:command . "\" ) | copen"
 endfunction
 command! -nargs=1 -complete=file Inherits call Inherits( <f-args> )
@@ -123,15 +123,15 @@ function! OpenInCurrentAndJumpToLine( ... )
 endfunction
 command! -nargs=* -complete=command Ed call OpenInCurrentAndJumpToLine( <f-args> )
 
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
+"function! Multiple_cursors_before()
+"    exe 'NeoCompleteLock'
+"    echo 'Disabled autocomplete'
+"endfunction
+"
+"function! Multiple_cursors_after()
+"    exe 'NeoCompleteUnlock'
+"    echo 'Enabled autocomplete'
+"endfunction
 
 function! UniteGrep( ... )
     set modifiable

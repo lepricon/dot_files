@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if [ $# -lt 2 ]; then
-    echo "USAGE: $0 <path> <pattern> <grep-args>"
+    echo "USAGE: $0 <pattern> <path> <grep-args>"
     exit 1
 fi
 
-PATH_TO_SEARCH=$1
-PATTERN=`echo $2 | sed -e 's/ /\\\\ /g'`
+PATTERN=`echo $1 | sed -e 's/ /\\\\ /g'`
+PATH_TO_SEARCH=$2
 shift 2
 EXTRA_GREP_ARGS=$@
 
