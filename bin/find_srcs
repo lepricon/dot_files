@@ -1,2 +1,2 @@
 #!/bin/bash
-find "$@" -type f -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' -o -name '*.hxx' -o -name '*.ttcn3' -o -name '*.py' | grep -v '/\.svn/'
+find "$@" -type f -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' -o -name '*.inl' -o -name '*.hxx' -o -name '*.ttcn3' -o -name '*.py' | grep -v '/\.svn/'

@@ -1,0 +1,30 @@
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    dirdiff = difftool --dir-diff
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[diff]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	path = /usr/bin/kdiff3
+	trustExitCode = false
+	keepBackup = false
+[merge]
+	tool = kdiff3
+[push]
+	default = simple
+[core]
+	autocrlf = input
+[user]
+	name = Volodymyr Volkov
+	email = volodymyr.volkov@here.com
+[review "gerrit.it.here.com"]
+	username = vvolkov

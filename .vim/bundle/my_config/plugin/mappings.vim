@@ -7,8 +7,8 @@
 "o  Operator pending mode map. Defined using ':omap' or ':onoremap'
 
 
-map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<CR>
-imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<CR>i
+map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format.py<CR>
+imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format.py<CR>i
 
 noremap <SCRollWheelUp>     7<C-Y>
 noremap <SCRollWheelDown>   7<C-E>

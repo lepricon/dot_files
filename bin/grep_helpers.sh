@@ -27,12 +27,12 @@ function gcppc()
 
 function gcppt()
 {
-    find_srcs ${PATH_TO_SEARCH} | grep -v Test_modules | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
+    find_srcs ${PATH_TO_SEARCH} | grep -v '/tests\{0,1\}/' | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
 }
 
 function gcpptu()
 {
-    find_srcs ${PATH_TO_SEARCH} | grep -v Test_modules | grep -iv "${PATTERN}" | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
+    find_srcs ${PATH_TO_SEARCH} | grep -v '/tests\{0,1\}/' | grep -iv "${PATTERN}" | xargs -I filename grep --color -Hn "${PATTERN}" filename ${EXTRA_GREP_ARGS}
 }
 
 FUNC_REQUESTED=`basename $0`
