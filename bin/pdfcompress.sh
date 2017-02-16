@@ -9,4 +9,4 @@ fi
 TEMP=`mktemp`
 
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$TEMP" "$INPUT"
-mv $TEMP $OUTPUT
+mv "$TEMP" "$OUTPUT"
