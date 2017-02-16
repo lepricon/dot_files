@@ -10,34 +10,33 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'aklt/plantuml-syntax'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'hewes/unite-gtags'
+Plugin 'jeaye/color_coded'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
+Plugin 'markcornick/vim-bats'
 Plugin 'mark', {'pinned': 1}
 Plugin 'my_config', {'pinned': 1}
-" Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
 Plugin 'scrooloose/nerdtree'
-Plugin 'aklt/plantuml-syntax'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/unite-outline'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'skroll/vim-easycolour'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'ttcnSupport', {'pinned': 1}
+Plugin 'valloric/youcompleteme'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/QFGrep.vim'
 Plugin 'vim-scripts/Tagbar'
-Plugin 'ttcnSupport', {'pinned': 1}
-Plugin 'Shougo/unite.vim'
-Plugin 'hewes/unite-gtags'
-Plugin 'Shougo/unite-outline'
 Plugin 'vim-scripts/vcscommand.vim'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'markcornick/vim-bats'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-commentary'
-Plugin 'skroll/vim-easycolour'
-Plugin 'tpope/vim-fugitive'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'skroll/vim-taghighlight'
-Plugin 'valloric/youcompleteme'
 
 
 " All of your Plugins must be added before the following line

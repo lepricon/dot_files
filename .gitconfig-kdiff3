@@ -1,0 +1,28 @@
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	lg = log --oneline --graph
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[mergetool "kdiff3"]
+	path = /usr/bin/kdiff3
+	trustExitCode = false
+	keepBackup = false
+[merge]
+	tool = kdiff3
+[push]
+	default = simple
+[core]
+	autocrlf = input
+[diff]
+	tool = kdiff3
+[difftool "kdiff3"]
+	path = /usr/bin/kdiff3
+	trustExitCode = false
+	prompt = false

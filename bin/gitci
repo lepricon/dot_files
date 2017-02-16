@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git diff -U0 HEAD | clang-format-diff-3.8 -i -p1 -style=file
+git ci ${@}

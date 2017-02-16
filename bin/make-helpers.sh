@@ -112,32 +112,21 @@ mt()
 {
     echo -ne "\nStarted"
 
-    ( run_silent_and_log "ctags" find_and_ctag &&
-          run_silent_and_log "vim highlighting" nohup vim +UpdateTypesFileOnly +q ) &
+    ( run_silent_and_log "ctags" find_and_ctag ) &
     ( run_silent_and_log "gtags" gtags -c ) &
 
     wait
     notifyBuildFinished "Tags generated"
 }
 
-mtv()
-{
-    mt && nohup vim +UpdateTypesFileOnly +q
-}
-
 mtloop()
 {
     COUNTER=0
-    VIM_UPDATE_FREQ=5
     PAUSE_TIME=60
     while true ; do
         run_silent_and_log "ctags" make -f Makefile ctags 2>&1
         run_silent_and_log "gtags" gtags
-        if [ $COUNTER -eq 0 ]; then
-            run_silent_and_log "vim highlighting" nohup vim +UpdateTypesFileOnly +q
-        fi
         run_silent_and_log "pause for $PAUSE_TIME s" sleep $PAUSE_TIME
-        COUNTER=$(( (COUNTER + 1) % VIM_UPDATE_FREQ ))
     done
 }
 
@@ -175,8 +164,7 @@ freshen_project()
     echo -ne "\nStarted with $# commands "
     for param in "$@"; do
         if [ "$param" == "mt" ]; then
-            ( run_silent_and_log "mt" mt &&
-                run_silent_and_log "vim highlighting" nohup vim +UpdateTypesFileOnly +q ) &
+            ( run_silent_and_log "mt" mt ) &
         else
             ( run_silent_and_log "$param" $param ) &
         fi
