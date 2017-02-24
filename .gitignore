@@ -1,6 +1,5 @@
+GPATH
+GRTAGS
+GTAGS
 tags
-*.taghl
-*.pyc
-.vim/view/
-.vim/.netrwhist
-easycolour_cache*
+.color_coded

@@ -24,6 +24,7 @@
 	default = simple
 [core]
 	autocrlf = input
+	excludesfile = ~/.gitignore
 [user]
 	name = Volodymyr Volkov
 	email = volodymyr.volkov@here.com
