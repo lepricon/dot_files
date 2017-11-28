@@ -27,6 +27,4 @@
 	excludesfile = ~/.gitignore
 [user]
 	name = Volodymyr Volkov
-	email = volodymyr.volkov@here.com
-[review "gerrit.it.here.com"]
-	username = vvolkov
+	email = volodymyr.volkov@gmail.com
