@@ -140,6 +140,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export EDITOR=vim
 export INPUTRC=$HOME/.inputrc
 export PATH=$HOME/bin:$PATH
+export QT_STYLE_OVERRIDE=breeze
 
 settitle
 

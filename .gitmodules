@@ -1,0 +1,6 @@
+[submodule "cfg/gdb/stl-views"]
+	path = cfg/gdb/stl-views
+	url = https://github.com/taohex/stl-views.git
+[submodule "cfg/gdb/Boost-Pretty-Printer"]
+	path = cfg/gdb/Boost-Pretty-Printer
+	url = https://github.com/ruediger/Boost-Pretty-Printer.git

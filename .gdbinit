@@ -6,20 +6,20 @@ set print demangle on
 set demangle-style gnu-v3
 set print sevenbit-strings off
 
-source /home/vvolkov/Workspace/gdb_printers/stl-views-1.0.3.gdb
+source ~/cfg/gdb/stl-views/stl-views.gdb
 
 python
 import sys
 
+HOME_DIR='/home/vvolkov'
+
 #  pretty printers for STL
-sys.path.insert(0, '/home/vvolkov/Workspace/gdb_printers/STLPrettyPrinters/python')
+sys.path.insert(0, HOME_DIR + '/cfg/gdb/python')
 from libstdcxx.v6.printers import register_libstdcxx_printers
 register_libstdcxx_printers(None)
 
 # pretty printers for Boost
-sys.path.insert(1, '/home/vvolkov/Workspace/gdb_printers/Boost-Pretty-Printer')
-#from boost.printers import register_printer_gen
-#register_printer_gen(None)
+sys.path.insert(1, HOME_DIR + '/cfg/gdb/Boost-Pretty-Printer')
 import boost.all
 boost.register_printers()
 
