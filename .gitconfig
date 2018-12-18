@@ -26,5 +26,4 @@
 	autocrlf = input
 	excludesfile = ~/.gitignore
 [user]
-	name = Volodymyr Volkov
-	email = volodymyr.volkov@gmail.com
+	email = 517695+lepricon@users.noreply.github.com

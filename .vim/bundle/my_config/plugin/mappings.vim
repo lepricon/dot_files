@@ -72,9 +72,9 @@ nnoremap <Leader>wm :w<CR> :make<CR>
 " * w/o jump
 "nnoremap <Leader>* :let @/ = '\<'.expand('<cword>').'\>'<CR>
 
-" move selected line up/down-wards
-nnoremap <C-J> ddp
-nnoremap <C-K> ddkP
+" move current line up/down-wards
+nnoremap <C-S-Up> :m -2<CR>
+nnoremap <C-S-Down> :m +1<CR>
 
 " next selected Mark
 map <Leader>. <Leader>*
