@@ -11,14 +11,18 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'aklt/plantuml-syntax'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'ericcurtin/curtineincsw.vim'
 Plugin 'hewes/unite-gtags'
+Plugin 'inkarkat/vim-ingo-library'
+Plugin 'inkarkat/vim-mark'
 Plugin 'jeaye/color_coded'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
+"Plugin 'mark', {'pinned': 1}
 Plugin 'markcornick/vim-bats'
-Plugin 'mark', {'pinned': 1}
+Plugin 'morhetz/gruvbox'
 Plugin 'my_config', {'pinned': 1}
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neomru.vim'
@@ -31,6 +35,7 @@ Plugin 'skroll/vim-easycolour'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-jdaddy'
 Plugin 'ttcnSupport', {'pinned': 1}
 Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline-themes'
@@ -70,7 +75,12 @@ call pathogen#helptags()
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
  set mouse=a
- set ttymouse=xterm2
+ set ttyfast
+ if has("mouse_sgr")
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
 endif
 
 set t_Co=256
@@ -86,7 +96,7 @@ set ignorecase
 set smartcase
 set noequalalways
 set nowrap
-set colorcolumn=120
+" set colorcolumn=120
 
 set tabstop=4               "number of spaces a <Tab> in the text stands for
 set shiftwidth=4            "number of spaces used for each step of (auto)indent
@@ -111,8 +121,9 @@ if has('gui_running')
     cnoremap <S-Insert> <C-R>*
     inoremap <S-Insert> <C-R>*
     nnoremap <S-Insert> "*p
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-"    set guifont=Monaco\ for\ Powerline\ 10
+"    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
+"    set guifont=Monaco\ for\ Powerline\ 12
+    set guifont=Monaco:h12
 
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
@@ -128,8 +139,8 @@ endif
 let mapleader = ","
 let g:mapleader = ","
 let g:load_doxygen_syntax=1
-"let g:solarized_termcolors=256
-colorscheme solarized "bandit  colorful256   gardener  desert256  default_modified
+let g:solarized_termcolors=256
+colorscheme gruvbox "solarize dbandit  colorful256   gardener  desert256  default_modified
 
 " set different cursor color in different modes
 if &term =~ "xterm\\|rxvt"
@@ -142,3 +153,9 @@ if &term =~ "xterm\\|rxvt"
     autocmd VimLeave * silent !echo -ne "\003]12;Gray\007"
 endif
 
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
