@@ -29,7 +29,6 @@ Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/unite-outline'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'skroll/vim-easycolour'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-jdaddy'
@@ -137,7 +136,7 @@ endif
 let mapleader = ","
 let g:mapleader = ","
 let g:load_doxygen_syntax=1
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 "colorscheme gruvbox solarize dbandit  colorful256   gardener  desert256  default_modified
 autocmd vimenter * ++nested colorscheme gruvbox
 
@@ -153,9 +152,14 @@ if &term =~ "xterm\\|rxvt"
     autocmd VimLeave * silent !echo -ne "\003]12;Gray\007"
 endif
 
+" iTerm2 cursor modes
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 
 if exists('+termguicolors')
+  let &termguicolors = v:true
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
 endif
