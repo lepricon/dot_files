@@ -11,20 +11,18 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'aklt/plantuml-syntax'
-"Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'ericcurtin/curtineincsw.vim'
 Plugin 'hewes/unite-gtags'
 Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
-Plugin 'jeaye/color_coded'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
-"Plugin 'mark', {'pinned': 1}
 Plugin 'markcornick/vim-bats'
 Plugin 'morhetz/gruvbox'
 Plugin 'my_config', {'pinned': 1}
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neosnippet.vim'
@@ -33,10 +31,9 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'skroll/vim-easycolour'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-jdaddy'
-Plugin 'ttcnSupport', {'pinned': 1}
+"Plugin 'ttcnSupport', {'pinned': 1}
 Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/QFGrep.vim'
@@ -113,6 +110,7 @@ set makeprg=clang++\ -g\ -std=c++14\ -stdlib=libc++\ -lpthread
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
 set indentkeys=0{,0},0#,!^F,o,O,e
 
+filetype plugin on
 syntax enable
 syntax on
 
@@ -140,7 +138,9 @@ let mapleader = ","
 let g:mapleader = ","
 let g:load_doxygen_syntax=1
 let g:solarized_termcolors=256
-colorscheme gruvbox "solarize dbandit  colorful256   gardener  desert256  default_modified
+"colorscheme gruvbox solarize dbandit  colorful256   gardener  desert256  default_modified
+autocmd vimenter * ++nested colorscheme gruvbox
+
 
 " set different cursor color in different modes
 if &term =~ "xterm\\|rxvt"

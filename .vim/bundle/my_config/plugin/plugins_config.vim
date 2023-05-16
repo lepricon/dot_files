@@ -28,6 +28,7 @@ let g:unite_source_gtags_project_config = { '_': { 'treelize': 1 } }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe
+let g:ycm_enable_semantic_highlighting=1
 let g:ycm_autoclose_preview_window_after_completion = 1
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
