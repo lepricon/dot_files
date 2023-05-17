@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh +x
+
+CMD=$*
+
+function notify()
+{
+    TITLE=$1
+    shift
+    MESSAGE=$*
+    /usr/bin/osascript -e "display notification \"${MESSAGE}\" with title \"${TITLE}\""
+}
+
+eval time ${CMD}
+
+notify "Finished with $?" "${CMD}"

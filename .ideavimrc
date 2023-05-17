@@ -1,0 +1,45 @@
+set number                  " show the line number for each line
+set showcmd                 " display incomplete commands
+set wildmode=longest,list,full
+set wildmenu
+set hlsearch
+set incsearch
+set cursorline
+#set nocompatible
+set ignorecase
+set smartcase
+set noequalalways
+set nowrap
+
+set tabstop=4               "number of spaces a <Tab> in the text stands for
+set shiftwidth=4            "number of spaces used for each step of (auto)indent
+set expandtab               "expand <Tab> to spaces in Insert mode
+set autoindent              "automatically set the indent of a new line
+set smartindent             "do clever autoindenting
+
+set nowritebackup   "write a backup file before overwriting a file
+set matchpairs+=<:>
+
+syntax enable
+syntax on
+"highlight Pmenu ctermfg=black
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+nnoremap <Space> viw
+
