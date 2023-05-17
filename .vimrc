@@ -119,8 +119,7 @@ if has('gui_running')
     inoremap <S-Insert> <C-R>*
     nnoremap <S-Insert> "*p
 "    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
-"    set guifont=Monaco\ for\ Powerline\ 12
-    set guifont=Monaco:h12
+    set guifont=MonacoForPowerline:h13
 
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
@@ -136,8 +135,8 @@ endif
 let mapleader = ","
 let g:mapleader = ","
 let g:load_doxygen_syntax=1
-"let g:solarized_termcolors=256
-"colorscheme gruvbox solarize dbandit  colorful256   gardener  desert256  default_modified
+let g:solarized_termcolors=256
+"colorscheme valloric " solarized dbandit  colorful256   gardener  desert256  default_modified
 autocmd vimenter * ++nested colorscheme gruvbox
 
 

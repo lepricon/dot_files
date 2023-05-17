@@ -44,30 +44,6 @@ fun! CleanTimestampsInLog()
 endf
 command! -nargs=* CleanTimestampsInLog call CleanTimestampsInLog()
 
-function! ToggleHeaderSource()
-  if match(expand("%"),'\.cpp') > 0
-    let l:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.h\1',"")
-"    let l:flipname = substitute(l:flipname,'\(.*\)Source','\1Include',"")
-    exe ":e " . l:flipname
-  elseif match(expand("%"),'\.h') > 0
-    let l:flipname = substitute(expand("%"),'\.h\(.*\)','\.cpp\1',"")
-"    let l:flipname = substitute(l:flipname,'\(.*\)Include','\1Source',"")
-    exe ":e " . l:flipname
-  endif
-endfun
-
-function! ToggleSourceTest()
-  if match(expand("%"),'Test_modules\/') > 0
-    let l:flipname = substitute(expand("%"),'\(.*\)Test_modules','\1Source',"")
-    let l:flipname = substitute(l:flipname,'TestSuite','',"")
-    exe ":e " . l:flipname
-  elseif match(expand("%"),'Source\/') > 0
-    let l:flipname = substitute(expand("%"),'\(.*\)Source','\1Test_modules',"")
-    let l:flipname = substitute(l:flipname,'\.cpp','TestSuite\.cpp',"")
-    exe ":e " . l:flipname
-  endif
-endfun
-
 function! PlantUML()
     let l:imageName = substitute(expand("%"),'\.pu.*','\.png',"")
     exe "silent !plantuml %"
