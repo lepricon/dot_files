@@ -12,22 +12,23 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'aklt/plantuml-syntax'
 Plugin 'bling/vim-airline'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'ericcurtin/curtineincsw.vim'
-Plugin 'hewes/unite-gtags'
 Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
+Plugin 'inkarkat/vim-CursorLineCurrentWindow'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
 Plugin 'markcornick/vim-bats'
 Plugin 'morhetz/gruvbox'
 Plugin 'my_config', {'pinned': 1}
+Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
@@ -36,7 +37,6 @@ Plugin 'tpope/vim-jdaddy'
 Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/QFGrep.vim'
-Plugin 'vim-scripts/Tagbar'
 Plugin 'vim-scripts/vcscommand.vim'
 
 
@@ -102,10 +102,11 @@ set autoindent              "automatically set the indent of a new line
 set smartindent             "do clever autoindenting
 "set hidden                  "remember your changes in hidden buffers -> no need to save on close
 
+set autowrite
 set nowritebackup   "write a backup file before overwriting a file
-set tags+=./tags
 set matchpairs+=<:>
-set makeprg=clang++\ -g\ -std=c++14\ -stdlib=libc++\ -lpthread
+"set makeprg=clang++\ -g\ -std=c++14\ -stdlib=libc++\ -lpthread
+set makeprg=cd\ build;\ cmake\ --build\ .\ -j6
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,.git,*.tmp*,*.orig,*.rej
 set indentkeys=0{,0},0#,!^F,o,O,e
 
@@ -113,13 +114,21 @@ filetype plugin on
 syntax enable
 syntax on
 
+colorscheme gruvbox " solarized dbandit  colorful256   gardener  desert256  default_modified
+highlight Cursorline guibg=Grey
+
+let mapleader = ","
+let g:mapleader = ","
+let g:load_doxygen_syntax=1
+"let g:solarized_termcolors=256
+
 if has('gui_running')
     set background=light
     cnoremap <S-Insert> <C-R>*
     inoremap <S-Insert> <C-R>*
     nnoremap <S-Insert> "*p
 "    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
-    set guifont=MonacoForPowerline:h13
+    set guifont=MonacoforPowerline:h13
 
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
@@ -131,14 +140,6 @@ else
     set background=dark
     let g:mwDefaultHighlightingPalette='extended'
 endif
-
-let mapleader = ","
-let g:mapleader = ","
-let g:load_doxygen_syntax=1
-let g:solarized_termcolors=256
-"colorscheme valloric " solarized dbandit  colorful256   gardener  desert256  default_modified
-autocmd vimenter * ++nested colorscheme gruvbox
-
 
 " set different cursor color in different modes
 if &term =~ "xterm\\|rxvt"
@@ -156,9 +157,9 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-
 if exists('+termguicolors')
   let &termguicolors = v:true
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
+

@@ -2,37 +2,16 @@
 "    plugins
 "==========================================
 
-" Unite
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_grep_default_opts = '-RHn'
-
-" CtrlP search
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#source('file_rec/async','sorters','sorter_rank')
-" replacing unite with ctrl-p
-nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
-nnoremap <leader>o :<C-u>Unite -start-insert -auto-preview outline<cr>
-nnoremap <leader>u :<C-u>Unite -start-insert file_mru<cr>
-nnoremap <leader>br :Unite buffer<cr>
-
-" Unite gtags
-nnoremap <leader>gd :execute 'Unite gtags/def'<CR>
-nnoremap <leader>gc :execute 'Unite gtags/context'<CR>
-nnoremap <leader>gr :execute 'Unite gtags/ref'<CR>
-nnoremap <leader>gg :execute 'Unite gtags/grep'<CR>
-nnoremap <Leader>gt :execute 'Unite -start-insert gtags/completion'<CR>
-
-let g:unite_source_gtags_project_config = { '_': { 'treelize': 1 } }
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe
 let g:ycm_enable_semantic_highlighting=1
 let g:ycm_autoclose_preview_window_after_completion = 1
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter RefactorRename<Space><C-R><C-W>
+nnoremap <leader>gf :YcmCompleter FixIt<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NeoSnippets
@@ -69,7 +48,7 @@ let Tlist_File_Fold_Auto_Close=1
 " Airline statusbar
 set laststatus=2
 let g:airline_powerline_fonts=1
-let g:airline_extensions=["quickfix","unite","netrw","branch","po"]
+let g:airline_extensions=["quickfix","netrw","branch","po"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Marks
@@ -81,3 +60,10 @@ vmap  <expr>  <S-LEFT>   DVB_Drag('left')
 vmap  <expr>  <S-RIGHT>  DVB_Drag('right')
 vmap  <expr>  <S-DOWN>   DVB_Drag('down')
 vmap  <expr>  <S-UP>     DVB_Drag('up')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:clang_format#detect_style_file=1
+" Vim-Clang-Format map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+

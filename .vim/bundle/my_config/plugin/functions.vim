@@ -52,30 +52,6 @@ function! PlantUML()
 endfun
 command! -nargs=* PlantUML call PlantUML()
 
-function! Gcpp( word )
-    let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpp " . l:searchPath . " " . a:word . " ' ) | copen"
-endfunction
-command! -nargs=1 -complete=tag Gcpp call Gcpp( <f-args> )
-
-function! Gcppc( word )
-    let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcppc " . l:searchPath . " " . a:word . " ' ) | copen"
-endfunction
-command! -nargs=1 -complete=tag Gcppc call Gcppc( <f-args> )
-
-function! Gcpptu( word )
-    let l:searchPath = GetTwoFistCatalogsOfCurrentPath()
-    exe "cgetexpr system( ' gcpptu " . l:searchPath . " " . a:word . " ' ) | copen"
-endfunction
-command! -nargs=1 -complete=tag Gcpptu call Gcpptu( <f-args> )
-
-function! Inherits( word )
-    let l:command = "grep -E \\'^\\\\w+::.*inherits:(\\\\w+::)*" . a:word . "\\\\b\\' tags \\| awk \\'{print $2\\\"\\|0\\| \\\"$1}\\' \\| sort"
-    exe "cgetexpr system( \"" . l:command . "\" ) | copen"
-endfunction
-command! -nargs=1 -complete=file Inherits call Inherits( <f-args> )
-
 function! TabGmock()
     let l:filenameInclude = expand("%")
     let l:filenameMock1 = substitute(l:filenameInclude, "Include", "Test_modules/Mocks", "")
@@ -98,22 +74,4 @@ function! OpenInCurrentAndJumpToLine( ... )
     execute name_line[1]
 endfunction
 command! -nargs=* -complete=command Ed call OpenInCurrentAndJumpToLine( <f-args> )
-
-"function! Multiple_cursors_before()
-"    exe 'NeoCompleteLock'
-"    echo 'Disabled autocomplete'
-"endfunction
-"
-"function! Multiple_cursors_after()
-"    exe 'NeoCompleteUnlock'
-"    echo 'Enabled autocomplete'
-"endfunction
-
-function! UniteGrep( ... )
-    set modifiable
-    exe '%!grep ' join(a:000, ' ')
-    set nomodifiable
-endfunction
-command! -nargs=* -complete=command UniteGrep call UniteGrep( <f-args> )
-
 

@@ -13,13 +13,10 @@
 	status = auto
 	ui = auto
 [diff]
-	tool = kdiff3
-[mergetool "kdiff3"]
-	path = /usr/bin/kdiff3
-	trustExitCode = false
-	keepBackup = false
+	tool = gvimdiff
 [merge]
-	tool = kdiff3
+	tool = gvimdiff
+    conflictstyle = diff3
 [push]
 	default = simple
 [core]

@@ -7,11 +7,8 @@
 "o  Operator pending mode map. Defined using ':omap' or ':onoremap'
 
 
-map <C-F> :pyf /usr/share/vim/addons/syntax/clang-format.py<CR>
-imap <C-F> <ESC>:pyf /usr/share/vim/addons/syntax/clang-format.py<CR>i
-
-noremap <SCRollWheelUp>     7<C-Y>
-noremap <SCRollWheelDown>   7<C-E>
+noremap <SCRollWheelUp>     5<C-Y>
+noremap <SCRollWheelDown>   5<C-E>
 
 noremap <F2> :call ToggleHeaderSource()<CR>
 noremap <S-F2> :call ToggleSourceTest()<CR>
@@ -20,7 +17,7 @@ noremap <S-F3> :NERDTreeFind<CR>
 noremap <F4> :tab split<CR>
 noremap <F5> :vimgrep <C-R>=expand('<cword>')<CR> <C-R>=fnamemodify(expand("%"), ":h")<CR>/**
 "noremap <F6>
-noremap <F7> :TagbarToggle<CR>
+"noremap <F7>
 noremap <F8> :vsplit<CR><C-]> " Open the definition in a vertical split
 noremap <F9> :Rgrep <CR><Home>\(public\\|protected\\|private\)\s\+<CR>
 noremap <F10> :q<CR>
@@ -29,10 +26,6 @@ noremap <F11> <ESC>g<C-]>zz
 noremap <F12> <ESC><C-w>g<C-]>zz
 
 noremap <Leader>s :Sscratch<CR>
-noremap <Leader>con :Gcppc \\\<<C-R>=expand('<cword>')<CR>\\\>
-noremap <Leader>tu :Gcpptu \\\<<C-R>=expand('<cword>')<CR>\\\>
-noremap <Leader>use  :Gcpp \\\<<C-R>=expand('<cword>')<CR>\\\>
-noremap <Leader>d :Inherits <C-R>=expand('<cword>')<CR>
 
 " faster cursor movements between splits
 noremap <A-Up> <C-W><Up>
