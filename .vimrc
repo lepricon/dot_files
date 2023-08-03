@@ -20,6 +20,8 @@ Plugin 'inkarkat/vim-mark'
 Plugin 'inkarkat/vim-CursorLineCurrentWindow'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 Plugin 'markcornick/vim-bats'
 Plugin 'morhetz/gruvbox'
 Plugin 'my_config', {'pinned': 1}

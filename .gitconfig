@@ -24,3 +24,5 @@
 	excludesfile = ~/.gitignore
 [user]
 	email = 517695+lepricon@users.noreply.github.com
+[pull]
+	rebase = true
