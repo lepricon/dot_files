@@ -2,6 +2,16 @@
 "    plugins
 "==========================================
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+nnoremap <leader>o :NERDTreeFind<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python Mode
+let g:pymode_options_max_line_length = 88
+let g:pymode_lint_options_pycodestyle =
+        \ {'max_line_length': g:pymode_options_max_line_length}
+nnoremap <leader>pl :PymodeLintAuto<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe

@@ -24,5 +24,14 @@
 	excludesfile = ~/.gitignore
 [user]
 	email = 517695+lepricon@users.noreply.github.com
+	name = lepricon
+	signingkey = D3AFD7A400B4B4A89E24B5291C8E75A94C8856B6
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

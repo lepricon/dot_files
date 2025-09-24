@@ -86,6 +86,10 @@ export SDKROOT=$(xcrun --show-sdk-path)
 
 export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
+export LDFLAGS="-L$(brew --prefix)/lib"
+export CPPFLAGS="-I$(brew --prefix)/include" 
+
+
 
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
@@ -100,3 +104,9 @@ bindkey "^[^[[D" backward-word
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="ls -la"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/wlodek/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/wlodek/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/wlodek/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/wlodek/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

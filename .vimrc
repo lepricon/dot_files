@@ -15,9 +15,11 @@ Plugin 'bling/vim-airline'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ericcurtin/curtineincsw.vim'
+Plugin 'github/copilot.vim'
 Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
 Plugin 'inkarkat/vim-CursorLineCurrentWindow'
+Plugin 'integralist/vim-mypy'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'jondkinney/dragvisuals.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -25,7 +27,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'markcornick/vim-bats'
 Plugin 'morhetz/gruvbox'
 Plugin 'my_config', {'pinned': 1}
-Plugin 'nvie/vim-flake8'
+Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neomru.vim'
@@ -40,6 +42,7 @@ Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/QFGrep.vim'
 Plugin 'vim-scripts/vcscommand.vim'
+Plugin 'unkiwii/vim-nerdtree-sync'
 
 
 " All of your Plugins must be added before the following line
